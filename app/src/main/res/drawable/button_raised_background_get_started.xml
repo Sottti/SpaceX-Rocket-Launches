@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+  android:insetBottom="@dimen/button_raised_inset_bottom"
+  android:insetLeft="@dimen/button_raised_inset_left"
+  android:insetRight="@dimen/button_raised_inset_right"
+  android:insetTop="@dimen/button_raised_inset_top">
+
+  <selector>
+
+    <item android:state_enabled="false">
+
+      <shape>
+        <corners android:radius="@dimen/corner_radius_button_raised"/>
+        <solid android:color="@color/white_12"/>
+      </shape>
+
+    </item>
+
+    <item
+      android:state_enabled="true"
+      android:state_pressed="true">
+
+      <shape>
+        <corners android:radius="@dimen/corner_radius_button_raised"/>
+        <solid android:color="@color/grey_200"/>
+      </shape>
+
+    </item>
+
+    <item>
+      <shape>
+        <corners android:radius="@dimen/corner_radius_button_raised"/>
+        <solid android:color="@color/white"/>
+      </shape>
+    </item>
+
+  </selector>
+
+</inset>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="welcome_button">Get Started</string>
+  <string name="welcome_quote_text">“The universe is a pretty big place. If it\'s just us, seems like an awful waste of space”</string>
+  <string name="welcome_quote_author">- Carl Sagan</string>
+</resources>

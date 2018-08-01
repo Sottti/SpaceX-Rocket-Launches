@@ -1,0 +1,44 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.spacex.launches.spacexrocketlaunches">
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+
+  <application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:name=".RocketLaunchesApp"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+
+    <meta-data
+      android:name="android.max_aspect"
+      android:value="3.0"/>
+
+    <activity
+      android:name=".EntryActivity"
+      android:noHistory="true"
+      android:theme="@android:style/Theme.Translucent.NoTitleBar">
+
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+      </intent-filter>
+    </activity>
+
+    <activity
+      android:launchMode="singleTask"
+      android:name=".welcome.WelcomeActivity"/>
+
+    <activity
+      android:launchMode="singleTask"
+      android:label="@string/rocket_list_toolbar_title"
+      android:name=".RocketList"/>
+
+  </application>
+
+</manifest>

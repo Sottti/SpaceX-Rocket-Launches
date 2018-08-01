@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Text Black on light backgrounds -->
+  <color name="text_black">@color/black</color>
+  <color name="text_black_primary">@color/black_87</color>
+  <color name="text_black_secondary">@color/black_54</color>
+  <color name="text_black_disable_and_hint">@color/black_38</color>
+
+  <!-- Text White on dark backgrounds -->
+  <color name="text_white_primary">@color/white</color>
+  <color name="text_white_secondary">@color/white_70</color>
+  <color name="text_white_disabled_and_hint">@color/white_50</color>
+
+</resources>

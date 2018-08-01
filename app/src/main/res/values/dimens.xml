@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--Spacing-->
+  <dimen name="spacing_4">4dp</dimen>
+  <dimen name="spacing_6">6dp</dimen>
+  <dimen name="spacing_8">8dp</dimen>
+  <dimen name="spacing_16">16dp</dimen>
+  <dimen name="spacing_20">20dp</dimen>
+  <dimen name="spacing_32">32dp</dimen>
+  <dimen name="spacing_64">64dp</dimen>
+
+  <!-- Raised Button -->
+  <dimen name="button_raised_inset_top">@dimen/spacing_6</dimen>
+  <dimen name="button_raised_inset_bottom">@dimen/spacing_6</dimen>
+  <dimen name="button_raised_inset_left">@dimen/spacing_4</dimen>
+  <dimen name="button_raised_inset_right">@dimen/spacing_4</dimen>
+
+  <!--Corner Radius-->
+  <dimen name="corner_radius_button_raised">2dp</dimen>
+</resources>

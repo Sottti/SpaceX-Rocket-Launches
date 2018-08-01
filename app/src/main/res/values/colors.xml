@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">@color/blue_grey_900</color>
+  <color name="colorPrimaryDark">@color/blue_grey_900</color>
+  <color name="colorAccent">@color/amber_A400</color>
+
+  <!-- Black and White -->
+  <color name="black">#000</color>
+  <color name="white">#FFF</color>
+
+  <color name="black_87">#DE000000</color>
+  <color name="black_54">#8A000000</color>
+  <color name="black_38">#61000000</color>
+  <color name="black_12">#1F000000</color>
+  <color name="black_6">#15000000</color>
+
+  <color name="white_70">#B3FFFFFF</color>
+  <color name="white_50">#80FFFFFF</color>
+  <color name="white_12">#1FFFFFFF</color>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <!-- Buttons -->
+  <style name="Button" parent="Widget.AppCompat.Button">
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <!-- Raised -->
+  <style name="Button.Raised"/>
+
+  <style name="Button.Raised.GetStarted">
+    <item name="android:background">@drawable/button_raised_background_get_started</item>
+    <item name="android:text">@string/welcome_button</item>
+    <item name="android:padding">@dimen/spacing_20</item>
+    <item name="android:layout_width">wrap_content</item>
+  </style>
+</resources>
