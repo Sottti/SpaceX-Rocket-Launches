@@ -35,9 +35,15 @@
       android:name=".welcome.WelcomeActivity"/>
 
     <activity
-      android:launchMode="singleTask"
       android:label="@string/rocket_list_toolbar_title"
-      android:name=".RocketList"/>
+      android:launchMode="singleTask"
+      android:name=".rocketList.RocketListActivity"/>
+
+    <activity
+      android:label="@string/about_toolbar_title"
+      android:launchMode="singleTask"
+      android:name=".about.AboutActivity"
+      android:parentActivityName=".rocketList.RocketListActivity"/>
 
   </application>
 

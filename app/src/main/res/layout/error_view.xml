@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <merge
+    tools:layout_height="match_parent"
+    tools:layout_width="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:tint="@color/black_12"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintDimensionRatio="1:1"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.4"
+      app:layout_constraintWidth_percent=".4"
+      app:srcCompat="@drawable/image_cloud_sad"
+      tools:ignore="ContentDescription"/>
+
+    <TextView
+      android:id="@+id/title"
+      style="@style/Title.Black.Primary"
+      android:layout_marginTop="@dimen/spacing_16"
+      android:text="@string/error_view_title"
+      android:textColor="@color/text_black_secondary"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+
+    <TextView
+      android:id="@+id/body"
+      style="@style/Body1.Black.Secondary"
+      android:layout_marginTop="@dimen/spacing_8"
+      android:text="@string/something_went_wrong_on_our_end_sorry"
+      android:textColor="@color/text_black_disable_and_hint"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    <TextView
+      android:id="@+id/retry"
+      style="@style/Button.Flat"
+      android:layout_width="wrap_content"
+      android:layout_margin="@dimen/spacing_32"
+      android:gravity="center"
+      android:text="Retry"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+  </merge>
+
+</layout>

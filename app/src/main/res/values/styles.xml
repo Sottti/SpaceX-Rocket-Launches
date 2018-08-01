@@ -15,4 +15,25 @@
     <item name="android:padding">@dimen/spacing_20</item>
     <item name="android:layout_width">wrap_content</item>
   </style>
+
+  <style name="RecyclerView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:paddingBottom">@dimen/list_vertical_padding</item>
+    <item name="android:paddingTop">@dimen/list_vertical_padding</item>
+    <item name="android:clipToPadding">false</item>
+    <item name="android:orientation">vertical</item>
+    <item name="android:scrollbars">vertical</item>
+  </style>
+
+  <!-- Flat -->
+  <style name="Button.Flat" parent="Widget.AppCompat.Button.Borderless.Colored">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">16dp</item>
+    <item name="android:layout_marginLeft">4dp</item>
+    <item name="android:layout_marginRight">4dp</item>
+    <item name="android:layout_marginBottom">8dp</item>
+  </style>
+
+  <style name="CardView.RestingAndPickUpElevations"/>
 </resources>

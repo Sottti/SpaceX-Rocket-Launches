@@ -1,6 +1,7 @@
 package com.spacex.launches.spacexrocketlaunches;
 
 import android.app.Activity;
+import com.spacex.launches.spacexrocketlaunches.rocketList.RocketListActivity;
 import com.spacex.launches.spacexrocketlaunches.welcome.WelcomeActivity;
 
 public class EntryActivity extends Activity {
@@ -13,7 +14,7 @@ public class EntryActivity extends Activity {
 
   private void showFirstVisibleActivity() {
     if (InteractionsHistory.wasWelcomeShown()) {
-      RocketList.startActivity(this);
+      RocketListActivity.startActivity(this);
     } else {
       WelcomeActivity.startActivity(this);
     }

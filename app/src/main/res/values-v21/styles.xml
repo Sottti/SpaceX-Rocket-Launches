@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="CardView.RestingAndPickUpElevations">
+    <item name="android:stateListAnimator">@animator/cardview_resting_and_pick_up</item>
+  </style>
+</resources>

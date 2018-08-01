@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--Elevations-->
+  <dimen name="elevation_2">2dp</dimen>
+  <dimen name="elevation_8">8dp</dimen>
+
+  <dimen name="cardview_picked_up_elevation">@dimen/elevation_8</dimen>
+
+  <dimen name="cardview_resting_elevation">@dimen/elevation_2</dimen>
+</resources>

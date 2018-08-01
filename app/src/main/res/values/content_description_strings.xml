@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="space_x_logo">Space X logo</string>
+  <string name="smiling_sun">Smiling sun</string>
+  <string name="image_showing_a_rocket">Image showing a rocket</string>
 </resources>

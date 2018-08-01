@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="error_view_title">Ooops</string>
+  <string name="something_went_wrong_on_our_end_sorry">Something went wrong on our end.. sorry!</string>
+</resources>

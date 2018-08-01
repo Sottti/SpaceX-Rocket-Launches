@@ -8,6 +8,7 @@
   <dimen name="spacing_16">16dp</dimen>
   <dimen name="spacing_20">20dp</dimen>
   <dimen name="spacing_32">32dp</dimen>
+  <dimen name="spacing_48">48dp</dimen>
   <dimen name="spacing_64">64dp</dimen>
 
   <!-- Raised Button -->
@@ -18,4 +19,17 @@
 
   <!--Corner Radius-->
   <dimen name="corner_radius_button_raised">2dp</dimen>
+
+  <!--Elevations-->
+  <dimen name="elevation_appbar">4dp</dimen>
+
+  <!--Lists-->
+  <dimen name="list_vertical_padding">@dimen/spacing_8</dimen>
+  <dimen name="list_vertical_padding_from_cardview">@dimen/spacing_4</dimen>
+
+  <!--ProgressBar-->
+  <dimen name="progress_bar_medium">@dimen/spacing_48</dimen>
+
+  <!--Others-->
+  <dimen name="max_width_phone_in_portrait">540dp</dimen>
 </resources>

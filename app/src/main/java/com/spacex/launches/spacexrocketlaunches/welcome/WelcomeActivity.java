@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import com.spacex.launches.spacexrocketlaunches.R;
-import com.spacex.launches.spacexrocketlaunches.RocketList;
 import com.spacex.launches.spacexrocketlaunches.databinding.WelcomeBinding;
+import com.spacex.launches.spacexrocketlaunches.rocketList.RocketListActivity;
 
 public class WelcomeActivity extends AppCompatActivity implements WelcomeContract.View {
 
@@ -28,6 +28,6 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeContrac
 
   @Override
   public void navigateToRocketList() {
-    RocketList.startActivity(this);
+    RocketListActivity.startActivity(this);
   }
 }

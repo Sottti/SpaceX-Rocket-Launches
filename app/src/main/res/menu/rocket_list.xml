@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".rocketList.RocketListActivity">
+
+  <item
+    android:id="@+id/filter_rockets"
+    android:icon="@drawable/ic_filter_list_white_24dp"
+    android:orderInCategory="0"
+    android:title="@string/rocket_list_filter_rockets"
+    app:showAsAction="ifRoom"/>
+
+  <item
+    android:id="@+id/show_welcome"
+    android:orderInCategory="1"
+    android:title="@string/rocket_list_menu_show_welcome"
+    app:showAsAction="never"/>
+
+  <item
+    android:id="@+id/about"
+    android:orderInCategory="2"
+    android:title="@string/rocket_list_menu_about"
+    app:showAsAction="never"/>
+</menu>
