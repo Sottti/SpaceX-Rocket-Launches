@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.minSdk
+        targetSdkVersion rootProject.ext.versions.targetSdk
+        buildToolsVersion rootProject.ext.versions.buildTools
+        compileSdkVersion rootProject.ext.versions.compileSdk
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation kt.stdlib
+
+    implementation project(':domain')
+    implementation project(':network_common')
+
+    implementation networking.moshiConverter
+
+    implementation archComponents.roomRuntime
+    testImplementation archComponents.roomTesting
+    annotationProcessor archComponents.roomCompiler
+
+    testImplementation testing.junit
+    androidTestImplementation testing.junit
+    testImplementation testing.mockitoCore
+    testImplementation testing.hamcrestAll
+    testImplementation testing.powermockCore
+    testImplementation testing.powermockApiMockito2
+    testImplementation testing.powermockModuleJunit4
+    testImplementation testing.powermockModuleJunit4Rule
+
+    implementation dagger.dagger
+    annotationProcessor dagger.daggerCompiler
+
+    implementation libraries.timber
+}

@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':rockets', ':domain', ':network_common'

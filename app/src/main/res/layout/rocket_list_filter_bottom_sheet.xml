@@ -1,0 +1,103 @@
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/bottom_sheet"
+    style="@style/ModalBottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/card_view_color"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    tools:layout_gravity="bottom">
+
+    <TextView
+      android:id="@+id/header"
+      style="@style/Body2.Black.Secondary"
+      android:layout_width="wrap_content"
+      android:layout_height="@dimen/spacing_40"
+      android:layout_marginStart="@dimen/vertical_keyline_primary"
+      android:gravity="center_vertical"
+      android:text="@string/rocket_list_filters_label"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/filter_all_rockets_row"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/touch_target_row_height"
+      android:background="?selectableItemBackground"
+      android:clickable="true"
+      android:focusable="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/header">
+
+      <TextView
+        android:id="@+id/filter_all_rockets_label"
+        style="@style/Body1.Black.Primary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/vertical_keyline_primary"
+        android:text="@string/rocket_list_filter_all_rockets"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+      <ImageView
+        android:id="@+id/filter_all_rockets_tick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/vertical_keyline_primary"
+        android:tint="@color/colorAccent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_all_rockets_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/filter_all_rockets_label"
+        app:srcCompat="@drawable/ic_check_white_24dp"
+        tools:visibility="visible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/filter_active_rockets_row"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/touch_target_row_height"
+      android:background="?selectableItemBackground"
+      android:clickable="true"
+      android:focusable="true"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/filter_all_rockets_row">
+
+      <TextView
+        android:id="@+id/filter_active_rockets_label"
+        style="@style/Body1.Black.Primary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/vertical_keyline_primary"
+        android:text="@string/rocket_list_filter_active_rockets"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+      <ImageView
+        android:id="@+id/filter_active_rockets_tick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/vertical_keyline_primary"
+        android:tint="@color/colorAccent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_active_rockets_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/filter_active_rockets_label"
+        app:srcCompat="@drawable/ic_check_white_24dp"
+        tools:visibility="gone"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

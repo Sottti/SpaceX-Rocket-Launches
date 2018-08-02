@@ -7,19 +7,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback;
+import com.spacex.launches.spacexrocketlaunches.AndroidOS;
+import com.spacex.launches.spacexrocketlaunches.DaggerAppCompatActivityBase;
 import com.spacex.launches.spacexrocketlaunches.R;
 import com.spacex.launches.spacexrocketlaunches.about.AboutActivity;
 import com.spacex.launches.spacexrocketlaunches.databinding.RocketListBinding;
 import com.spacex.launches.spacexrocketlaunches.welcome.WelcomeActivity;
-import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
 
-public class RocketListActivity extends AppCompatActivity implements RocketListContract.View {
+public class RocketListActivity extends DaggerAppCompatActivityBase
+    implements RocketListContract.View {
 
   private RocketListAdapter adapter;
   private RocketListBinding viewBinding;
-  private RocketListContract.Presenter presenter;
+  @Inject RocketListContract.Presenter presenter;
+  private BottomSheetBehavior<ConstraintLayout> bottomSheetBehavior;
 
   public static void startActivity(@NonNull final Context context) {
     context.startActivity(new Intent(context, RocketListActivity.class));
@@ -29,10 +37,47 @@ public class RocketListActivity extends AppCompatActivity implements RocketListC
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     viewBinding = DataBindingUtil.setContentView(this, R.layout.rocket_list);
-    presenter = new RocketListPresenter(this, new RocketListCoordinator());
+  }
+
+  @Override
+  public void setUpViews() {
     setUpToolbar();
     viewBinding.errorView.setOnRetryListener(() -> presenter.onRetry());
+    setUpSwipeRefresh();
+    setUpBottomSheet();
+  }
+
+  private void setUpSwipeRefresh() {
     viewBinding.swipeRefreshLayout.setOnRefreshListener(() -> presenter.onRefresh());
+    viewBinding.swipeRefreshLayout.setColorSchemeColors(
+        ContextCompat.getColor(this, R.color.colorAccent));
+  }
+
+  private void setUpBottomSheet() {
+    bottomSheetBehavior = BottomSheetBehavior.from(viewBinding.includeBottomSheet.bottomSheet);
+    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+    bottomSheetBehavior.setBottomSheetCallback(
+        new BottomSheetCallback() {
+          @Override
+          public void onStateChanged(@NonNull final View view, final int state) {
+            if (state == BottomSheetBehavior.STATE_HIDDEN) {
+              presenter.onCloseFilterOptions();
+            }
+          }
+
+          @Override
+          public void onSlide(@NonNull final View view, final float v) {}
+        });
+    viewBinding.scrim.setOnClickListener(view -> presenter.onCloseFilterOptions());
+    if (AndroidOS.INSTANCE.isAtLeastLollipop()) {
+      viewBinding.scrim.setElevation(viewBinding.includeToolbar.toolbar.getElevation());
+    }
+
+    viewBinding.includeBottomSheet.filterAllRocketsRow.setOnClickListener(
+        view -> presenter.onShowAllRocketsFilterOptionClick());
+
+    viewBinding.includeBottomSheet.filterActiveRocketsRow.setOnClickListener(
+        view -> presenter.onShowActiveRocketsFilterOptionClick());
   }
 
   private void setUpToolbar() {
@@ -64,7 +109,7 @@ public class RocketListActivity extends AppCompatActivity implements RocketListC
   }
 
   @Override
-  public void showRockets(@NonNull final ArrayList<RocketUIM> rockets) {
+  public void showRockets(@NonNull final List<RocketUIM> rockets) {
     viewBinding.swipeRefreshLayout.setRefreshing(false);
     viewBinding.errorView.setVisibility(View.GONE);
     viewBinding.emptyView.setVisibility(View.GONE);
@@ -76,6 +121,18 @@ public class RocketListActivity extends AppCompatActivity implements RocketListC
     } else {
       adapter.refreshData(rockets);
     }
+  }
+
+  @Override
+  public void showAllRocketsFilterAsSelected() {
+    viewBinding.includeBottomSheet.filterAllRocketsTick.setVisibility(View.VISIBLE);
+    viewBinding.includeBottomSheet.filterActiveRocketsTick.setVisibility(View.GONE);
+  }
+
+  @Override
+  public void showActiveRocketsFilterAsSelected() {
+    viewBinding.includeBottomSheet.filterAllRocketsTick.setVisibility(View.GONE);
+    viewBinding.includeBottomSheet.filterActiveRocketsTick.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -101,7 +158,7 @@ public class RocketListActivity extends AppCompatActivity implements RocketListC
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.filter_rockets:
-        presenter.onFilterByActiveRocketsClick();
+        presenter.onFilterRocketsClick();
         return true;
 
       case R.id.show_welcome:
@@ -113,5 +170,35 @@ public class RocketListActivity extends AppCompatActivity implements RocketListC
         return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override
+  public void showFilterOptions() {
+    showScrim();
+    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+  }
+
+  @Override
+  public void hideFilterOptions() {
+    hideScrim();
+    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+  }
+
+  private void showScrim() {
+    viewBinding.scrim.setClickable(true);
+    viewBinding
+        .scrim
+        .animate()
+        .alpha(1f)
+        .setDuration(this.getResources().getInteger(android.R.integer.config_shortAnimTime));
+  }
+
+  private void hideScrim() {
+    viewBinding.scrim.setClickable(false);
+    viewBinding
+        .scrim
+        .animate()
+        .alpha(0f)
+        .setDuration(this.getResources().getInteger(android.R.integer.config_shortAnimTime));
   }
 }

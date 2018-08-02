@@ -79,7 +79,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/A:/android-studio-beta/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_filter_list_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/A:/android-studio-beta/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_check_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -90,8 +90,9 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_filter_list_white_24dp" />
-                            <entry key="sourceFile" value="C:\Users\sotti" />
+                            <entry key="outputName" value="ic_check_white_24dp" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\sotti\Downloads\rocket-ship.svg" />
                           </map>
                         </option>
                       </PersistentState>

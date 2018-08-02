@@ -5,23 +5,30 @@ import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
-import com.spacex.launches.spacexrocketlaunches.rocketList.RocketListContract.Coordinator;
 import com.spacex.launches.spacexrocketlaunches.rocketList.RocketListContract.Coordinator.OnGetRocketListCallbacks;
 import com.spacex.launches.spacexrocketlaunches.rocketList.RocketListContract.Presenter;
 import com.spacex.launches.spacexrocketlaunches.rocketList.RocketListContract.View;
-import java.util.ArrayList;
+import java.util.List;
 
 public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetRocketListCallbacks {
 
   private final RocketListContract.Coordinator coordinator;
   private RocketListContract.View view;
+  private boolean isShowingFilterOptions = false;
 
-  RocketListPresenter(@NonNull final View view, final Coordinator coordinator) {
+  RocketListPresenter(
+      @NonNull final View view, @NonNull final RocketListContract.Coordinator coordinator) {
     this.view = view;
     this.coordinator = coordinator;
     if (view instanceof LifecycleOwner) {
       ((LifecycleOwner) view).getLifecycle().addObserver(this);
     }
+  }
+
+  @Override
+  @OnLifecycleEvent(Event.ON_CREATE)
+  public void onCreate() {
+    view.setUpViews();
   }
 
   @Override
@@ -35,7 +42,7 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   }
 
   @Override
-  public void onSuccessLoadingRocketList(@NonNull final ArrayList<RocketUIM> rockets) {
+  public void onSuccessLoadingRocketList(@NonNull final List<RocketUIM> rockets) {
     if (view != null) {
       if (rockets.isEmpty()) {
         view.showAsEmpty();
@@ -66,8 +73,29 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   }
 
   @Override
-  public void onFilterByActiveRocketsClick() {
+  public void onFilterRocketsClick() {
+    view.showFilterOptions();
+    isShowingFilterOptions = true;
+  }
+
+  @Override
+  public void onShowAllRocketsFilterOptionClick() {
+    view.hideFilterOptions();
+    view.showAllRocketsFilterAsSelected();
+    coordinator.getAllRockets(this);
+  }
+
+  @Override
+  public void onShowActiveRocketsFilterOptionClick() {
+    view.hideFilterOptions();
+    view.showActiveRocketsFilterAsSelected();
     coordinator.getActiveRockets(this);
+  }
+
+  @Override
+  public void onCloseFilterOptions() {
+    view.hideFilterOptions();
+    isShowingFilterOptions = false;
   }
 
   @Override

@@ -8,6 +8,7 @@
   <dimen name="spacing_16">16dp</dimen>
   <dimen name="spacing_20">20dp</dimen>
   <dimen name="spacing_32">32dp</dimen>
+  <dimen name="spacing_40">40dp</dimen>
   <dimen name="spacing_48">48dp</dimen>
   <dimen name="spacing_64">64dp</dimen>
 
@@ -21,7 +22,8 @@
   <dimen name="corner_radius_button_raised">2dp</dimen>
 
   <!--Elevations-->
-  <dimen name="elevation_appbar">4dp</dimen>
+  <dimen name="appbar_elevation">4dp</dimen>
+  <dimen name="modal_bottom_sheet_elevation">16dp</dimen>
 
   <!--Lists-->
   <dimen name="list_vertical_padding">@dimen/spacing_8</dimen>
@@ -32,4 +34,5 @@
 
   <!--Others-->
   <dimen name="max_width_phone_in_portrait">540dp</dimen>
+  <dimen name="touch_target_row_height">@dimen/spacing_48</dimen>
 </resources>

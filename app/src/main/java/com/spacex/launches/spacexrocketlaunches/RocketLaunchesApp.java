@@ -1,15 +1,23 @@
 package com.spacex.launches.spacexrocketlaunches;
 
-import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
 import timber.log.Timber;
 
-public class RocketLaunchesApp extends Application {
+public class RocketLaunchesApp extends DaggerApplication {
 
   private static RocketLaunchesApp instance;
 
   public static RocketLaunchesApp getInstance() {
     return instance;
+  }
+
+  @Override
+  protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+    final AppComponent appComponent = DaggerAppComponent.builder().application(this).build();
+    appComponent.inject(this);
+    return appComponent;
   }
 
   @Override

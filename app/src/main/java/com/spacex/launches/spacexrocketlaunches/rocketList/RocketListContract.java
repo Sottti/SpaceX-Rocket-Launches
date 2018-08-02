@@ -1,11 +1,13 @@
 package com.spacex.launches.spacexrocketlaunches.rocketList;
 
 import androidx.annotation.NonNull;
-import java.util.ArrayList;
+import java.util.List;
 
 interface RocketListContract {
 
   interface View {
+
+    void setUpViews();
 
     void showAsLoading();
 
@@ -13,22 +15,38 @@ interface RocketListContract {
 
     void showAsErrorLoading();
 
-    void showRockets(@NonNull final ArrayList<RocketUIM> rockets);
+    void showRockets(@NonNull final List<RocketUIM> rockets);
+
+    void showAllRocketsFilterAsSelected();
+
+    void showActiveRocketsFilterAsSelected();
 
     void navigateToRocketDetails(final int rocketId);
 
     void navigateToWelcomeActivity();
 
     void navigateToAboutActivity();
+
+    void showFilterOptions();
+
+    void hideFilterOptions();
   }
 
   interface Presenter {
+
+    void onCreate();
 
     void onStart();
 
     void onRocketClicked(final int rocketId);
 
-    void onFilterByActiveRocketsClick();
+    void onFilterRocketsClick();
+
+    void onShowAllRocketsFilterOptionClick();
+
+    void onShowActiveRocketsFilterOptionClick();
+
+    void onCloseFilterOptions();
 
     void onShowWelcomeClick();
 
@@ -51,7 +69,7 @@ interface RocketListContract {
     void cancel();
 
     interface OnGetRocketListCallbacks {
-      void onSuccessLoadingRocketList(@NonNull final ArrayList<RocketUIM> rockets);
+      void onSuccessLoadingRocketList(@NonNull final List<RocketUIM> rockets);
 
       void onErrorLoadingRocketList();
     }

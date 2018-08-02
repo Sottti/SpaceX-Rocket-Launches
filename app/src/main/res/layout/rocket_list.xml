@@ -2,75 +2,96 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
 
-  <androidx.constraintlayout.widget.ConstraintLayout
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey_200">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/grey_200">
+
+      <include
+        android:id="@+id/include_toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+      <include
+        android:id="@+id/include_progressBar"
+        layout="@layout/progress_bar"
+        android:layout_width="@dimen/progress_bar_medium"
+        android:layout_height="@dimen/progress_bar_medium"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_toolbar"
+        tools:visibility="gone"/>
+
+      <com.spacex.launches.spacexrocketlaunches.errorView.ErrorView
+        android:id="@+id/error_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_toolbar"
+        tools:visibility="gone"/>
+
+      <com.spacex.launches.spacexrocketlaunches.emptyView.EmptyView
+        android:id="@+id/empty_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_toolbar"
+        tools:visibility="gone"/>
+
+      <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include_toolbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recycler_view"
+          style="@style/RecyclerView"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:layout_constraintWidth_max="@dimen/max_width_phone_in_portrait"
+          app:spanCount="@integer/rocket_list_span_count"
+          tools:listitem="@layout/rocket_vh"/>
+
+      </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+      <View
+        android:id="@+id/scrim"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/black_38"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
-      android:id="@+id/include_toolbar"
-      layout="@layout/toolbar"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      android:id="@+id/include_bottom_sheet"
+      layout="@layout/rocket_list_filter_bottom_sheet"/>
 
-    <include
-      android:id="@+id/include_progressBar"
-      layout="@layout/progress_bar"
-      android:layout_width="@dimen/progress_bar_medium"
-      android:layout_height="@dimen/progress_bar_medium"
-      android:visibility="visible"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/include_toolbar"
-      tools:visibility="gone"/>
-
-    <com.spacex.launches.spacexrocketlaunches.errorView.ErrorView
-      android:id="@+id/error_view"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:visibility="gone"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/include_toolbar"
-      tools:visibility="gone"/>
-
-    <com.spacex.launches.spacexrocketlaunches.emptyView.EmptyView
-      android:id="@+id/empty_view"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:visibility="gone"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/include_toolbar"
-      tools:visibility="gone"/>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-      android:id="@+id/swipe_refresh_layout"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/include_toolbar">
-
-      <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        style="@style/RecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintWidth_max="@dimen/max_width_phone_in_portrait"
-        app:spanCount="@integer/rocket_list_span_count"
-        tools:listitem="@layout/rocket_vh"/>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

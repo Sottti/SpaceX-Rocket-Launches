@@ -33,7 +33,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':domain')
+    implementation project(':rockets')
+
+    implementation dagger.dagger
+    implementation dagger.daggerAndroid
+    annotationProcessor dagger.daggerCompiler
+    implementation dagger.daggerAndroidSupport
+    annotationProcessor dagger.daggerAndroidProcessor
+
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -43,6 +51,7 @@ dependencies {
     debugImplementation leakCanary.fragments
     releaseImplementation leakCanary.androidNoOp
 
+    implementation androidSupportLibraries.design
     implementation androidSupportLibraries.cardView
     implementation androidSupportLibraries.recyclerView
     implementation androidSupportLibraries.constraintLayout

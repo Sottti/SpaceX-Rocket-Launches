@@ -4,4 +4,9 @@
   <style name="CardView.RestingAndPickUpElevations">
     <item name="android:stateListAnimator">@animator/cardview_resting_and_pick_up</item>
   </style>
+
+  <style name="ModalBottomSheet">
+    <item name="android:elevation">@dimen/modal_bottom_sheet_elevation</item>
+  </style>
+
 </resources>
