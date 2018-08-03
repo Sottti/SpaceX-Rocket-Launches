@@ -1,4 +1,4 @@
-package com.spacex.ui;
+package com.spacex.ui.di;
 
 import com.spacex.ui.rocketList.RocketListActivity;
 import com.spacex.ui.rocketList.RocketListModule;

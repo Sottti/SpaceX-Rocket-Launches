@@ -1,4 +1,4 @@
-package com.spacex.ui;
+package com.spacex.ui.di;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;

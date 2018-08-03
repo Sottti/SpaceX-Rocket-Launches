@@ -1,4 +1,4 @@
-package com.spacex.ui;
+package com.spacex.ui.di;
 
 import android.app.Application;
 import android.content.Context;
