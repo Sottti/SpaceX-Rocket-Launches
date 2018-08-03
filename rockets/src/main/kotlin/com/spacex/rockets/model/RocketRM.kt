@@ -17,4 +17,10 @@ class RocketRM(
         val enginesCount: String,
         @ColumnInfo(name = "is_active")
         val isActive: Boolean,
-        storedTimestamp: Long) : BaseRM(id, storedTimestamp)
+        storedTimestamp: Long) : BaseRM() {
+
+    init {
+        this.id = id
+        this.storedTimestamp = storedTimestamp
+    }
+}
