@@ -7,18 +7,18 @@ import com.spacex.rockets.datasources.RocketsDS
 import com.spacex.rockets.datasources.RocketsDS.Local.Companion.ROCKETS_EXPIRATION_TIME_IN_MILLIS
 
 internal class RocketsRepositoryImpl(
-        val localDS: RocketsDS.Local,
+        private val localDS: RocketsDS.Local,
         private val remoteDS: RocketsDS.Remote) : RocketsRepository {
 
     @WorkerThread
     override fun loadAllRockets(callbacks: RocketsRepository.OnLoadRocketsCallbacks) {
         localDS.loadAllRockets(object : RocketsDS.Local.OnLoadRocketsCallbacks {
             override fun onSuccessLoadingRockets(
-                    rocketsDM: List<RocketDM>,
+                    rockets: List<RocketDM>,
                     oldestRocketAgeInMillis: Long) {
-                callbacks.onSuccessLoadingRockets(rocketsDM)
+                callbacks.onSuccessLoadingRockets(rockets)
                 if (oldestRocketAgeInMillis > ROCKETS_EXPIRATION_TIME_IN_MILLIS) {
-                    loadAllRocketsFromRemoteDS(callbacks, false, rocketsDM)
+                    loadAllRocketsFromRemoteDS(callbacks, false, rockets)
                 }
             }
 
@@ -34,10 +34,10 @@ internal class RocketsRepositoryImpl(
             propagateError: Boolean = true,
             rocketsFoundLocally: List<RocketDM> = emptyList()) {
         remoteDS.loadAllRockets(object : RocketsDS.Remote.OnLoadRocketsCallbacks {
-            override fun onSuccessLoadingRockets(rocketsDM: List<RocketDM>) {
-                localDS.insertOrReplaceRockets(rocketsDM)
-                deleteComplementaryFromLocalDS(rocketsDM, rocketsFoundLocally)
-                callbacks.onSuccessLoadingRockets(rocketsDM)
+            override fun onSuccessLoadingRockets(rockets: List<RocketDM>) {
+                localDS.insertOrReplaceRockets(rockets)
+                deleteComplementaryFromLocalDS(rockets, rocketsFoundLocally)
+                callbacks.onSuccessLoadingRockets(rockets)
             }
 
             override fun onErrorLoadingRockets() {
@@ -50,11 +50,9 @@ internal class RocketsRepositoryImpl(
 
     @WorkerThread
     private fun deleteComplementaryFromLocalDS(
-            rocketsFoundRemotely: List<RocketDM>,
-            rocketsFoundLocally: List<RocketDM>) {
-        if (rocketsFoundLocally.isNotEmpty()) {
-            localDS.deleteRockets(rocketsFoundRemotely.getComplementary(rocketsFoundLocally))
-        }
+            rocketsFromRemote: List<RocketDM>,
+            rocketsFromLocal: List<RocketDM>) {
+        localDS.deleteRockets(rocketsFromRemote.getComplementary(rocketsFromLocal))
     }
 
     override fun cancel() {

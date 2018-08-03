@@ -26,9 +26,9 @@ class RocketsDSRoom(private val dao: RocketsDao) : RocketsDS.Local {
     }
 
     @WorkerThread
-    override fun insertOrReplaceRockets(rocketsDM: List<RocketDM>) {
-        Timber.d("Inserting ${rocketsDM.size} rockets in Room")
-        dao.insertOrReplaceRockets(mapDMToRM(rocketsDM))
+    override fun insertOrReplaceRockets(rockets: List<RocketDM>) {
+        Timber.d("Inserting ${rockets.size} rockets in Room")
+        dao.insertOrReplaceRockets(mapDMToRM(rockets))
     }
 
     @WorkerThread

@@ -15,14 +15,14 @@ interface RocketsDS {
         fun loadAllRockets(callbacks: OnLoadRocketsCallbacks)
 
         @WorkerThread
-        fun insertOrReplaceRockets(rocketsDM: List<RocketDM>)
+        fun insertOrReplaceRockets(rockets: List<RocketDM>)
 
         @WorkerThread
         fun deleteRockets(rockets: List<RocketDM>)
 
         interface OnLoadRocketsCallbacks {
 
-            fun onSuccessLoadingRockets(rocketsDM: List<RocketDM>, oldestRocketAgeInMillis: Long)
+            fun onSuccessLoadingRockets(rockets: List<RocketDM>, oldestRocketAgeInMillis: Long)
 
             fun onRocketsNotFound()
         }
@@ -37,7 +37,7 @@ interface RocketsDS {
 
         interface OnLoadRocketsCallbacks {
 
-            fun onSuccessLoadingRockets(rocketsDM: List<RocketDM>)
+            fun onSuccessLoadingRockets(rockets: List<RocketDM>)
 
             fun onErrorLoadingRockets()
         }

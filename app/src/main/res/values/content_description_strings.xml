@@ -3,4 +3,5 @@
   <string name="space_x_logo">Space X logo</string>
   <string name="smiling_sun">Smiling sun</string>
   <string name="image_showing_a_rocket">Image showing a rocket</string>
+  <string name="welcome_image_description">A image of a rocket</string>
 </resources>
