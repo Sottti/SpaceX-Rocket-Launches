@@ -30,6 +30,8 @@ interface RocketListContract {
     void showFilterOptions();
 
     void hideFilterOptions();
+
+    void navigateBack();
   }
 
   interface Presenter {
@@ -55,6 +57,8 @@ interface RocketListContract {
     void onRefresh();
 
     void onRetry();
+
+    void onBackNavigationPressed();
 
     void onStop();
 

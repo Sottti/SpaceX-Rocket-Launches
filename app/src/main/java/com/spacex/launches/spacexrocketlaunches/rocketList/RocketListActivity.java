@@ -201,4 +201,15 @@ public class RocketListActivity extends DaggerAppCompatActivityBase
         .alpha(0f)
         .setDuration(this.getResources().getInteger(android.R.integer.config_shortAnimTime));
   }
+
+  @Override
+  public void onBackPressed() {
+    presenter.onBackNavigationPressed();
+
+  }
+
+  @Override
+  public void navigateBack() {
+    super.onBackPressed();
+  }
 }

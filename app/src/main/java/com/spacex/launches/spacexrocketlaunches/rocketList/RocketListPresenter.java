@@ -15,6 +15,7 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   private final RocketListContract.Coordinator coordinator;
   private RocketListContract.View view;
   private boolean isShowingActiveRockets = false;
+  private boolean isShowingFilterOptions = false;
   private boolean viewDoesNotHaveAnyData = true;
 
   RocketListPresenter(
@@ -87,6 +88,7 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   @Override
   public void onFilterRocketsClick() {
     view.showFilterOptions();
+    isShowingFilterOptions = true;
   }
 
   @Override
@@ -95,11 +97,12 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
     isShowingActiveRockets = false;
     view.showAllRocketsFilterAsSelected();
     getAllRockets();
+    isShowingFilterOptions = true;
   }
 
   @Override
   public void onShowActiveRocketsFilterOptionClick() {
-    view.hideFilterOptions();
+    hideFilterOptions();
     isShowingActiveRockets = true;
     view.showActiveRocketsFilterAsSelected();
     getActiveRockets();
@@ -107,7 +110,12 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
 
   @Override
   public void onCloseFilterOptions() {
+    hideFilterOptions();
+  }
+
+  private void hideFilterOptions() {
     view.hideFilterOptions();
+    isShowingFilterOptions = false;
   }
 
   @Override
@@ -118,6 +126,15 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   @Override
   public void onAboutWelcomeClick() {
     view.navigateToAboutActivity();
+  }
+
+  @Override
+  public void onBackNavigationPressed() {
+    if (isShowingFilterOptions) {
+      hideFilterOptions();
+    } else {
+      view.navigateBack();
+    }
   }
 
   @Override
