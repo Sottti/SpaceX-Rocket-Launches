@@ -11,11 +11,11 @@ import com.spacex.rockets.model.RocketRM;
     entities = {RocketRM.class},
     version = 1,
     exportSchema = false)
-public abstract class RocketsDatabase extends RoomDatabase {
+abstract class RocketsDatabase extends RoomDatabase {
   private static final String sDATABASE_NAME = "Rockets Database";
   private static RocketsDatabase sInstance;
 
-  public static RocketsDatabase getInstance(@NonNull final Context context) {
+  static RocketsDatabase getInstance(@NonNull final Context context) {
     if (sInstance == null) {
       sInstance =
           Room.databaseBuilder(
@@ -26,5 +26,5 @@ public abstract class RocketsDatabase extends RoomDatabase {
     return sInstance;
   }
 
-  public abstract RocketsDao getRocketsDao();
+  abstract RocketsDao getRocketsDao();
 }

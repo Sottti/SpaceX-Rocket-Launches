@@ -6,7 +6,7 @@ import com.spacex.domain.getComplementary
 import com.spacex.rockets.datasources.RocketsDS
 import com.spacex.rockets.datasources.RocketsDS.Local.Companion.ROCKETS_EXPIRATION_TIME_IN_MILLIS
 
-internal class RocketsRepositoryImpl(
+class RocketsRepositoryImpl(
         private val localDS: RocketsDS.Local,
         private val remoteDS: RocketsDS.Remote) : RocketsRepository {
 
