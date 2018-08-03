@@ -9,6 +9,5 @@ object RocketsApiServiceModule {
 
     @JvmStatic
     @Provides
-    fun provideRocketsApiService(context: Context): RocketsApiService =
-            RocketsApiService(context)
+    fun provideRocketsApiService(context: Context): RocketsApiService = RocketsApiService(context)
 }

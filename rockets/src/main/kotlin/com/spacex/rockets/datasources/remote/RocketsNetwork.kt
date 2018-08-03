@@ -33,8 +33,9 @@ private fun getOkHttp(context: Context): OkHttpClient {
     val cache = Cache(context.cacheDir, cacheSize.toLong())
     return OkHttpClient.Builder()
             .cache(cache)
-            .addInterceptor(
-                    HttpLoggingInterceptor()
-                            .setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BASIC else HttpLoggingInterceptor.Level.NONE))
+            .addInterceptor(getHttpLoggingInterceptor())
             .build()
 }
+
+private fun getHttpLoggingInterceptor() = HttpLoggingInterceptor()
+        .setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BASIC else HttpLoggingInterceptor.Level.NONE)

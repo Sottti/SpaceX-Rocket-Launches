@@ -27,9 +27,7 @@ internal class RocketsDSApi(service: RocketsApiService) : RocketsDS.Remote {
             call: Call<List<RocketAM>>,
             onLoadRocketsCallbacks: RocketsDS.Remote.OnLoadRocketsCallbacks) {
         call.enqueue(object : Callback<List<RocketAM>> {
-            override fun onResponse(
-                    call: Call<List<RocketAM>>,
-                    response: Response<List<RocketAM>>) {
+            override fun onResponse(call: Call<List<RocketAM>>, response: Response<List<RocketAM>>) {
                 val rockets = response.body()
                 if (response.isSuccessful && rockets != null) {
                     Timber.d("Received ${rockets.size} rockets from the API")

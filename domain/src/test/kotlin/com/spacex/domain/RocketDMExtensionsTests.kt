@@ -3,7 +3,7 @@ package com.spacex.domain
 import org.junit.Assert
 import org.junit.Test
 
-class RocketDM_ExtensionsTests {
+class RocketDMExtensionsTests {
 
     private val falcon1 = RocketDM(
             1, "falcon1", "Falcon 1", "Republic...", "1", false)
@@ -15,8 +15,8 @@ class RocketDM_ExtensionsTests {
     fun getActiveRocketsTest() {
         val rockets: List<RocketDM> = listOf(falcon1, falcon9, falconHeavy, bfr)
         Assert.assertEquals(rockets.getActiveRockets().size, 2)
-        Assert.assertEquals(rockets.get(0).id, 1)
-        Assert.assertEquals(rockets.get(1).id, 2)
+        Assert.assertEquals(rockets[0].id, 1)
+        Assert.assertEquals(rockets[1].id, 2)
     }
 
     @Test

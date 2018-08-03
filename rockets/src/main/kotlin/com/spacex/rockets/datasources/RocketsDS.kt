@@ -8,7 +8,7 @@ interface RocketsDS {
     interface Local {
 
         companion object {
-            const val ROCKETS_EXPIRATION_TIME_IN_MILLIS = 30 * 1000
+            const val ROCKETS_EXPIRATION_TIME_IN_MILLIS = 10 * 1000
         }
 
         @WorkerThread
