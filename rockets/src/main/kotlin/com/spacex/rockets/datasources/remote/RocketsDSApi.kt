@@ -3,7 +3,7 @@ package com.spacex.rockets.datasources.remote
 import androidx.annotation.WorkerThread
 import com.spacex.rockets.datasources.RocketsDS
 import com.spacex.rockets.model.RocketAM
-import com.spacex.rockets.model.RocketsMapper.mapAMToDM
+import com.spacex.rockets.model.toDM
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,10 +30,10 @@ internal class RocketsDSApi(service: RocketsApiService) : RocketsDS.Remote {
             override fun onResponse(
                     call: Call<List<RocketAM>>,
                     response: Response<List<RocketAM>>) {
-                val body = response.body()
-                if (response.isSuccessful && body != null) {
-                    Timber.d("Received ${body.size} rockets from the API")
-                    onLoadRocketsCallbacks.onSuccessLoadingRockets(mapAMToDM(body))
+                val rockets = response.body()
+                if (response.isSuccessful && rockets != null) {
+                    Timber.d("Received ${rockets.size} rockets from the API")
+                    onLoadRocketsCallbacks.onSuccessLoadingRockets(rockets.toDM())
                 } else {
                     Timber.d("Error loading rockets from the API")
                     onLoadRocketsCallbacks.onErrorLoadingRockets()

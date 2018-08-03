@@ -44,15 +44,12 @@ dependencies {
 
     implementation archComponents.roomRuntime
     testImplementation archComponents.roomTesting
-    annotationProcessor archComponents.roomCompiler
+    kapt archComponents.roomCompiler
 
     testImplementation testing.junit
     androidTestImplementation testing.junit
 
     implementation dagger.dagger
-    annotationProcessor dagger.daggerCompiler
-
-    kapt dagger.dagger
     kapt dagger.daggerCompiler
 
     implementation libraries.timber

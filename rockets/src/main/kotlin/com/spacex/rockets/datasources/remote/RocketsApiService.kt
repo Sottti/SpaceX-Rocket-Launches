@@ -5,13 +5,10 @@ import com.spacex.rockets.model.RocketAM
 import retrofit2.Call
 import retrofit2.http.GET
 
-internal class RocketsApiService internal constructor(context: Context) {
+class RocketsApiService internal constructor(context: Context) {
 
-    private val rocketsService: RocketsService
-
-    init {
-        rocketsService = getRocketsRetrofit(context).create(RocketsService::class.java)
-    }
+    private val rocketsService: RocketsService =
+            getRocketsRetrofit(context).create(RocketsService::class.java)
 
     fun getAllRockets(): Call<List<RocketAM>> {
         return rocketsService.allRockets
