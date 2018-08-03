@@ -3,7 +3,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  tools:context=".rocketList.RocketListActivity">
+  tools:context="com.spacex.ui.rocketList.RocketListActivity">
 
   <item
     android:id="@+id/filter_rockets"

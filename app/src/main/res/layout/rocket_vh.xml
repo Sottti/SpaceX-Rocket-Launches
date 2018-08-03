@@ -5,7 +5,7 @@
   <data>
     <variable
       name="UIM"
-      type="com.spacex.launches.spacexrocketlaunches.rocketList.RocketUIMDecorator"/>
+      type="com.spacex.ui.rocketList.RocketUIMDecorator"/>
   </data>
 
   <androidx.cardview.widget.CardView
