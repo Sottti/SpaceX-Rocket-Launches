@@ -1,7 +1,7 @@
-package com.spacex.launches.rockets.datasources.local
+package com.spacex.rockets.datasources.local
 
 import androidx.room.*
-import com.spacex.launches.rockets.model.RocketRM
+import com.spacex.rockets.model.RocketRM
 
 @Dao
 interface RocketsDao {

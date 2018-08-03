@@ -1,12 +1,12 @@
-package com.spacex.launches.rockets.datasources.local
+package com.spacex.rockets.datasources.local
 
 import androidx.annotation.WorkerThread
 import com.spacex.domain.RocketDM
-import com.spacex.launches.rockets.datasources.RocketsDS
-import com.spacex.launches.rockets.getMillisSince
-import com.spacex.launches.rockets.getOldestItemAgeInMillis
-import com.spacex.launches.rockets.model.RocketsMapper.mapDMToRM
-import com.spacex.launches.rockets.model.RocketsMapper.mapRMToDM
+import com.spacex.rockets.datasources.RocketsDS
+import com.spacex.rockets.getMillisSince
+import com.spacex.rockets.getOldestItemAgeInMillis
+import com.spacex.rockets.model.RocketsMapper.mapDMToRM
+import com.spacex.rockets.model.RocketsMapper.mapRMToDM
 import timber.log.Timber
 
 class RocketsDSRoom(private val dao: RocketsDao) : RocketsDS.Local {

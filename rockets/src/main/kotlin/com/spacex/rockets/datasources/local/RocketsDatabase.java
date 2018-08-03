@@ -1,11 +1,11 @@
-package com.spacex.launches.rockets.datasources.local;
+package com.spacex.rockets.datasources.local;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import com.spacex.launches.rockets.model.RocketRM;
+import com.spacex.rockets.model.RocketRM;
 
 @Database(
     entities = {RocketRM.class},

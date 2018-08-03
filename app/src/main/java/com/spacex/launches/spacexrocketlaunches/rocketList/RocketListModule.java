@@ -1,8 +1,8 @@
 package com.spacex.launches.spacexrocketlaunches.rocketList;
 
 import android.os.Handler;
-import com.spacex.launches.rockets.repository.RocketsRepository;
-import com.spacex.launches.rockets.repository.RocketsRepositoryModule;
+import com.spacex.rockets.repository.RocketsRepository;
+import com.spacex.rockets.repository.RocketsRepositoryModule;
 import com.spacex.launches.spacexrocketlaunches.ExecutorsModule;
 import dagger.Binds;
 import dagger.Module;

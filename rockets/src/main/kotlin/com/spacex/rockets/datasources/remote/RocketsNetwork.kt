@@ -1,4 +1,4 @@
-package com.spacex.launches.rockets.datasources.remote
+package com.spacex.rockets.datasources.remote
 
 import android.content.Context
 import com.squareup.moshi.Moshi

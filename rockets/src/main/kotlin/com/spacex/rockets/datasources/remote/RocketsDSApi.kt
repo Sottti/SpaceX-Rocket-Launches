@@ -1,9 +1,9 @@
-package com.spacex.launches.rockets.datasources.remote
+package com.spacex.rockets.datasources.remote
 
 import androidx.annotation.WorkerThread
-import com.spacex.launches.rockets.datasources.RocketsDS
-import com.spacex.launches.rockets.model.RocketAM
-import com.spacex.launches.rockets.model.RocketsMapper.mapAMToDM
+import com.spacex.rockets.datasources.RocketsDS
+import com.spacex.rockets.model.RocketAM
+import com.spacex.rockets.model.RocketsMapper.mapAMToDM
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

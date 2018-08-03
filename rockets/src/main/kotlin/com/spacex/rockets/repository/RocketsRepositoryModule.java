@@ -1,7 +1,7 @@
-package com.spacex.launches.rockets.repository;
+package com.spacex.rockets.repository;
 
-import com.spacex.launches.rockets.datasources.RocketsDS;
-import com.spacex.launches.rockets.datasources.RocketsDSModule;
+import com.spacex.rockets.datasources.RocketsDS;
+import com.spacex.rockets.datasources.RocketsDSModule;
 import dagger.Module;
 import dagger.Provides;
 

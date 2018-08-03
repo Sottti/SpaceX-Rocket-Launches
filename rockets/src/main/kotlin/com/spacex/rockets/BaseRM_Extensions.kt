@@ -1,6 +1,6 @@
-package com.spacex.launches.rockets
+package com.spacex.rockets
 
-import com.spacex.launches.rockets.model.BaseRM
+import com.spacex.rockets.model.BaseRM
 
 fun List<BaseRM>.getOldestItemAgeInMillis(): Long {
     var oldestItemAge: Long = 0
@@ -9,5 +9,5 @@ fun List<BaseRM>.getOldestItemAgeInMillis(): Long {
             oldestItemAge = roomModel.storedTimestamp
         }
     }
-    return oldestItemAge
+    return System.currentTimeMillis() - oldestItemAge
 }

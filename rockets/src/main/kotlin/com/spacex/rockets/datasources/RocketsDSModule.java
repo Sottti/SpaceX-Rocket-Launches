@@ -1,12 +1,12 @@
-package com.spacex.launches.rockets.datasources;
+package com.spacex.rockets.datasources;
 
 import android.content.Context;
-import com.spacex.launches.rockets.datasources.local.RocketsDSRoom;
-import com.spacex.launches.rockets.datasources.local.RocketsDao;
-import com.spacex.launches.rockets.datasources.local.RocketsDaoModule;
-import com.spacex.launches.rockets.datasources.remote.RocketsApiService;
-import com.spacex.launches.rockets.datasources.remote.RocketsApiServiceModule;
-import com.spacex.launches.rockets.datasources.remote.RocketsDSApi;
+import com.spacex.rockets.datasources.local.RocketsDSRoom;
+import com.spacex.rockets.datasources.local.RocketsDao;
+import com.spacex.rockets.datasources.local.RocketsDaoModule;
+import com.spacex.rockets.datasources.remote.RocketsApiService;
+import com.spacex.rockets.datasources.remote.RocketsApiServiceModule;
+import com.spacex.rockets.datasources.remote.RocketsDSApi;
 import dagger.Module;
 import dagger.Provides;
 

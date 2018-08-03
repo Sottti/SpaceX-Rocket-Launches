@@ -1,10 +1,10 @@
-package com.spacex.launches.rockets.repository
+package com.spacex.rockets.repository
 
 import androidx.annotation.WorkerThread
 import com.spacex.domain.RocketDM
 import com.spacex.domain.getComplementary
-import com.spacex.launches.rockets.datasources.RocketsDS
-import com.spacex.launches.rockets.datasources.RocketsDS.Local.Companion.ROCKETS_EXPIRATION_TIME_IN_MILLIS
+import com.spacex.rockets.datasources.RocketsDS
+import com.spacex.rockets.datasources.RocketsDS.Local.Companion.ROCKETS_EXPIRATION_TIME_IN_MILLIS
 
 internal class RocketsRepositoryImpl(
         val localDS: RocketsDS.Local,

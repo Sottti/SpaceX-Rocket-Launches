@@ -14,9 +14,9 @@ class RocketDM_ExtensionsTests {
     @Test
     fun getActiveRocketsTest() {
         val rockets: List<RocketDM> = listOf(falcon1, falcon9, falconHeavy, bfr)
-        Assert.assertTrue(rockets.getActiveRockets().size == 2)
-        Assert.assertTrue(rockets.get(0).id == 1)
-        Assert.assertTrue(rockets.get(1).id == 2)
+        Assert.assertEquals(rockets.getActiveRockets().size, 2)
+        Assert.assertEquals(rockets.get(0).id, 1)
+        Assert.assertEquals(rockets.get(1).id, 2)
     }
 
     @Test
@@ -27,12 +27,12 @@ class RocketDM_ExtensionsTests {
 
         Assert.assertTrue(rockets.getComplementary(rockets).isEmpty())
 
-        Assert.assertTrue(rockets.getComplementary(rocketsThree).size == 1)
-        Assert.assertTrue(rockets.getComplementary(rocketsThree)[0].id == 1)
+        Assert.assertEquals(rockets.getComplementary(rocketsThree).size, 1)
+        Assert.assertEquals(rockets.getComplementary(rocketsThree)[0].id, 1)
 
-        Assert.assertTrue(rocketsTwo.getComplementary(rockets).size == 2)
-        Assert.assertTrue(rocketsTwo.getComplementary(rockets)[0].id == 3)
-        Assert.assertTrue(rocketsTwo.getComplementary(rockets)[1].id == 4)
+        Assert.assertEquals(rocketsTwo.getComplementary(rockets).size, 2)
+        Assert.assertEquals(rocketsTwo.getComplementary(rockets)[0].id, 3)
+        Assert.assertEquals(rocketsTwo.getComplementary(rockets)[1].id, 4)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.spacex.launches.rockets.repository
+package com.spacex.rockets.repository
 
 import androidx.annotation.WorkerThread
 import com.spacex.domain.RocketDM

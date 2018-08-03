@@ -1,7 +1,7 @@
-package com.spacex.launches.rockets.datasources.remote
+package com.spacex.rockets.datasources.remote
 
 import android.content.Context
-import com.spacex.launches.rockets.model.RocketAM
+import com.spacex.rockets.model.RocketAM
 import retrofit2.Call
 import retrofit2.http.GET
 

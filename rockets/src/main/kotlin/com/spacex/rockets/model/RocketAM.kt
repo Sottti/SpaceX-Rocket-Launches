@@ -1,4 +1,4 @@
-package com.spacex.launches.rockets.model
+package com.spacex.rockets.model
 
 import com.squareup.moshi.Json
 
