@@ -10,6 +10,11 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin/'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
@@ -28,9 +33,13 @@ dependencies {
     implementation kt.stdlib
 
     implementation project(':domain')
-    implementation project(':network_common')
 
+    implementation networking.moshi
+    implementation networking.okhttp
+    implementation networking.retrofit
     implementation networking.moshiConverter
+    implementation networking.loggingInterceptor
+    implementation androidSupportLibraries.annotations
 
     implementation archComponents.roomRuntime
     testImplementation archComponents.roomTesting
@@ -38,12 +47,6 @@ dependencies {
 
     testImplementation testing.junit
     androidTestImplementation testing.junit
-    testImplementation testing.mockitoCore
-    testImplementation testing.hamcrestAll
-    testImplementation testing.powermockCore
-    testImplementation testing.powermockApiMockito2
-    testImplementation testing.powermockModuleJunit4
-    testImplementation testing.powermockModuleJunit4Rule
 
     implementation dagger.dagger
     annotationProcessor dagger.daggerCompiler

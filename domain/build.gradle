@@ -10,9 +10,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    sourceSets{
+    sourceSets {
         main.java.srcDirs += 'src/main/kotlin/'
-        main.java.srcDirs += 'src/test/kotlin/'
+        test.java.srcDirs += 'src/test/kotlin'
     }
 
     compileOptions {
@@ -34,10 +34,4 @@ dependencies {
 
     testImplementation testing.junit
     androidTestImplementation testing.junit
-    testImplementation testing.mockitoCore
-    testImplementation testing.hamcrestAll
-    testImplementation testing.powermockCore
-    testImplementation testing.powermockApiMockito2
-    testImplementation testing.powermockModuleJunit4
-    testImplementation testing.powermockModuleJunit4Rule
 }

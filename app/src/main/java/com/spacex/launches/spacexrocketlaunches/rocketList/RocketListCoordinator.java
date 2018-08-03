@@ -2,8 +2,8 @@ package com.spacex.launches.spacexrocketlaunches.rocketList;
 
 import android.os.Handler;
 import androidx.annotation.NonNull;
-import com.spacex.launches.domain.RocketDM;
-import com.spacex.launches.domain.RocketDM_ExtensionsKt;
+import com.spacex.domain.RocketDM;
+import com.spacex.domain.RocketDM_ExtensionsKt;
 import com.spacex.launches.rockets.repository.RocketsRepository;
 import com.spacex.launches.rockets.repository.RocketsRepository.OnLoadRocketsCallbacks;
 import java.util.List;

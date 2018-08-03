@@ -24,9 +24,9 @@ import javax.inject.Inject;
 public class RocketListActivity extends DaggerAppCompatActivityBase
     implements RocketListContract.View {
 
+  @Inject RocketListContract.Presenter presenter;
   private RocketListAdapter adapter;
   private RocketListBinding viewBinding;
-  @Inject RocketListContract.Presenter presenter;
   private BottomSheetBehavior<ConstraintLayout> bottomSheetBehavior;
 
   public static void startActivity(@NonNull final Context context) {

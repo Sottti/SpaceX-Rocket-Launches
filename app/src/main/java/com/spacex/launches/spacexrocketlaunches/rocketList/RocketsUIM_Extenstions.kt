@@ -1,6 +1,6 @@
 package com.spacex.launches.spacexrocketlaunches.rocketList
 
-import com.spacex.launches.domain.RocketDM
+import com.spacex.domain.RocketDM
 import com.spacex.launches.spacexrocketlaunches.R
 
 fun List<RocketDM>.mapToUIM(): List<RocketUIM> {
