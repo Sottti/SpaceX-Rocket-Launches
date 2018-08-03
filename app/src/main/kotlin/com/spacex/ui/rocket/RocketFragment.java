@@ -54,20 +54,20 @@ public class RocketFragment extends DaggerFragment implements RocketContract.Vie
   @Override
   public void setUpViews(final int rocketId) {
     switch (rocketId) {
-      case 0:
+      case 1:
         viewBinding
             .getRoot()
             .setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
         break;
-      case 1:
+      case 2:
         viewBinding
             .getRoot()
             .setBackgroundColor(ContextCompat.getColor(context, R.color.amber_A400));
         break;
-      case 2:
+      case 3:
         viewBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.black_6));
         break;
-      case 3:
+      case 4:
         viewBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.black_54));
         break;
     }

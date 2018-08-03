@@ -1,0 +1,64 @@
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/spacing_48">
+
+    <com.spacex.ui.rocket.YoutubeThumbnailView
+      android:id="@+id/thumbnail_view"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="@dimen/spacing_4"
+      android:layout_marginBottom="@dimen/spacing_4"
+      android:scaleType="centerCrop"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintDimensionRatio="16:9"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:src="@drawable/tools_youtube_thumbnail"/>
+
+    <TextView
+      android:id="@+id/name"
+      style="@style/Body1.Black.Primary"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/spacing_16"
+      android:layout_marginEnd="@dimen/spacing_8"
+      android:ellipsize="end"
+      android:lines="1"
+      android:text="@string/tools_mission_name"
+      app:layout_constraintEnd_toStartOf="@+id/mission_patch"
+      app:layout_constraintStart_toEndOf="@+id/thumbnail_view"
+      app:layout_constraintTop_toTopOf="@+id/thumbnail_view"/>
+
+    <TextView
+      android:id="@+id/date"
+      style="@style/Caption.Black.Secondary"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/spacing_8"
+      android:ellipsize="end"
+      android:lines="1"
+      android:text="@string/tools_mission_details"
+      app:layout_constraintEnd_toStartOf="@+id/mission_patch"
+      app:layout_constraintStart_toStartOf="@+id/name"
+      app:layout_constraintTop_toBottomOf="@+id/name"/>
+
+    <ImageView
+      android:id="@+id/mission_patch"
+      android:layout_width="@dimen/spacing_24"
+      android:layout_height="@dimen/spacing_24"
+      android:layout_marginEnd="@dimen/vertical_keyline_primary"
+      android:contentDescription="@string/mission_patch"
+      android:scaleType="centerCrop"
+      android:src="@drawable/mission_patch"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>-->
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

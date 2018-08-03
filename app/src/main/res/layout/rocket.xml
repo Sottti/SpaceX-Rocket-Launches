@@ -1,9 +1,110 @@
 <layout
-  xmlns:android="http://schemas.android.com/apk/res/android">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+      android:id="@+id/image"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:scaleType="centerCrop"
+      app:layout_constraintDimensionRatio="16:10"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="ContentDescription"
+      tools:src="@drawable/rocket_falcon_heavy"/>
+
+    <TextView
+      style="@style/Title.White.Primary"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/spacing_40"
+      android:background="@drawable/background_protection"
+      android:gravity="center_vertical"
+      android:text="@string/rocket_name"
+      app:layout_constraintBottom_toBottomOf="@+id/image"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+      android:id="@+id/graph_icon"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_16"
+      android:layout_marginStart="@dimen/vertical_keyline_primary"
+      android:tint="@color/icon_black_inactive"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/image"
+      app:srcCompat="@drawable/ic_show_chart_white_24dp"
+      tools:ignore="ContentDescription"/>
+
+    <View
+      android:id="@+id/graph"
+      android:layout_width="0dp"
+      android:layout_height="@dimen/spacing_64"
+      android:layout_marginStart="@dimen/vertical_keyline_secondary"
+      android:layout_marginEnd="@dimen/spacing_16"
+      android:background="@color/colorAccent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/image"/>
+
+    <ImageView
+      android:id="@+id/description_icon"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_16"
+      android:layout_marginStart="@dimen/vertical_keyline_primary"
+      android:tint="@color/icon_black_inactive"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/graph"
+      app:srcCompat="@drawable/ic_baseline_notes_white_24dp"
+      tools:ignore="ContentDescription"/>
+
+    <TextView
+      android:id="@+id/description"
+      style="@style/Body1.Black.Secondary"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/vertical_keyline_secondary"
+      android:layout_marginEnd="@dimen/vertical_keyline_primary"
+      android:text="@string/tools_string_rocket_description"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/description_icon"/>
+
+    <ImageView
+      android:id="@+id/launches_icon"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_16"
+      android:layout_marginStart="@dimen/vertical_keyline_primary"
+      android:tint="@color/icon_black_inactive"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/description"
+      app:srcCompat="@drawable/ic_video_library_white_24dp"
+      tools:ignore="ContentDescription"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recycler_view"
+      style="@style/RecyclerView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="@dimen/vertical_keyline_secondary"
+      android:paddingTop="0dp"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/launches_icon"
+      tools:listitem="@layout/rocket_launches_vh">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

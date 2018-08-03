@@ -47,6 +47,8 @@ dependencies {
     implementation dagger.daggerAndroidSupport
     annotationProcessor dagger.daggerAndroidProcessor
 
+    implementation networking.picasso
+
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

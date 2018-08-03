@@ -6,6 +6,8 @@
 
   <color name="card_view_color">@color/white</color>
 
+  <color name="icon_black_inactive">@color/black_38</color>
+
   <!-- Black and White -->
   <color name="black">#000</color>
   <color name="white">#FFF</color>

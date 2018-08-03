@@ -57,7 +57,7 @@ public class RocketsActivity extends DaggerAppCompatActivityBase
 
     @Override
     public Fragment getItem(int position) {
-      return RocketFragment.newInstance(position);
+      return RocketFragment.newInstance(position+1);
     }
 
     @Override
