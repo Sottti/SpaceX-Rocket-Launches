@@ -1,6 +1,7 @@
 package com.spacex.ui;
 
 import com.spacex.ui.di.AppComponent;
+import com.spacex.ui.di.DaggerAppComponent;
 import com.squareup.leakcanary.LeakCanary;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
