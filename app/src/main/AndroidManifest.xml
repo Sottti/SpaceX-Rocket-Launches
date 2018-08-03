@@ -32,7 +32,8 @@
 
     <activity
       android:launchMode="singleTask"
-      android:name="com.spacex.ui.welcome.WelcomeActivity"/>
+      android:name="com.spacex.ui.welcome.WelcomeActivity"
+      android:noHistory="true"/>
 
     <activity
       android:label="@string/rocket_list_toolbar_title"
@@ -43,6 +44,11 @@
       android:label="@string/about_toolbar_title"
       android:launchMode="singleTask"
       android:name="com.spacex.ui.about.AboutActivity"
+      android:parentActivityName="com.spacex.ui.rocketList.RocketListActivity"/>
+
+    <activity
+      android:launchMode="singleTask"
+      android:name="com.spacex.ui.rocketDetails.RocketDetailsActivity"
       android:parentActivityName="com.spacex.ui.rocketList.RocketListActivity"/>
 
   </application>

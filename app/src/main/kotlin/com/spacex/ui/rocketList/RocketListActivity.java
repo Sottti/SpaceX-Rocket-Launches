@@ -13,10 +13,10 @@ import androidx.databinding.DataBindingUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback;
 import com.spacex.ui.AndroidOS;
-import com.spacex.ui.di.DaggerAppCompatActivityBase;
 import com.spacex.ui.R;
 import com.spacex.ui.about.AboutActivity;
 import com.spacex.ui.databinding.RocketListBinding;
+import com.spacex.ui.di.DaggerAppCompatActivityBase;
 import com.spacex.ui.welcome.WelcomeActivity;
 import java.util.List;
 import javax.inject.Inject;
@@ -205,7 +205,6 @@ public class RocketListActivity extends DaggerAppCompatActivityBase
   @Override
   public void onBackPressed() {
     presenter.onBackNavigationPressed();
-
   }
 
   @Override

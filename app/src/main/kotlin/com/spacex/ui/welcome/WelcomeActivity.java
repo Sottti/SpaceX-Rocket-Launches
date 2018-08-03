@@ -4,15 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import com.spacex.ui.databinding.WelcomeBinding;
 import com.spacex.ui.R;
+import com.spacex.ui.databinding.WelcomeBinding;
+import com.spacex.ui.di.DaggerAppCompatActivityBase;
 import com.spacex.ui.rocketList.RocketListActivity;
+import javax.inject.Inject;
 
-public class WelcomeActivity extends AppCompatActivity implements WelcomeContract.View {
+public class WelcomeActivity extends DaggerAppCompatActivityBase implements WelcomeContract.View {
 
-  private WelcomeContract.Presenter presenter;
+  private WelcomeBinding viewBinding;
+  @Inject WelcomeContract.Presenter presenter;
 
   public static void startActivity(@NonNull final Context context) {
     context.startActivity(new Intent(context, WelcomeActivity.class));
@@ -21,8 +23,11 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeContrac
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    final WelcomeBinding viewBinding = DataBindingUtil.setContentView(this, R.layout.welcome);
-    presenter = new WelcomePresenter(this);
+    viewBinding = DataBindingUtil.setContentView(this, R.layout.welcome);
+  }
+
+  @Override
+  public void setUpViews() {
     viewBinding.button.setOnClickListener(view -> presenter.onButtonClick());
   }
 
