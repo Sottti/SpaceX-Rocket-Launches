@@ -42,9 +42,9 @@ dependencies {
     implementation networking.loggingInterceptor
     implementation androidSupportLibraries.annotations
 
+    kapt archComponents.roomCompiler
     implementation archComponents.roomRuntime
     testImplementation archComponents.roomTesting
-    kapt archComponents.roomCompiler
 
     testImplementation testing.junit
     androidTestImplementation testing.junit
