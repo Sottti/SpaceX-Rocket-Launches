@@ -14,7 +14,8 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
 
   private final RocketListContract.Coordinator coordinator;
   private RocketListContract.View view;
-  private boolean isShowingFilterOptions = false;
+  private boolean isShowingActiveRockets = false;
+  private boolean viewDoesNotHaveAnyData = true;
 
   RocketListPresenter(
       @NonNull final View view, @NonNull final RocketListContract.Coordinator coordinator) {
@@ -44,6 +45,7 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   @Override
   public void onSuccessLoadingRocketList(@NonNull final List<RocketUIM> rockets) {
     if (view != null) {
+      viewDoesNotHaveAnyData = false;
       if (rockets.isEmpty()) {
         view.showAsEmpty();
       } else {
@@ -54,7 +56,15 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
 
   @Override
   public void onRefresh() {
-    getAllRockets();
+    if (isShowingActiveRockets) {
+      getActiveRockets();
+    } else {
+      getAllRockets();
+    }
+  }
+
+  private void getActiveRockets() {
+    coordinator.getActiveRockets(this);
   }
 
   @Override
@@ -64,7 +74,9 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
 
   @Override
   public void onErrorLoadingRocketList() {
-    view.showAsErrorLoading();
+    if (viewDoesNotHaveAnyData) {
+      view.showAsErrorLoading();
+    }
   }
 
   @Override
@@ -75,27 +87,27 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   @Override
   public void onFilterRocketsClick() {
     view.showFilterOptions();
-    isShowingFilterOptions = true;
   }
 
   @Override
   public void onShowAllRocketsFilterOptionClick() {
     view.hideFilterOptions();
+    isShowingActiveRockets = false;
     view.showAllRocketsFilterAsSelected();
-    coordinator.getAllRockets(this);
+    getAllRockets();
   }
 
   @Override
   public void onShowActiveRocketsFilterOptionClick() {
     view.hideFilterOptions();
+    isShowingActiveRockets = true;
     view.showActiveRocketsFilterAsSelected();
-    coordinator.getActiveRockets(this);
+    getActiveRockets();
   }
 
   @Override
   public void onCloseFilterOptions() {
     view.hideFilterOptions();
-    isShowingFilterOptions = false;
   }
 
   @Override

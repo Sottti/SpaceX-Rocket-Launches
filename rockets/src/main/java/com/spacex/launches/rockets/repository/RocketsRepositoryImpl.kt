@@ -1,8 +1,8 @@
 package com.spacex.launches.rockets.repository
 
 import androidx.annotation.WorkerThread
-import com.spacex.launches.domain.DomainModelUtils.getComplementary
 import com.spacex.launches.domain.RocketDM
+import com.spacex.launches.domain.getComplementary
 import com.spacex.launches.rockets.datasources.RocketsDS
 import com.spacex.launches.rockets.datasources.RocketsDS.Local.Companion.ROCKETS_EXPIRATION_TIME_IN_MILLIS
 
@@ -53,7 +53,7 @@ internal class RocketsRepositoryImpl(
             rocketsFoundRemotely: List<RocketDM>,
             rocketsFoundLocally: List<RocketDM>) {
         if (rocketsFoundLocally.isNotEmpty()) {
-            localDS.deleteRockets(getComplementary(rocketsFoundRemotely, rocketsFoundLocally))
+            localDS.deleteRockets(rocketsFoundRemotely.getComplementary(rocketsFoundLocally))
         }
     }
 

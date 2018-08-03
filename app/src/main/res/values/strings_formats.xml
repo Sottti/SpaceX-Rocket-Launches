@@ -1,4 +1,4 @@
 <resources>
 
-  <string name="rocket_list_details_format" translatable="false">%1$s engines • %2$s</string>
+  <string name="rocket_list_details_format" translatable="false">%1$s Engines • %2$s</string>
 </resources>
