@@ -17,6 +17,7 @@ import com.spacex.ui.R;
 import com.spacex.ui.about.AboutActivity;
 import com.spacex.ui.databinding.RocketListBinding;
 import com.spacex.ui.di.DaggerAppCompatActivityBase;
+import com.spacex.ui.rockets.RocketsActivity;
 import com.spacex.ui.welcome.WelcomeActivity;
 import java.util.List;
 import javax.inject.Inject;
@@ -43,6 +44,7 @@ public class RocketListActivity extends DaggerAppCompatActivityBase
   public void setUpViews() {
     setUpToolbar();
     viewBinding.errorView.setOnRetryListener(() -> presenter.onRetry());
+    viewBinding.recyclerView.setHasFixedSize(true);
     setUpSwipeRefresh();
     setUpBottomSheet();
   }
@@ -136,7 +138,9 @@ public class RocketListActivity extends DaggerAppCompatActivityBase
   }
 
   @Override
-  public void navigateToRocketDetails(final int rocketId) {}
+  public void navigateToRocketDetails(final int rocketId) {
+    RocketsActivity.startActivity(this);
+  }
 
   @Override
   public void navigateToWelcomeActivity() {

@@ -41,14 +41,14 @@
       android:name="com.spacex.ui.rocketList.RocketListActivity"/>
 
     <activity
-      android:label="@string/about_toolbar_title"
       android:launchMode="singleTask"
-      android:name="com.spacex.ui.about.AboutActivity"
+      android:name="com.spacex.ui.rockets.RocketsActivity"
       android:parentActivityName="com.spacex.ui.rocketList.RocketListActivity"/>
 
     <activity
+      android:label="@string/about_toolbar_title"
       android:launchMode="singleTask"
-      android:name="com.spacex.ui.rocketDetails.RocketDetailsActivity"
+      android:name="com.spacex.ui.about.AboutActivity"
       android:parentActivityName="com.spacex.ui.rocketList.RocketListActivity"/>
 
   </application>
