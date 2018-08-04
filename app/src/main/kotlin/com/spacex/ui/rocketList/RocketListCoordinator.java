@@ -3,7 +3,7 @@ package com.spacex.ui.rocketList;
 import android.os.Handler;
 import androidx.annotation.NonNull;
 import com.spacex.domain.RocketDM;
-import com.spacex.domain.RocketDM_ExtensionsKt;
+import com.spacex.domain.RocketDMExtensionsKt;
 import com.spacex.rockets.repository.RocketsRepository;
 import com.spacex.rockets.repository.RocketsRepository.OnLoadRocketsCallbacks;
 import java.util.List;
@@ -39,7 +39,7 @@ public class RocketListCoordinator implements RocketListContract.Coordinator {
 
                   @Override
                   public void onErrorLoadingRockets() {
-                    callbacks.onErrorLoadingRocketList();
+                    mainThreadHandler.post(callbacks::onErrorLoadingRocketList);
                   }
                 }));
   }
@@ -54,13 +54,13 @@ public class RocketListCoordinator implements RocketListContract.Coordinator {
                   public void onSuccessLoadingRockets(@NotNull final List<RocketDM> rockets) {
                     final List<RocketUIM> rocketsUIM =
                         RocketsUIM_ExtenstionsKt.mapToUIM(
-                            RocketDM_ExtensionsKt.getActiveRockets(rockets));
+                            RocketDMExtensionsKt.getActiveRockets(rockets));
                     mainThreadHandler.post(() -> callbacks.onSuccessLoadingRocketList(rocketsUIM));
                   }
 
                   @Override
                   public void onErrorLoadingRockets() {
-                    callbacks.onErrorLoadingRocketList();
+                    mainThreadHandler.post(callbacks::onErrorLoadingRocketList);
                   }
                 }));
   }

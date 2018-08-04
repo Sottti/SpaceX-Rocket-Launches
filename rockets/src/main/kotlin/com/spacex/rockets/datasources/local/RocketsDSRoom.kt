@@ -2,8 +2,9 @@ package com.spacex.rockets.datasources.local
 
 import androidx.annotation.WorkerThread
 import com.spacex.domain.RocketDM
+import com.spacex.domain.RocketLaunchDM
 import com.spacex.rockets.datasources.RocketsDS
-import com.spacex.rockets.getMillisSince
+import com.spacex.rockets.model.getAgeInMillis
 import com.spacex.rockets.model.getOldestItemAgeInMillis
 import com.spacex.rockets.model.toDM
 import com.spacex.rockets.model.toRM
@@ -21,8 +22,24 @@ class RocketsDSRoom(private val dao: RocketsDao) : RocketsDS.Local {
             Timber.d("Loaded ${rocketsRM.size} rockets from Room")
             callbacks.onSuccessLoadingRockets(
                     rocketsRM.toDM(),
-                    rocketsRM.getOldestItemAgeInMillis().getMillisSince())
+                    rocketsRM.getOldestItemAgeInMillis())
         }
+    }
+
+    override fun loadRocket(rocketId: String, callbacks: RocketsDS.Local.OnLoadRocketCallbacks) {
+        val rocketRM = dao.loadRocket(rocketId)
+        if (rocketRM == null) {
+            Timber.d("Rocket not found in Room")
+            callbacks.onRocketNotFound()
+        } else {
+            Timber.d("Loaded ${rocketRM.name} rocket from Room")
+            callbacks.onSuccessLoadingRocket(rocketRM.toDM(), rocketRM.getAgeInMillis())
+        }
+
+    }
+
+    override fun insertOrReplaceRockets(rocket: RocketDM) {
+        insertOrReplaceRockets(listOf(rocket))
     }
 
     @WorkerThread
@@ -37,5 +54,17 @@ class RocketsDSRoom(private val dao: RocketsDao) : RocketsDS.Local {
             Timber.d("Deleting ${rockets.size} rockets from Room")
             dao.deleteRockets(rockets.toRM())
         }
+    }
+
+    override fun loadRocketLaunches(rocketId: String, callbacks: RocketsDS.Local.OnLoadRocketLaunchesCallbacks) {
+        callbacks.onRocketLaunchesNotFound()
+    }
+
+    override fun insertOrReplaceRocketLaunches(rocketLaunches: List<RocketLaunchDM>) {
+
+    }
+
+    override fun deleteRocketsLaunches(rockets: List<RocketLaunchDM>) {
+
     }
 }

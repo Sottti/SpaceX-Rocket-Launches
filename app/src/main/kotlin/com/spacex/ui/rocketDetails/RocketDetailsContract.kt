@@ -1,13 +1,13 @@
-package com.spacex.ui.rocket
+package com.spacex.ui.rocketDetails
 
 internal object RocketDetailsContract {
 
-    const val NO_ARGUMENT = -1
+    const val NO_ARGUMENT = ""
     const val ARGUMENT_ROCKET_ID = "rocketId"
 
     internal interface View {
 
-        fun setUpViews(rocketId: Int)
+        fun setUpViews(rocketId: String)
 
         fun showAsErrorLoadingRocketDetails()
 
@@ -30,13 +30,13 @@ internal object RocketDetailsContract {
     }
 
     internal interface Coordinator {
-        fun getRocketDetailsUIM(callbacks: OnLoadRocketDetailsCallbacks)
+        fun getRocketDetailsUIM(rocketId: String, callbacks: OnLoadRocketDetailsCallbacks)
 
         fun cancel()
 
         interface OnLoadRocketDetailsCallbacks {
 
-            fun onSuccessLoadingRocketDetails(rocketDetails : RocketDetailsUIM)
+            fun onSuccessLoadingRocketDetails(rocketDetails: RocketDetailsUIM)
 
             fun onErrorLoadingRocketDetails()
         }

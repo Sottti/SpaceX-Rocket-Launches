@@ -1,4 +1,4 @@
-package com.spacex.ui.rocket;
+package com.spacex.ui.rocketDetails;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -10,11 +10,9 @@ public class RocketDetailsUIMDecorator {
   private final Context context;
   private RocketDetailsUIM mRocketDetailsUIM;
 
-  public RocketDetailsUIMDecorator(@NonNull final Context context) {
+  RocketDetailsUIMDecorator(@NonNull final Context context,
+      @NonNull final RocketDetailsUIM rocketDetailsUIM) {
     this.context = context;
-  }
-
-  public void bind(@NonNull final RocketDetailsUIM rocketDetailsUIM) {
     this.mRocketDetailsUIM = rocketDetailsUIM;
   }
 

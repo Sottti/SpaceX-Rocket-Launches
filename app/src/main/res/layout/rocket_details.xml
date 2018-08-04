@@ -6,7 +6,7 @@
   <data>
     <variable
       name="UIM"
-      type="com.spacex.ui.rocket.RocketDetailsUIMDecorator"/>
+      type="com.spacex.ui.rocketDetails.RocketDetailsUIMDecorator"/>
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout

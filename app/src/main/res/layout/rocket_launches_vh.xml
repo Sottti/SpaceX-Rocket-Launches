@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/spacing_48">
 
-    <com.spacex.ui.rocket.YoutubeThumbnailView
+    <com.spacex.ui.rocketDetails.YoutubeThumbnailView
       android:id="@+id/thumbnail_view"
       android:layout_width="0dp"
       android:layout_height="0dp"

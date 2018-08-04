@@ -13,11 +13,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.spacex.ui.R;
 import com.spacex.ui.databinding.RocketsBinding;
 import com.spacex.ui.di.DaggerAppCompatActivityBase;
-import com.spacex.ui.rocket.RocketDetailsFragment;
+import com.spacex.ui.rocketDetails.RocketDetailsFragment;
 import javax.inject.Inject;
 
-public class RocketsActivity extends DaggerAppCompatActivityBase
-    implements RocketsContract.View {
+public class RocketsActivity extends DaggerAppCompatActivityBase implements RocketsContract.View {
 
   private RocketsBinding viewBinding;
   @Inject RocketsContract.Presenter presenter;
@@ -57,12 +56,27 @@ public class RocketsActivity extends DaggerAppCompatActivityBase
 
     @Override
     public Fragment getItem(int position) {
-      return RocketDetailsFragment.newInstance(position+1);
+      return RocketDetailsFragment.newInstance(getRocketStringId(position + 1));
     }
 
     @Override
     public int getCount() {
       return 4;
+    }
+  }
+
+  private String getRocketStringId(final int i) {
+    switch (i) {
+      case 1:
+        return "falcon1";
+      case 2:
+        return "falcon9";
+      case 3:
+        return "falconheavy";
+      case 4:
+        return "bfr";
+      default:
+        return "";
     }
   }
 

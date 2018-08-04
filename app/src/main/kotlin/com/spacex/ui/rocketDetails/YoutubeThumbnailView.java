@@ -1,4 +1,4 @@
-package com.spacex.ui.rocket;
+package com.spacex.ui.rocketDetails;
 
 import android.content.Context;
 import android.util.AttributeSet;

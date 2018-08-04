@@ -1,25 +1,25 @@
-package com.spacex.ui.rocket;
+package com.spacex.ui.rocketDetails;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
-import com.spacex.ui.rocket.RocketDetailsContract.Coordinator;
-import com.spacex.ui.rocket.RocketDetailsContract.Coordinator.OnLoadRocketDetailsCallbacks;
-import com.spacex.ui.rocket.RocketDetailsContract.Presenter;
-import com.spacex.ui.rocket.RocketDetailsContract.View;
+import com.spacex.ui.rocketDetails.RocketDetailsContract.Coordinator;
+import com.spacex.ui.rocketDetails.RocketDetailsContract.Coordinator.OnLoadRocketDetailsCallbacks;
+import com.spacex.ui.rocketDetails.RocketDetailsContract.Presenter;
+import com.spacex.ui.rocketDetails.RocketDetailsContract.View;
 
 public class RocketDetailsPresenter
     implements Presenter, LifecycleObserver, OnLoadRocketDetailsCallbacks {
 
   private View view;
-  private final int rocketId;
+  private final String rocketId;
   private final Coordinator coordinator;
 
   RocketDetailsPresenter(
       final View view,
-      final int rocketId,
+      @NonNull final String rocketId,
       @NonNull final RocketDetailsContract.Coordinator coordinator) {
     this.view = view;
     this.rocketId = rocketId;
@@ -42,7 +42,7 @@ public class RocketDetailsPresenter
   @Override
   @OnLifecycleEvent(Event.ON_START)
   public void onStart() {
-    coordinator.getRocketDetailsUIM(this);
+    coordinator.getRocketDetailsUIM(rocketId, this);
   }
 
   @Override

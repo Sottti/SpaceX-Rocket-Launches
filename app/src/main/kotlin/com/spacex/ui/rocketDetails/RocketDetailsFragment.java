@@ -1,7 +1,8 @@
-package com.spacex.ui.rocket;
+package com.spacex.ui.rocketDetails;
 
-import static com.spacex.ui.rocket.RocketDetailsContract.ARGUMENT_ROCKET_ID;
+import static com.spacex.ui.rocketDetails.RocketDetailsContract.ARGUMENT_ROCKET_ID;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +20,21 @@ public class RocketDetailsFragment extends DaggerFragment implements RocketDetai
 
   private RocketDetailsBinding viewBinding;
   @Inject RocketDetailsContract.Presenter presenter;
+  private Context context;
 
   @NonNull
-  public static RocketDetailsFragment newInstance(final int rocketId) {
+  public static RocketDetailsFragment newInstance(final String rocketId) {
     final Bundle bundle = new Bundle();
-    bundle.putInt(ARGUMENT_ROCKET_ID, rocketId);
+    bundle.putString(ARGUMENT_ROCKET_ID, rocketId);
     final RocketDetailsFragment rocketDetailsFragment = new RocketDetailsFragment();
     rocketDetailsFragment.setArguments(bundle);
     return rocketDetailsFragment;
+  }
+
+  @Override
+  public void onAttach(final Context context) {
+    super.onAttach(context);
+    this.context = context;
   }
 
   @Override
@@ -44,11 +52,13 @@ public class RocketDetailsFragment extends DaggerFragment implements RocketDetai
   }
 
   @Override
-  public void setUpViews(final int rocketId) {}
+  public void setUpViews(final String rocketId) {
+
+  }
 
   @Override
   public void showRocketDetails(@NotNull final RocketDetailsUIM rocketDetails) {
-    viewBinding.setUIM(rocketDetails);
+    viewBinding.setUIM(new RocketDetailsUIMDecorator(context, rocketDetails));
   }
 
   @Override

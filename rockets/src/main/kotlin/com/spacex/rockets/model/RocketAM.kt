@@ -26,4 +26,7 @@ class RocketAM {
         @field:Json(name = "number")
         var number: Int = 0
     }
+
+    @field:Json(name = "description")
+    var description: String = ""
 }

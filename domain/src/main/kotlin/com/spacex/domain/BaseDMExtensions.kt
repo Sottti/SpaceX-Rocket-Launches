@@ -1,9 +1,5 @@
 package com.spacex.domain
 
-fun List<RocketDM>.getActiveRockets(): List<RocketDM> {
-    return filter { rocket -> rocket.isActive }
-}
-
 fun <T : BaseDM> List<T>.getComplementary(referenceSet: List<T>): List<T> {
     return filter { objectDM -> !referenceSet.getIds().contains(objectDM.id) }
 }
