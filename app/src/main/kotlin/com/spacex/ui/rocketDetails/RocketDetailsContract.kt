@@ -1,11 +1,11 @@
 package com.spacex.ui.rocketDetails
 
-internal object RocketDetailsContract {
+object RocketDetailsContract {
 
     const val NO_ARGUMENT = ""
     const val ARGUMENT_ROCKET_ID = "rocketId"
 
-    internal interface View {
+    interface View {
 
         fun setUpViews()
 
@@ -19,7 +19,7 @@ internal object RocketDetailsContract {
         fun showAsLoading()
     }
 
-    internal interface Presenter {
+    interface Presenter {
 
         fun onCreateViewForFirstTime()
 
@@ -36,7 +36,7 @@ internal object RocketDetailsContract {
         fun onDestroy()
     }
 
-    internal interface Coordinator {
+    interface Coordinator {
         fun getRocketDetailsUIM(rocketId: String, callbacks: OnLoadRocketDetailsCallbacks)
 
         fun cancel()

@@ -3,7 +3,7 @@ package com.spacex.domain
 import org.junit.Assert
 import org.junit.Test
 
-class RocketDMExtensionsTests {
+internal class RocketDMExtensionsTests {
 
     private val falcon1 = RocketDM(
             1, "falcon1", "Falcon 1", "Republic...", "1", false, "Desc")

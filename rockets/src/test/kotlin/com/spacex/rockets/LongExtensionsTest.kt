@@ -3,7 +3,7 @@ package com.spacex.rockets
 import org.junit.Assert
 import org.junit.Test
 
-class LongExtensionsTest {
+internal class LongExtensionsTest {
 
     @Test
     fun getMillisSinceTest() {

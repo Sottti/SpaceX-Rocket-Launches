@@ -5,7 +5,7 @@ import com.spacex.rockets.model.getOldestItemAgeInMillis
 import org.junit.Assert
 import org.junit.Test
 
-class BaseRMExtensionsTest {
+internal class BaseRMExtensionsTest {
     private val now = System.currentTimeMillis()
     private val falcon1 = RocketRM(
             1, "falcon1", "Falcon 1", "Republic...", "1", false, "Desc", now - 10)

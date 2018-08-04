@@ -8,7 +8,7 @@ import com.spacex.rockets.datasources.RocketsDS
 import com.spacex.rockets.datasources.RocketsDS.Local.Companion.ROCKETS_EXPIRATION_TIME_IN_MILLIS
 import com.spacex.rockets.datasources.RocketsDS.Local.Companion.ROCKET_LAUNCHES_EXPIRATION_TIME_IN_MILLIS
 
-class RocketsRepositoryImpl(
+internal class RocketsRepositoryImpl(
         private val localDS: RocketsDS.Local,
         private val remoteDS: RocketsDS.Remote) : RocketsRepository {
     @WorkerThread

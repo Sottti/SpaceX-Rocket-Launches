@@ -10,7 +10,7 @@ import com.spacex.rockets.model.toDM
 import com.spacex.rockets.model.toRM
 import timber.log.Timber
 
-class RocketsDSRoom(private val dao: RocketsDao) : RocketsDS.Local {
+internal class RocketsDSRoom(private val dao: RocketsDao) : RocketsDS.Local {
 
     @WorkerThread
     override fun loadAllRockets(callbacks: RocketsDS.Local.OnLoadRocketsCallbacks) {

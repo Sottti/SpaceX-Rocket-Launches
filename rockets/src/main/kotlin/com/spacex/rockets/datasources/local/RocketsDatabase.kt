@@ -5,6 +5,6 @@ import androidx.room.RoomDatabase
 import com.spacex.rockets.model.RocketRM
 
 @Database(entities = [(RocketRM::class)], version = 1, exportSchema = false)
-abstract class RocketsDatabase : RoomDatabase() {
+internal abstract class RocketsDatabase : RoomDatabase() {
     abstract val rocketsDao: RocketsDao
 }
