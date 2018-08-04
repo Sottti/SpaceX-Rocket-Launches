@@ -13,7 +13,7 @@ import timber.log.Timber
 internal class RocketsDSApi(private val service: RocketsApiService) : RocketsDS.Remote {
 
     private var loadRocket: Call<RocketAM>? = null
-    private var loadRockeLaunches: Call<List<RocketLaunchAM>>? = null
+    private var loadRocketLaunches: Call<List<RocketLaunchAM>>? = null
     private var loadAllRockets: Call<List<RocketAM>>? = null
 
     @WorkerThread
@@ -64,8 +64,8 @@ internal class RocketsDSApi(private val service: RocketsApiService) : RocketsDS.
     }
 
     override fun loadRocketLaunches(rocketId: String, callbacks: RocketsDS.Remote.OnLoadRocketLaunchesCallbacks) {
-        loadRockeLaunches = service.loadRocketLaunches(rocketId)
-        loadRockeLaunches!!.enqueue(object : Callback<List<RocketLaunchAM>> {
+        loadRocketLaunches = service.loadRocketLaunches(rocketId)
+        loadRocketLaunches!!.enqueue(object : Callback<List<RocketLaunchAM>> {
             override fun onResponse(call: Call<List<RocketLaunchAM>>, response: Response<List<RocketLaunchAM>>) {
                 val launches = response.body()
                 if (response.isSuccessful && launches != null) {
@@ -89,6 +89,6 @@ internal class RocketsDSApi(private val service: RocketsApiService) : RocketsDS.
     override fun cancel() {
         loadRocket?.cancel()
         loadAllRockets?.cancel()
-        loadRockeLaunches?.cancel()
+        loadRocketLaunches?.cancel()
     }
 }

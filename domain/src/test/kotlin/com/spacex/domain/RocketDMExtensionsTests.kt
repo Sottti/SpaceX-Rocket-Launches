@@ -6,10 +6,10 @@ import org.junit.Test
 class RocketDMExtensionsTests {
 
     private val falcon1 = RocketDM(
-            1, "falcon1", "Falcon 1", "Republic...", "1", false)
-    private val falcon9 = RocketDM(2, "falcon9", "Falcon 9", "Usa", "9", true)
-    private val falconHeavy = RocketDM(3, "falconheavy", "Falcon Heavy", "USA", "27", true)
-    private val bfr = RocketDM(4, "bfr", "BFR", "USA", "31", false)
+            1, "falcon1", "Falcon 1", "Republic...", "1", false, "Desc")
+    private val falcon9 = RocketDM(2, "falcon9", "Falcon 9", "Usa", "9", true, "Desc")
+    private val falconHeavy = RocketDM(3, "falconheavy", "Falcon Heavy", "USA", "27", true, "Desc")
+    private val bfr = RocketDM(4, "bfr", "BFR", "USA", "31", false, "Desc")
 
     @Test
     fun getActiveRocketsTest() {

@@ -8,10 +8,10 @@ import org.junit.Test
 class BaseRMExtensionsTest {
     private val now = System.currentTimeMillis()
     private val falcon1 = RocketRM(
-            1, "falcon1", "Falcon 1", "Republic...", "1", false, now - 10)
-    private val falcon9 = RocketRM(2, "falcon9", "Falcon 9", "Usa", "9", true, now - 15)
-    private val falconHeavy = RocketRM(3, "falconheavy", "Falcon Heavy", "USA", "27", true, now - 20)
-    private val bfr = RocketRM(4, "bfr", "BFR", "USA", "31", false, now - 25)
+            1, "falcon1", "Falcon 1", "Republic...", "1", false, "Desc", now - 10)
+    private val falcon9 = RocketRM(2, "falcon9", "Falcon 9", "Usa", "9", true, "Desc", now - 15)
+    private val falconHeavy = RocketRM(3, "falconheavy", "Falcon Heavy", "USA", "27", true, "Desc", now - 20)
+    private val bfr = RocketRM(4, "bfr", "BFR", "USA", "31", false, "Desc", now - 25)
 
     @Test
     fun getOldestItemAgeInMillisTest() {
