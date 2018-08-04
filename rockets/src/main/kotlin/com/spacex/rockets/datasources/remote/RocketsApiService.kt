@@ -33,6 +33,6 @@ class RocketsApiService internal constructor(context: Context) {
         fun loadRocket(@Path("rocketId") rocketId: String): Call<RocketAM>
 
         @GET("/v2/launches")
-        fun loadRocketLaunches(@Query("rocketId") rocketId: String): Call<List<RocketLaunchAM>>
+        fun loadRocketLaunches(@Query("rocket_id") rocketId: String): Call<List<RocketLaunchAM>>
     }
 }

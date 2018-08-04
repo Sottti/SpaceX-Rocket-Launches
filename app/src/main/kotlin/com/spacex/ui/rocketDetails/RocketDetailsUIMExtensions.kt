@@ -61,7 +61,7 @@ fun List<RocketLaunchUIM>.generateChartData(): LineGraphSeries<DataPoint?> {
     for (entry in launchesPerYear) {
         dataPoints[addedValues++] = (DataPoint(entry.key.toDouble(), entry.value.toDouble()))
     }
-    
+
     val series = LineGraphSeries(dataPoints)
     series.thickness = 4
     series.isDrawDataPoints = true
