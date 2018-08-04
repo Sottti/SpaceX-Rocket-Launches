@@ -3,6 +3,12 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
 
+  <data>
+    <variable
+      name="UIM"
+      type="com.spacex.ui.rocket.RocketDetailsUIMDecorator"/>
+  </data>
+
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,6 +18,7 @@
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:scaleType="centerCrop"
+      android:src="@{UIM.image}"
       app:layout_constraintDimensionRatio="16:10"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -23,12 +30,15 @@
       style="@style/Title.White.Primary"
       android:layout_width="0dp"
       android:layout_height="@dimen/spacing_40"
+      android:paddingStart="@dimen/vertical_keyline_primary"
+      android:paddingEnd="@dimen/vertical_keyline_primary"
       android:background="@drawable/background_protection"
       android:gravity="center_vertical"
-      android:text="@string/rocket_name"
+      android:text="@{UIM.name}"
       app:layout_constraintBottom_toBottomOf="@+id/image"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"/>
+      app:layout_constraintStart_toStartOf="parent"
+      tools:text="@string/rocket_name"/>
 
     <ImageView
       android:id="@+id/graph_icon"
@@ -73,10 +83,11 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/vertical_keyline_secondary"
       android:layout_marginEnd="@dimen/vertical_keyline_primary"
-      android:text="@string/tools_string_rocket_description"
+      android:text="@{UIM.description}"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/description_icon"/>
+      app:layout_constraintTop_toTopOf="@+id/description_icon"
+      tools:text="@string/tools_string_rocket_description"/>
 
     <ImageView
       android:id="@+id/launches_icon"

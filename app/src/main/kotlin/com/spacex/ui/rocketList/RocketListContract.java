@@ -66,13 +66,13 @@ interface RocketListContract {
   }
 
   interface Coordinator {
-    void getAllRockets(@NonNull final OnGetRocketListCallbacks onGetRocketListCallbacks);
+    void loadAllRockets(@NonNull final OnLoadRocketListCallbacks callbacks);
 
-    void getActiveRockets(@NonNull final OnGetRocketListCallbacks onGetRocketListCallbacks);
+    void loadActiveRockets(@NonNull final OnLoadRocketListCallbacks callbacks);
 
     void cancel();
 
-    interface OnGetRocketListCallbacks {
+    interface OnLoadRocketListCallbacks {
       void onSuccessLoadingRocketList(@NonNull final List<RocketUIM> rockets);
 
       void onErrorLoadingRocketList();

@@ -5,12 +5,13 @@ import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
-import com.spacex.ui.rocketList.RocketListContract.Coordinator.OnGetRocketListCallbacks;
+import com.spacex.ui.rocketList.RocketListContract.Coordinator.OnLoadRocketListCallbacks;
 import com.spacex.ui.rocketList.RocketListContract.Presenter;
 import com.spacex.ui.rocketList.RocketListContract.View;
 import java.util.List;
 
-public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetRocketListCallbacks {
+public class RocketListPresenter implements Presenter, LifecycleObserver,
+    OnLoadRocketListCallbacks {
 
   private final RocketListContract.Coordinator coordinator;
   private RocketListContract.View view;
@@ -40,7 +41,7 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   }
 
   private void getAllRockets() {
-    coordinator.getAllRockets(this);
+    coordinator.loadAllRockets(this);
   }
 
   @Override
@@ -65,7 +66,7 @@ public class RocketListPresenter implements Presenter, LifecycleObserver, OnGetR
   }
 
   private void getActiveRockets() {
-    coordinator.getActiveRockets(this);
+    coordinator.loadActiveRockets(this);
   }
 
   @Override

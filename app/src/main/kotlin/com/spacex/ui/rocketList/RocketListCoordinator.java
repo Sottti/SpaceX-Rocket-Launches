@@ -26,7 +26,7 @@ public class RocketListCoordinator implements RocketListContract.Coordinator {
   }
 
   @Override
-  public void getAllRockets(@NonNull final OnGetRocketListCallbacks callbacks) {
+  public void loadAllRockets(@NonNull final OnLoadRocketListCallbacks callbacks) {
     backgroundExecutor.execute(
         () ->
             rocketsRepository.loadAllRockets(
@@ -45,7 +45,7 @@ public class RocketListCoordinator implements RocketListContract.Coordinator {
   }
 
   @Override
-  public void getActiveRockets(@NonNull final OnGetRocketListCallbacks callbacks) {
+  public void loadActiveRockets(@NonNull final OnLoadRocketListCallbacks callbacks) {
     backgroundExecutor.execute(
         () ->
             rocketsRepository.loadAllRockets(

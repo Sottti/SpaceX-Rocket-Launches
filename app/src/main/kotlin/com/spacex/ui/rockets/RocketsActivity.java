@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.spacex.ui.R;
 import com.spacex.ui.databinding.RocketsBinding;
 import com.spacex.ui.di.DaggerAppCompatActivityBase;
-import com.spacex.ui.rocket.RocketFragment;
+import com.spacex.ui.rocket.RocketDetailsFragment;
 import javax.inject.Inject;
 
 public class RocketsActivity extends DaggerAppCompatActivityBase
@@ -57,7 +57,7 @@ public class RocketsActivity extends DaggerAppCompatActivityBase
 
     @Override
     public Fragment getItem(int position) {
-      return RocketFragment.newInstance(position+1);
+      return RocketDetailsFragment.newInstance(position+1);
     }
 
     @Override

@@ -1,40 +1,32 @@
 package com.spacex.ui.rocket;
 
-import static com.spacex.ui.rocket.RocketContract.ARGUMENT_ROCKET_ID;
+import static com.spacex.ui.rocket.RocketDetailsContract.ARGUMENT_ROCKET_ID;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import com.spacex.ui.R;
-import com.spacex.ui.databinding.RocketBinding;
+import com.spacex.ui.databinding.RocketDetailsBinding;
 import dagger.android.support.DaggerFragment;
 import javax.inject.Inject;
+import org.jetbrains.annotations.NotNull;
 
-public class RocketFragment extends DaggerFragment implements RocketContract.View {
+public class RocketDetailsFragment extends DaggerFragment implements RocketDetailsContract.View {
 
-  private Context context;
-  private RocketBinding viewBinding;
-  @Inject RocketContract.Presenter presenter;
+  private RocketDetailsBinding viewBinding;
+  @Inject RocketDetailsContract.Presenter presenter;
 
   @NonNull
-  public static RocketFragment newInstance(final int rocketId) {
+  public static RocketDetailsFragment newInstance(final int rocketId) {
     final Bundle bundle = new Bundle();
     bundle.putInt(ARGUMENT_ROCKET_ID, rocketId);
-    final RocketFragment rocketFragment = new RocketFragment();
-    rocketFragment.setArguments(bundle);
-    return rocketFragment;
-  }
-
-  @Override
-  public void onAttach(final Context context) {
-    super.onAttach(context);
-    this.context = context;
+    final RocketDetailsFragment rocketDetailsFragment = new RocketDetailsFragment();
+    rocketDetailsFragment.setArguments(bundle);
+    return rocketDetailsFragment;
   }
 
   @Override
@@ -43,7 +35,7 @@ public class RocketFragment extends DaggerFragment implements RocketContract.Vie
       @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     if (viewBinding == null) {
-      viewBinding = DataBindingUtil.inflate(inflater, R.layout.rocket, container, false);
+      viewBinding = DataBindingUtil.inflate(inflater, R.layout.rocket_details, container, false);
       presenter.onCreateViewForFirstTime();
     } else {
       presenter.onViewRecreated(this);
@@ -52,27 +44,13 @@ public class RocketFragment extends DaggerFragment implements RocketContract.Vie
   }
 
   @Override
-  public void setUpViews(final int rocketId) {
-    switch (rocketId) {
-      case 1:
-        viewBinding
-            .getRoot()
-            .setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
-        break;
-      case 2:
-        viewBinding
-            .getRoot()
-            .setBackgroundColor(ContextCompat.getColor(context, R.color.amber_A400));
-        break;
-      case 3:
-        viewBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.black_6));
-        break;
-      case 4:
-        viewBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.black_54));
-        break;
-    }
+  public void setUpViews(final int rocketId) {}
+
+  @Override
+  public void showRocketDetails(@NotNull final RocketDetailsUIM rocketDetails) {
+    viewBinding.setUIM(rocketDetails);
   }
 
   @Override
-  public void navigateUp() {}
+  public void showAsErrorLoadingRocketDetails() {}
 }

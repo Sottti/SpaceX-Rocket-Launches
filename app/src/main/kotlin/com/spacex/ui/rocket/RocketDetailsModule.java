@@ -5,17 +5,18 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public abstract class RocketModule {
+public abstract class RocketDetailsModule {
 
   @Provides
-  static RocketContract.Presenter providePresenter(RocketContract.View view) {
-    return new RocketPresenter(
+  static RocketDetailsContract.Presenter providePresenter(RocketDetailsContract.View view) {
+    return new RocketDetailsPresenter(
         view,
-        ((RocketFragment) view)
+        ((RocketDetailsFragment) view)
             .getArguments()
-            .getInt(RocketContract.ARGUMENT_ROCKET_ID, RocketContract.NO_ARGUMENT));
+            .getInt(RocketDetailsContract.ARGUMENT_ROCKET_ID,
+                RocketDetailsContract.NO_ARGUMENT));
   }
 
   @Binds
-  abstract RocketContract.View bindView(RocketFragment rocketFragment);
+  abstract RocketDetailsContract.View bindView(RocketDetailsFragment rocketDetailsFragment);
 }

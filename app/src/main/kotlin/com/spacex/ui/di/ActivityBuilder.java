@@ -1,7 +1,7 @@
 package com.spacex.ui.di;
 
-import com.spacex.ui.rocket.RocketFragment;
-import com.spacex.ui.rocket.RocketModule;
+import com.spacex.ui.rocket.RocketDetailsFragment;
+import com.spacex.ui.rocket.RocketDetailsModule;
 import com.spacex.ui.rocketList.RocketListActivity;
 import com.spacex.ui.rocketList.RocketListModule;
 import com.spacex.ui.rockets.RocketsActivity;
@@ -20,8 +20,8 @@ abstract class ActivityBuilder {
   @ContributesAndroidInjector(modules = RocketsModule.class)
   abstract RocketsActivity bindRocketsActivity();
 
-  @ContributesAndroidInjector(modules = RocketModule.class)
-  abstract RocketFragment bindRocketFragment();
+  @ContributesAndroidInjector(modules = RocketDetailsModule.class)
+  abstract RocketDetailsFragment bindRocketFragment();
 
   @ContributesAndroidInjector(modules = WelcomeModule.class)
   abstract WelcomeActivity bindWelcomeActivity();
