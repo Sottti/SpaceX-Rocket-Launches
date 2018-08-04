@@ -22,7 +22,7 @@ class ErrorView @JvmOverloads constructor(
     private fun init(context: Context) {
         val viewBinding = DataBindingUtil.inflate<ErrorViewBinding>(
                 LayoutInflater.from(context), R.layout.error_view, this, true)
-        viewBinding.retry.setOnClickListener { view ->
+        viewBinding.retry.setOnClickListener {
             if (onRefreshListener != null) {
                 onRefreshListener!!.onRefresh()
             }
