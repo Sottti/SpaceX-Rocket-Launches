@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import com.spacex.ui.R
 
-internal class RocketUIMDecorator (private val context: Context) {
+internal class RocketUIMDecorator(private val context: Context) {
     private var rocketUIM: RocketUIM? = null
 
     val image: Drawable?

@@ -56,7 +56,7 @@ fun List<RocketLaunchUIM>.generateChartData(): LineGraphSeries<DataPoint?> {
     val launchesPerYear: MutableMap<Int, Int> = mutableMapOf()
     forEach { launch -> launchesPerYear[launch.year] = getNumberOfLaunches(launch.year, launchesPerYear) }
 
-    val dataPoints : Array<DataPoint?> = arrayOfNulls(launchesPerYear.size)
+    val dataPoints: Array<DataPoint?> = arrayOfNulls(launchesPerYear.size)
     var addedValues = 0
     for (entry in launchesPerYear) {
         dataPoints[addedValues++] = (DataPoint(entry.key.toDouble(), entry.value.toDouble()))

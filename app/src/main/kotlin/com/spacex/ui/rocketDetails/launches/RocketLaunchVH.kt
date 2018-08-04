@@ -4,7 +4,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import com.spacex.ui.databinding.RocketLaunchVhBinding
 
-internal class RocketLaunchVH(
+class RocketLaunchVH(
         private val viewBinding: RocketLaunchVhBinding,
         private val clickListener: OnRocketLaunchClickListener) : RocketLaunchesItemVH(viewBinding.root), OnClickListener {
     private val decorator: RocketLaunchUIMDecorator = RocketLaunchUIMDecorator(itemView.context)
