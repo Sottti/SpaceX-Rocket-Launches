@@ -7,8 +7,12 @@ import static android.text.format.DateUtils.FORMAT_SHOW_WEEKDAY;
 import static android.text.format.DateUtils.FORMAT_SHOW_YEAR;
 
 import android.content.Context;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.format.DateUtils;
+import android.text.style.ForegroundColorSpan;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import com.spacex.ui.R;
 import java.util.Calendar;
 
@@ -28,8 +32,31 @@ public class RocketLaunchUIMDecorator {
   }
 
   @NonNull
+  public String getMissionName() {
+    return rocketLaunchUIM.getMissionName();
+  }
+
+  @NonNull
   public String getMissionPatchLink() {
     return rocketLaunchUIM.getMissionPatchUrl();
+  }
+
+  @NonNull
+  public SpannableString getMissionDetails() {
+    final String missionDetails =
+        context.getString(
+            R.string.rocket_launch_details_format,
+            getEitherDayAndMonthWithOptionallyWeekdayAndYearOrRelativeTimeSpan(
+                rocketLaunchUIM.getDate()),
+            getSuccessOrFailure(rocketLaunchUIM.getWasSuccess()));
+    final SpannableString missionDetailsSpan = new SpannableString(missionDetails);
+    missionDetailsSpan.setSpan(
+        new ForegroundColorSpan(
+            ContextCompat.getColor(context, rocketLaunchUIM.getSuccessLabelColorResId())),
+        missionDetails.indexOf("•") + 1,
+        missionDetails.length(),
+        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+    return missionDetailsSpan;
   }
 
   @NonNull
@@ -63,20 +90,6 @@ public class RocketLaunchUIMDecorator {
   RocketLaunchUIMDecorator onBind(@NonNull final RocketLaunchUIM rocketLaunchUIM) {
     this.rocketLaunchUIM = rocketLaunchUIM;
     return this;
-  }
-
-  @NonNull
-  public String getMissionName() {
-    return rocketLaunchUIM.getMissionName();
-  }
-
-  @NonNull
-  public String getMissionDetails() {
-    return context.getString(
-        R.string.rocket_launch_details_format,
-        getEitherDayAndMonthWithOptionallyWeekdayAndYearOrRelativeTimeSpan(
-            rocketLaunchUIM.getDate()),
-        getSuccessOrFailure(rocketLaunchUIM.getWasSuccess()));
   }
 
   private String getSuccessOrFailure(final boolean wasSuccessful) {
