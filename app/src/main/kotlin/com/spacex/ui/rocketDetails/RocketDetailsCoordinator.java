@@ -55,9 +55,9 @@ public class RocketDetailsCoordinator implements RocketDetailsContract.Coordinat
         rocket.getStringId(),
         new OnLoadRocketLaunchesCallbacks() {
           @Override
-          public void onSuccessLoadingRocketLaunches(
-              @NotNull final List<RocketLaunchDM> rocketLaunches) {
-            final RocketDetailsUIM rocketDetailsUIM = RocketDetailsUIMExtensionsKt.mapToUIM(rocket);
+          public void onSuccessLoadingRocketLaunches(@NotNull final List<RocketLaunchDM> launches) {
+            final RocketDetailsUIM rocketDetailsUIM =
+                RocketDetailsUIMExtensionsKt.mapToUIM(rocket, launches);
             mainThreadHandler.post(() -> callbacks.onSuccessLoadingRocketDetails(rocketDetailsUIM));
           }
 

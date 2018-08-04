@@ -13,8 +13,8 @@ import javax.inject.Inject;
 
 public class WelcomeActivity extends DaggerAppCompatActivityBase implements WelcomeContract.View {
 
-  private WelcomeBinding viewBinding;
   @Inject WelcomeContract.Presenter presenter;
+  private WelcomeBinding viewBinding;
 
   public static void startActivity(@NonNull final Context context) {
     context.startActivity(new Intent(context, WelcomeActivity.class));

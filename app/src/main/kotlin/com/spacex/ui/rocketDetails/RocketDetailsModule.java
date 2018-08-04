@@ -23,12 +23,12 @@ public abstract class RocketDetailsModule {
         coordinator);
   }
 
-  @Binds
-  abstract RocketDetailsContract.View bindView(RocketDetailsFragment rocketDetailsFragment);
-
   @Provides
   static RocketDetailsContract.Coordinator provideCoordinator(
       RocketsRepository rocketsRepository, Handler mainThreadHandler, Executor backgroundExecutor) {
     return new RocketDetailsCoordinator(rocketsRepository, mainThreadHandler, backgroundExecutor);
   }
+
+  @Binds
+  abstract RocketDetailsContract.View bindView(RocketDetailsFragment rocketDetailsFragment);
 }

@@ -5,7 +5,7 @@ class RocketLaunchDM(
         val date: Long,
         val year: Int,
         val wasSuccessful: Boolean,
-        val missionPatch: String,
+        val missionPatchLink: String,
         val videoLink: String,
         val wikipediaLink: String
 )

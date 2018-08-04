@@ -10,8 +10,8 @@ import com.spacex.ui.rocketList.RocketListContract.Presenter;
 import com.spacex.ui.rocketList.RocketListContract.View;
 import java.util.List;
 
-public class RocketListPresenter implements Presenter, LifecycleObserver,
-    OnLoadRocketListCallbacks {
+public class RocketListPresenter
+    implements Presenter, LifecycleObserver, OnLoadRocketListCallbacks {
 
   private final RocketListContract.Coordinator coordinator;
   private RocketListContract.View view;

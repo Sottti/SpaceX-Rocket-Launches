@@ -10,8 +10,8 @@ public class RocketDetailsUIMDecorator {
   private final Context context;
   private RocketDetailsUIM mRocketDetailsUIM;
 
-  RocketDetailsUIMDecorator(@NonNull final Context context,
-      @NonNull final RocketDetailsUIM rocketDetailsUIM) {
+  RocketDetailsUIMDecorator(
+      @NonNull final Context context, @NonNull final RocketDetailsUIM rocketDetailsUIM) {
     this.context = context;
     this.mRocketDetailsUIM = rocketDetailsUIM;
   }

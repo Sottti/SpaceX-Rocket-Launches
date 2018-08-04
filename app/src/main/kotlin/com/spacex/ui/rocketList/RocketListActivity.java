@@ -1,5 +1,7 @@
 package com.spacex.ui.rocketList;
 
+import static com.spacex.ui.AndroidOSKt.isAtLeastLollipop;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +14,6 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback;
-import com.spacex.ui.AndroidOS;
 import com.spacex.ui.R;
 import com.spacex.ui.about.AboutActivity;
 import com.spacex.ui.databinding.RocketListBinding;
@@ -71,7 +72,7 @@ public class RocketListActivity extends DaggerAppCompatActivityBase
           public void onSlide(@NonNull final View view, final float v) {}
         });
     viewBinding.scrim.setOnClickListener(view -> presenter.onCloseFilterOptions());
-    if (AndroidOS.INSTANCE.isAtLeastLollipop()) {
+    if (isAtLeastLollipop()) {
       viewBinding.scrim.setElevation(viewBinding.includeToolbar.toolbar.getElevation());
     }
 

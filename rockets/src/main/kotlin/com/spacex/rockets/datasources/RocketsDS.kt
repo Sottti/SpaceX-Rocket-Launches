@@ -20,7 +20,7 @@ interface RocketsDS {
         fun loadRocket(rocketId: String, callbacks: OnLoadRocketCallbacks)
 
         @WorkerThread
-        fun loadRocketLaunches(rocketId : String, callbacks: OnLoadRocketLaunchesCallbacks)
+        fun loadRocketLaunches(rocketId: String, callbacks: OnLoadRocketLaunchesCallbacks)
 
         @WorkerThread
         fun insertOrReplaceRockets(rocket: RocketDM)
@@ -53,7 +53,7 @@ interface RocketsDS {
 
         interface OnLoadRocketLaunchesCallbacks {
 
-            fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>, oldestLaunchAgeInMillis : Long)
+            fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>, oldestLaunchAgeInMillis: Long)
 
             fun onRocketLaunchesNotFound()
         }
@@ -68,7 +68,7 @@ interface RocketsDS {
         fun loadRocket(rocketId: String, callbacks: OnLoadRocketCallbacks)
 
         @WorkerThread
-        fun loadRocketLaunches(rocketId : String, callbacks: OnLoadRocketLaunchesCallbacks)
+        fun loadRocketLaunches(rocketId: String, callbacks: OnLoadRocketLaunchesCallbacks)
 
         fun cancel()
 

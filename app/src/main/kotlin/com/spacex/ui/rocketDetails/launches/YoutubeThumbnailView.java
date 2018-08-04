@@ -1,4 +1,4 @@
-package com.spacex.ui.rocketDetails;
+package com.spacex.ui.rocketDetails.launches;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,12 +12,7 @@ import com.squareup.picasso.Picasso;
 
 public class YoutubeThumbnailView extends AppCompatImageView {
 
-  private static final String sQUALITY_DEFAULT = "default";
-  private static final String sQUALITY_HQ = "hqdefault";
   private static final String sQUALITY_MQ = "mqdefault";
-  private static final String sQUALITY_SD = "sddefault";
-  private static final String sQUALITY_MAX_RES_DEFAULT = "maxresdefault";
-
   private static final String sURI_YOUTUBE_THUMBNAIL = "https://img.youtube.com/vi/%1$s/%2$s.jpg";
 
   public YoutubeThumbnailView(final Context context) {
@@ -37,9 +32,10 @@ public class YoutubeThumbnailView extends AppCompatImageView {
   @BindingAdapter("videoKey")
   public static void loadVideoThumbnail(@NonNull final ImageView imageView, final String videoKey) {
     if (videoKey != null) {
+      final String thumbnailUrl = String.format(sURI_YOUTUBE_THUMBNAIL, videoKey, sQUALITY_MQ);
       Picasso.with(imageView.getContext())
-          .load(String.format(sURI_YOUTUBE_THUMBNAIL, videoKey, sQUALITY_MQ))
-          .placeholder( R.color.grey_200)
+          .load(thumbnailUrl)
+          .placeholder(R.color.grey_200)
           .error(R.color.grey_200)
           .into(imageView);
     } else {

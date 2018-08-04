@@ -18,8 +18,8 @@ import javax.inject.Inject;
 
 public class RocketsActivity extends DaggerAppCompatActivityBase implements RocketsContract.View {
 
-  private RocketsBinding viewBinding;
   @Inject RocketsContract.Presenter presenter;
+  private RocketsBinding viewBinding;
 
   public static void startActivity(@NonNull final Context context) {
     context.startActivity(new Intent(context, RocketsActivity.class));
@@ -47,22 +47,6 @@ public class RocketsActivity extends DaggerAppCompatActivityBase implements Rock
 
   private void setUpViewPager() {
     viewBinding.viewPager.setAdapter(new RocketDetailsPagerAdapter(getSupportFragmentManager()));
-  }
-
-  private class RocketDetailsPagerAdapter extends FragmentPagerAdapter {
-    RocketDetailsPagerAdapter(@NonNull final FragmentManager fragmentManager) {
-      super(fragmentManager);
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-      return RocketDetailsFragment.newInstance(getRocketStringId(position + 1));
-    }
-
-    @Override
-    public int getCount() {
-      return 4;
-    }
   }
 
   private String getRocketStringId(final int i) {
@@ -93,5 +77,21 @@ public class RocketsActivity extends DaggerAppCompatActivityBase implements Rock
   @Override
   public void navigateUp() {
     NavUtils.navigateUpFromSameTask(this);
+  }
+
+  private class RocketDetailsPagerAdapter extends FragmentPagerAdapter {
+    RocketDetailsPagerAdapter(@NonNull final FragmentManager fragmentManager) {
+      super(fragmentManager);
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+      return RocketDetailsFragment.newInstance(getRocketStringId(position + 1));
+    }
+
+    @Override
+    public int getCount() {
+      return 4;
+    }
   }
 }

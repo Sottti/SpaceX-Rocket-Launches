@@ -11,7 +11,7 @@ interface RocketsRepository {
 
     fun loadRocket(rocketId: String, callbacks: OnLoadRocketCallbacks)
 
-    fun loadRocketLaunches(rocketId : String, callbacks: OnLoadRocketLaunchesCallbacks)
+    fun loadRocketLaunches(rocketId: String, callbacks: OnLoadRocketLaunchesCallbacks)
 
     fun cancel()
 

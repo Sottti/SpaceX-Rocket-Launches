@@ -13,9 +13,9 @@ import com.spacex.ui.rocketDetails.RocketDetailsContract.View;
 public class RocketDetailsPresenter
     implements Presenter, LifecycleObserver, OnLoadRocketDetailsCallbacks {
 
-  private View view;
   private final String rocketId;
   private final Coordinator coordinator;
+  private View view;
 
   RocketDetailsPresenter(
       final View view,
@@ -31,7 +31,7 @@ public class RocketDetailsPresenter
 
   @Override
   public void onCreateViewForFirstTime() {
-    view.setUpViews(rocketId);
+    view.setUpViews();
   }
 
   @Override
@@ -57,6 +57,11 @@ public class RocketDetailsPresenter
     if (view != null) {
       view.showAsErrorLoadingRocketDetails();
     }
+  }
+
+  @Override
+  public void onLaunchClick(@NonNull final String videoKey) {
+    view.openVideoInYoutubeApp(videoKey);
   }
 
   @Override

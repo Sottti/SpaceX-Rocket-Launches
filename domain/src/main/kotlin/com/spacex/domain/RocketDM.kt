@@ -7,5 +7,5 @@ class RocketDM(
         val country: String,
         val enginesCount: String,
         val isActive: Boolean,
-        val description : String
+        val description: String
 ) : BaseDM(id)

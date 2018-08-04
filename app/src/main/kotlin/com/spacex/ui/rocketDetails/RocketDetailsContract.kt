@@ -7,11 +7,13 @@ internal object RocketDetailsContract {
 
     internal interface View {
 
-        fun setUpViews(rocketId: String)
+        fun setUpViews()
 
         fun showAsErrorLoadingRocketDetails()
 
         fun showRocketDetails(rocketDetails: RocketDetailsUIM)
+
+        fun openVideoInYoutubeApp(videoKey: String)
     }
 
     internal interface Presenter {
@@ -21,6 +23,8 @@ internal object RocketDetailsContract {
         fun onViewRecreated(view: RocketDetailsContract.View)
 
         fun onStart()
+
+        fun onLaunchClick(videoKey: String)
 
         fun onStop()
 
