@@ -62,6 +62,10 @@ public class RocketDetailsFragment extends DaggerFragment implements RocketDetai
 
   @Override
   public void showRocketDetails(@NotNull final RocketDetailsUIM rocketDetails) {
+    viewBinding.includeProgressBar.progressBar.setVisibility(View.GONE);
+    viewBinding.content.setVisibility(View.VISIBLE);
+    viewBinding.errorView.setVisibility(View.GONE);
+    viewBinding.emptyView.setVisibility(View.GONE);
     viewBinding.setUIM(new RocketDetailsUIMDecorator(context, rocketDetails));
     if (viewBinding.recyclerView.getAdapter() == null) {
       adapter =
@@ -71,10 +75,32 @@ public class RocketDetailsFragment extends DaggerFragment implements RocketDetai
     } else {
       adapter.refreshData(rocketDetails.getLaunches());
     }
+    viewBinding.chart.addSeries(rocketDetails.getChartSeries());
   }
 
   @Override
-  public void showAsErrorLoadingRocketDetails() {}
+  public void showAsEmpty() {
+    viewBinding.includeProgressBar.progressBar.setVisibility(View.GONE);
+    viewBinding.emptyView.setVisibility(View.VISIBLE);
+    viewBinding.errorView.setVisibility(View.GONE);
+    viewBinding.content.setVisibility(View.GONE);
+  }
+
+  @Override
+  public void showAsErrorLoading() {
+    viewBinding.includeProgressBar.progressBar.setVisibility(View.GONE);
+    viewBinding.errorView.setVisibility(View.VISIBLE);
+    viewBinding.emptyView.setVisibility(View.GONE);
+    viewBinding.content.setVisibility(View.GONE);
+  }
+
+  @Override
+  public void showAsLoading() {
+    viewBinding.includeProgressBar.progressBar.setVisibility(View.VISIBLE);
+    viewBinding.errorView.setVisibility(View.GONE);
+    viewBinding.emptyView.setVisibility(View.GONE);
+    viewBinding.content.setVisibility(View.GONE);
+  }
 
   @Override
   public void openVideoInYoutubeApp(@NotNull final String videoKey) {

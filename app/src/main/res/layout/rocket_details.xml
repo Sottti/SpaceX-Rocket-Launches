@@ -13,6 +13,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+      android:id="@+id/include_progressBar"
+      layout="@layout/progress_bar"
+      android:layout_width="@dimen/progress_bar_medium"
+      android:layout_height="@dimen/progress_bar_medium"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="gone"/>
+
+    <com.spacex.ui.errorView.ErrorView
+      android:id="@+id/error_view"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="gone"/>
+
+    <com.spacex.ui.emptyView.EmptyView
+      android:id="@+id/empty_view"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="gone"/>
+
     <ImageView
       android:id="@+id/image"
       android:layout_width="0dp"
@@ -27,6 +61,7 @@
       tools:src="@drawable/rocket_falcon_heavy"/>
 
     <TextView
+      android:id="@+id/rocket_name"
       style="@style/Title.White.Primary"
       android:layout_width="0dp"
       android:layout_height="@dimen/spacing_40"
@@ -41,7 +76,7 @@
       tools:text="@string/rocket_name"/>
 
     <ImageView
-      android:id="@+id/graph_icon"
+      android:id="@+id/chart_icon"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/spacing_16"
@@ -52,17 +87,29 @@
       app:srcCompat="@drawable/ic_show_chart_white_24dp"
       tools:ignore="ContentDescription"/>
 
-    <View
-      android:id="@+id/graph"
+    <TextView
+      android:id="@+id/chart_label"
+      style="@style/Caption.Black.Secondary"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_8"
+      android:layout_marginStart="@dimen/vertical_keyline_secondary"
+      android:paddingStart="@dimen/spacing_16"
+      android:paddingEnd="@dimen/spacing_16"
+      android:text="@string/chart_label"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/image"/>
+
+    <com.jjoe64.graphview.GraphView
+      android:id="@+id/chart"
       android:layout_width="0dp"
-      android:layout_height="@dimen/spacing_64"
+      android:layout_height="@dimen/spacing_88"
       android:layout_marginStart="@dimen/vertical_keyline_secondary"
       android:layout_marginEnd="@dimen/spacing_16"
-      android:background="@color/colorAccent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/image"/>
+      app:layout_constraintTop_toBottomOf="@+id/chart_label"/>
 
     <ImageView
       android:id="@+id/description_icon"
@@ -72,7 +119,7 @@
       android:layout_marginStart="@dimen/vertical_keyline_primary"
       android:tint="@color/icon_black_inactive"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/graph"
+      app:layout_constraintTop_toBottomOf="@+id/chart"
       app:srcCompat="@drawable/ic_baseline_notes_white_24dp"
       tools:ignore="ContentDescription"/>
 
@@ -113,9 +160,13 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="@+id/launches_icon"
-      tools:listitem="@layout/rocket_launch_vh">
+      tools:listitem="@layout/rocket_launch_vh"/>
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.constraintlayout.widget.Group
+      android:id="@+id/content"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:constraint_referenced_ids="image,rocket_name,chart_icon,chart_label,chart,description_icon,description,launches_icon,recycler_view"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

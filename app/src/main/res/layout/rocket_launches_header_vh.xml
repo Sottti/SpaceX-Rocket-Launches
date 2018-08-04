@@ -12,7 +12,6 @@
     style="@style/Body2.Black.Secondary"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/subheader_list_tile_height"
-    android:layout_marginStart="@dimen/vertical_keyline_primary"
     android:gravity="center_vertical"
     android:text="@{UIM.year}"
     tools:text="@string/tools_text_year"/>

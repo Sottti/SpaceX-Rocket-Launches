@@ -7,4 +7,5 @@
   <string name="failure">Failure</string>
   <string name="rocket_launch_details_format" translatable="false">%1$s • %2$s</string>
   <string name="tools_text_year">2018</string>
+  <string name="chart_label">Launches per year</string>
 </resources>

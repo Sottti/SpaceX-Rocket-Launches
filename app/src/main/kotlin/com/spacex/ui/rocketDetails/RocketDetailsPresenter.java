@@ -42,6 +42,7 @@ public class RocketDetailsPresenter
   @Override
   @OnLifecycleEvent(Event.ON_START)
   public void onStart() {
+    view.showAsLoading();
     coordinator.getRocketDetailsUIM(rocketId, this);
   }
 
@@ -55,7 +56,7 @@ public class RocketDetailsPresenter
   @Override
   public void onErrorLoadingRocketDetails() {
     if (view != null) {
-      view.showAsErrorLoadingRocketDetails();
+      view.showAsErrorLoading();
     }
   }
 

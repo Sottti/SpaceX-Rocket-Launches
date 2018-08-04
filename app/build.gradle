@@ -47,9 +47,10 @@ dependencies {
     implementation dagger.daggerAndroidSupport
     annotationProcessor dagger.daggerAndroidProcessor
 
+    implementation 'com.jjoe64:graphview:4.2.2'
+
     implementation networking.picasso
 
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation libraries.timber
@@ -60,6 +61,7 @@ dependencies {
 
     implementation androidSupportLibraries.design
     implementation androidSupportLibraries.cardView
+    implementation androidSupportLibraries.appCompat
     implementation androidSupportLibraries.recyclerView
     implementation androidSupportLibraries.constraintLayout
 }

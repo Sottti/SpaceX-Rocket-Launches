@@ -9,11 +9,14 @@ internal object RocketDetailsContract {
 
         fun setUpViews()
 
-        fun showAsErrorLoadingRocketDetails()
-
         fun showRocketDetails(rocketDetails: RocketDetailsUIM)
 
         fun openVideoInYoutubeApp(videoKey: String)
+
+        fun showAsEmpty()
+
+        fun showAsErrorLoading()
+        fun showAsLoading()
     }
 
     internal interface Presenter {

@@ -14,6 +14,7 @@
   <dimen name="spacing_56">56dp</dimen>
   <dimen name="spacing_64">64dp</dimen>
   <dimen name="spacing_72">72dp</dimen>
+  <dimen name="spacing_88">88dp</dimen>
 
   <!-- Raised Button -->
   <dimen name="button_raised_inset_top">@dimen/spacing_6</dimen>
