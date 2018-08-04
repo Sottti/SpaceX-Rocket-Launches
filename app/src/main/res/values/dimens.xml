@@ -38,4 +38,7 @@
   <!--Others-->
   <dimen name="max_width_phone_in_portrait">540dp</dimen>
   <dimen name="touch_target_row_height">@dimen/spacing_48</dimen>
+
+  <!-- Subheader -->
+  <dimen name="subheader_list_tile_height">@dimen/spacing_48</dimen>
 </resources>

@@ -3,8 +3,8 @@ package com.spacex.ui.rocketDetails.launches
 import androidx.recyclerview.widget.DiffUtil
 
 internal class RocketLaunchesDiffCallback(
-        private val oldRockets: List<RocketLaunchUIM>,
-        private val newRockets: List<RocketLaunchUIM>) : DiffUtil.Callback() {
+        private val oldRockets: List<RocketLaunchItemUIM>,
+        private val newRockets: List<RocketLaunchItemUIM>) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
         return oldRockets.size
@@ -15,7 +15,12 @@ internal class RocketLaunchesDiffCallback(
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldRockets[oldItemPosition].missionName == newRockets[newItemPosition].missionName
+        val oldItem = oldRockets[oldItemPosition]
+        val newItem = newRockets[newItemPosition]
+        return if (oldItem is RocketLaunchHeaderUIM && newItem is RocketLaunchHeaderUIM) {
+            oldItem.year == newItem.year
+        } else oldItem is RocketLaunchUIM && newItem is RocketLaunchUIM &&
+                oldItem.missionName == newItem.missionName
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

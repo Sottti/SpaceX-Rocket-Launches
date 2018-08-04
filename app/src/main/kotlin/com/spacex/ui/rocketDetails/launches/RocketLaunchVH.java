@@ -3,10 +3,9 @@ package com.spacex.ui.rocketDetails.launches;
 import android.view.View;
 import android.view.View.OnClickListener;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import com.spacex.ui.databinding.RocketLaunchVhBinding;
 
-class RocketLaunchVH extends RecyclerView.ViewHolder implements OnClickListener {
+class RocketLaunchVH extends RocketLaunchesItemVH implements OnClickListener {
 
   private final RocketLaunchVhBinding viewBinding;
   private final RocketLaunchUIMDecorator decorator;
