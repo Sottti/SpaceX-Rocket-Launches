@@ -30,11 +30,23 @@ internal class RocketListPresenter(
 
     @OnLifecycleEvent(Event.ON_START)
     override fun onStart() {
-        getAllRockets()
+        loadRockets()
     }
 
-    private fun getAllRockets() {
+    private fun loadRockets() {
+        if (isShowingActiveRockets) {
+            loadActiveRockets()
+        } else {
+            loadAllRockets()
+        }
+    }
+
+    private fun loadAllRockets() {
         coordinator.loadAllRockets(this)
+    }
+
+    private fun loadActiveRockets() {
+        coordinator.loadActiveRockets(this)
     }
 
     override fun onSuccessLoadingRocketList(rockets: List<RocketUIM>) {
@@ -50,19 +62,11 @@ internal class RocketListPresenter(
     }
 
     override fun onRefresh() {
-        if (isShowingActiveRockets) {
-            getActiveRockets()
-        } else {
-            getAllRockets()
-        }
-    }
-
-    private fun getActiveRockets() {
-        coordinator.loadActiveRockets(this)
+        loadRockets()
     }
 
     override fun onRetry() {
-        getAllRockets()
+        loadRockets()
     }
 
     override fun onErrorLoadingRocketList() {
@@ -84,7 +88,7 @@ internal class RocketListPresenter(
         view!!.hideFilterOptions()
         isShowingActiveRockets = false
         view!!.showAllRocketsFilterAsSelected()
-        getAllRockets()
+        loadAllRockets()
         isShowingFilterOptions = true
     }
 
@@ -92,7 +96,7 @@ internal class RocketListPresenter(
         hideFilterOptions()
         isShowingActiveRockets = true
         view!!.showActiveRocketsFilterAsSelected()
-        getActiveRockets()
+        loadActiveRockets()
     }
 
     override fun onCloseFilterOptions() {
