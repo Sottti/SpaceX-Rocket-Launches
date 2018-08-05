@@ -1,0 +1,28 @@
+package com.spacex.ui.di
+
+import com.spacex.ui.rocketDetails.RocketDetailsFragment
+import com.spacex.ui.rocketDetails.RocketDetailsModule
+import com.spacex.ui.rocketList.RocketListActivity
+import com.spacex.ui.rocketList.RocketListModule
+import com.spacex.ui.rockets.RocketsActivity
+import com.spacex.ui.rockets.RocketsModule
+import com.spacex.ui.welcome.WelcomeActivity
+import com.spacex.ui.welcome.WelcomeModule
+import dagger.Module
+import dagger.android.ContributesAndroidInjector
+
+@Module
+internal abstract class ActivityBuilder {
+
+    @ContributesAndroidInjector(modules = [RocketListModule::class])
+    internal abstract fun bindRocketListActivity(): RocketListActivity
+
+    @ContributesAndroidInjector(modules = [RocketsModule::class])
+    internal abstract fun bindRocketsActivity(): RocketsActivity
+
+    @ContributesAndroidInjector(modules = [RocketDetailsModule::class])
+    internal abstract fun bindRocketFragment(): RocketDetailsFragment
+
+    @ContributesAndroidInjector(modules = [WelcomeModule::class])
+    internal abstract fun bindWelcomeActivity(): WelcomeActivity
+}

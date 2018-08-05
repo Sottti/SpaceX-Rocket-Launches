@@ -66,7 +66,7 @@ internal fun List<RocketLaunchUIM>.generateChartData(): LineGraphSeries<DataPoin
     series.thickness = 4
     series.isDrawDataPoints = true
     series.dataPointsRadius = 8f
-    series.color = ContextCompat.getColor(RocketLaunchesApp.getInstance(), R.color.colorAccent)
-    series.backgroundColor = ContextCompat.getColor(RocketLaunchesApp.getInstance(), R.color.grey_200)
+    series.color = ContextCompat.getColor(RocketLaunchesApp.instance, R.color.colorAccent)
+    series.backgroundColor = ContextCompat.getColor(RocketLaunchesApp.instance, R.color.grey_200)
     return series
 }
