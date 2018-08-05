@@ -15,6 +15,19 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/thoughts"
+      style="@style/RecyclerView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/include_toolbar"
+      app:layout_constraintWidth_max="@dimen/max_width_phone_in_portrait"
+      tools:listitem="@layout/thoughts_vh"
+      tools:visibility="visible"/>
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

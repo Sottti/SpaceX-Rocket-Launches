@@ -8,6 +8,7 @@ class ThoughtsContract {
 
         fun navigateUp()
 
+        fun showThoughts(thoughts: List<ThoughtUIM>)
     }
 
     interface Presenter {

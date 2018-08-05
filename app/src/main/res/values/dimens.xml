@@ -43,4 +43,6 @@
 
   <!-- Subheader -->
   <dimen name="subheader_list_tile_height">@dimen/spacing_48</dimen>
+
+  <dimen name="thoughts_videos_thumbnail_width">110dp</dimen>
 </resources>

@@ -8,14 +8,14 @@ import androidx.annotation.NonNull
 import androidx.core.app.NavUtils
 import androidx.databinding.DataBindingUtil
 import com.spacex.ui.R
-import com.spacex.ui.about.AboutContract
-import com.spacex.ui.databinding.AboutBinding
 import com.spacex.ui.databinding.ThoughtsBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
+import com.spacex.ui.rocketList.RocketListAdapter
 import javax.inject.Inject
 
-class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View {
+class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View, ThoughtsVH.OnThoughtClickListener {
 
+    private var adapter: ThoughtsAdapter? = null
     private var viewBinding: ThoughtsBinding? = null
     var presenter: ThoughtsContract.Presenter? = null
         @Inject set
@@ -34,6 +34,19 @@ class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View {
         if (supportActionBar != null) {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
+    }
+
+    override fun showThoughts(thoughts: List<ThoughtUIM>) {
+        if (viewBinding!!.toughts.adapter == null) {
+            adapter = ThoughtsAdapter(thoughts, this)
+            viewBinding!!.toughts.adapter = adapter
+        } else {
+            adapter!!.refreshData(thoughts)
+        }
+    }
+
+    override fun onClick(videoKey: String) {
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
