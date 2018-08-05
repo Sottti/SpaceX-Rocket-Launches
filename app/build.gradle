@@ -51,7 +51,10 @@ dependencies {
 
     implementation libraries.timber
     implementation networking.picasso
-    implementation 'com.jjoe64:graphview:4.2.2'
+    implementation libraries.lineChart
+    implementation libraries.circleImageView
+
+    implementation androidSupportLibraries.customTabs
 
     debugImplementation leakCanary.android
     debugImplementation leakCanary.fragments

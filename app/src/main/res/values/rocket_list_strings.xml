@@ -3,7 +3,7 @@
   <string name="rocket_list_toolbar_title">Rocket List</string>
   <string name="rocket_list_filter_rockets">Filter Rockets</string>
   <string name="rocket_list_menu_show_welcome">Show Welcome</string>
-  <string name="rocket_list_menu_about">About</string>
+  <string name="rocket_list_menu_about">About Me</string>
   <string name="rocket_list_filter_all_rockets">All Rockets</string>
   <string name="rocket_list_filter_active_rockets">Active Rockets</string>
   <string name="rocket_list_filters_label">Show…</string>

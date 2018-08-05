@@ -1,14 +1,33 @@
 package com.spacex.ui.about
 
-internal class AboutContract {
+import androidx.annotation.NonNull
+
+class AboutContract {
 
     internal interface View {
 
+        fun setUpViews()
+
+        fun navigateTo(@NonNull url: String)
+
         fun navigateUp()
+
     }
 
-    internal interface Presenter {
+    interface Presenter {
+
+        fun onStart()
 
         fun onUpNavigation()
+
+        fun onGithubClick()
+
+        fun onStackOverflowClick()
+
+        fun onMediumClick()
+
+        fun onTwitterClick()
+
+        fun onLinkedInClick()
     }
 }
