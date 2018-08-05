@@ -8,12 +8,13 @@ import com.spacex.ui.rocketList.RocketListContract.Coordinator.OnLoadRocketListC
 import com.spacex.ui.rocketList.RocketListContract.Presenter
 import com.spacex.ui.rocketList.RocketListContract.View
 
-internal class RocketListPresenter internal constructor(
+internal class RocketListPresenter(
         view: View, private val coordinator: RocketListContract.Coordinator) : Presenter, LifecycleObserver, OnLoadRocketListCallbacks {
     private var view: RocketListContract.View? = null
     private var isShowingActiveRockets = false
     private var isShowingFilterOptions = false
     private var viewDoesNotHaveAnyData = true
+    private var rocketIds: ArrayList<String>? = null
 
     init {
         this.view = view
@@ -45,6 +46,7 @@ internal class RocketListPresenter internal constructor(
                 view!!.showRockets(rockets)
             }
         }
+        rocketIds = rockets.getIds()
     }
 
     override fun onRefresh() {
@@ -69,8 +71,8 @@ internal class RocketListPresenter internal constructor(
         }
     }
 
-    override fun onRocketClicked(rocketId: Int) {
-        view!!.navigateToRocketDetails(rocketId)
+    override fun onRocketClicked(rocketId: String) {
+        view!!.navigateToRocketDetails(rocketId, rocketIds)
     }
 
     override fun onFilterRocketsClick() {

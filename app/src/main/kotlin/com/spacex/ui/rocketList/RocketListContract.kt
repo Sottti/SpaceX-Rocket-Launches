@@ -18,7 +18,7 @@ interface RocketListContract {
 
         fun showActiveRocketsFilterAsSelected()
 
-        fun navigateToRocketDetails(rocketId: Int)
+        fun navigateToRocketDetails(rocketId: String, rocketIds: ArrayList<String>?)
 
         fun navigateToWelcomeActivity()
 
@@ -37,7 +37,7 @@ interface RocketListContract {
 
         fun onStart()
 
-        fun onRocketClicked(rocketId: Int)
+        fun onRocketClicked(rocketId: String)
 
         fun onFilterRocketsClick()
 

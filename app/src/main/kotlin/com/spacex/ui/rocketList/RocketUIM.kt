@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 
 data class RocketUIM(
         val id: Int,
+        val stringId: String,
         val name: String,
         val country: String,
         val enginesCount: String,

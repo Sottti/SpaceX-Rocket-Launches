@@ -29,6 +29,13 @@ class RocketListActivity : DaggerAppCompatActivityBase(), RocketListContract.Vie
     private var viewBinding: RocketListBinding? = null
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
+    companion object {
+
+        fun startActivity(context: Context) {
+            context.startActivity(Intent(context, RocketListActivity::class.java))
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, R.layout.rocket_list)
@@ -114,8 +121,8 @@ class RocketListActivity : DaggerAppCompatActivityBase(), RocketListContract.Vie
         }
     }
 
-    override fun onClick(rocketId: Int) {
-        presenter!!.onFilterRocketsClick()
+    override fun onClick(rocketId: String) {
+        presenter!!.onRocketClicked(rocketId)
     }
 
     override fun showAllRocketsFilterAsSelected() {
@@ -128,8 +135,8 @@ class RocketListActivity : DaggerAppCompatActivityBase(), RocketListContract.Vie
         viewBinding!!.includeBottomSheet.filterActiveRocketsTick.visibility = View.VISIBLE
     }
 
-    override fun navigateToRocketDetails(rocketId: Int) {
-        RocketsActivity.startActivity(this)
+    override fun navigateToRocketDetails(rocketId: String, rocketIds: ArrayList<String>?) {
+        RocketsActivity.startActivity(this, rocketIds, rocketId)
     }
 
     override fun navigateToWelcomeActivity() {
@@ -197,12 +204,5 @@ class RocketListActivity : DaggerAppCompatActivityBase(), RocketListContract.Vie
 
     override fun navigateBack() {
         super.onBackPressed()
-    }
-
-    companion object {
-
-        fun startActivity(context: Context) {
-            context.startActivity(Intent(context, RocketListActivity::class.java))
-        }
     }
 }

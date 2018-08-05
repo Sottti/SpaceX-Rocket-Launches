@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.spacex.ui.R
 import com.spacex.ui.databinding.RocketDetailsBinding
-import com.spacex.ui.rocketDetails.RocketDetailsContract.ARGUMENT_ROCKET_ID
 import com.spacex.ui.rocketDetails.launches.RocketLaunchVH
 import com.spacex.ui.rocketDetails.launches.RocketLaunchesAdapter
 import dagger.android.support.DaggerFragment
@@ -23,6 +22,16 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
     private var viewBinding: RocketDetailsBinding? = null
     private var adapter: RocketLaunchesAdapter? = null
     private var myContext: Context? = null
+
+    companion object {
+        fun newInstance(rocketId: String): RocketDetailsFragment {
+            val bundle = Bundle()
+            bundle.putString(RocketDetailsContract.ARGUMENT_ROCKET_ID, rocketId)
+            val rocketDetailsFragment = RocketDetailsFragment()
+            rocketDetailsFragment.arguments = bundle
+            return rocketDetailsFragment
+        }
+    }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -89,16 +98,5 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
     override fun openVideoInYoutubeApp(videoKey: String) {
         val uri = "http://www.youtube.com/watch?v=$videoKey"
         myContext!!.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uri)))
-    }
-
-    companion object {
-
-        fun newInstance(rocketId: String): RocketDetailsFragment {
-            val bundle = Bundle()
-            bundle.putString(ARGUMENT_ROCKET_ID, rocketId)
-            val rocketDetailsFragment = RocketDetailsFragment()
-            rocketDetailsFragment.arguments = bundle
-            return rocketDetailsFragment
-        }
     }
 }

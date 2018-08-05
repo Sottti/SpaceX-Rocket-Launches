@@ -7,7 +7,10 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.spacex.ui.rockets.RocketsContract.Presenter
 import com.spacex.ui.rockets.RocketsContract.View
 
-internal class RocketsPresenter internal constructor(private val view: View) : Presenter, LifecycleObserver {
+internal class RocketsPresenter(
+        private val view: View,
+        private val selectedRocketId: String,
+        private val rocketIds: ArrayList<String>) : Presenter, LifecycleObserver {
 
     init {
         if (view is LifecycleOwner) {
@@ -17,7 +20,7 @@ internal class RocketsPresenter internal constructor(private val view: View) : P
 
     @OnLifecycleEvent(Event.ON_CREATE)
     override fun onCreate() {
-        view.setUpViews()
+        view.setUpViews(selectedRocketId, rocketIds)
     }
 
     override fun onUpNavigation() {

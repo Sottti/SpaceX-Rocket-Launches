@@ -10,14 +10,14 @@ internal class RocketVH(
         private val onRocketClickListener: OnRocketClickListener
 ) : RecyclerView.ViewHolder(viewBinding.root), OnClickListener {
     private val rocketDecorator: RocketUIMDecorator = RocketUIMDecorator(itemView.context)
-    private var rocketId: Int = 0
+    private var rocketId: String = ""
 
     init {
         viewBinding.cardView.setOnClickListener(this)
     }
 
     fun onBind(rocketUIM: RocketUIM) {
-        rocketId = rocketUIM.id
+        rocketId = rocketUIM.stringId
         viewBinding.uim = rocketDecorator.bind(rocketUIM)
     }
 
@@ -26,6 +26,6 @@ internal class RocketVH(
     }
 
     interface OnRocketClickListener {
-        fun onClick(rocketId: Int)
+        fun onClick(rocketId: String)
     }
 }

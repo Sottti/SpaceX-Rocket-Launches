@@ -13,9 +13,23 @@ import com.spacex.ui.R
 import com.spacex.ui.databinding.RocketsBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
 import com.spacex.ui.rocketDetails.RocketDetailsFragment
+import com.spacex.ui.rockets.RocketsContract.ROCKET_IDS
+import com.spacex.ui.rockets.RocketsContract.SELECTED_ROCKET_ID
 import javax.inject.Inject
 
 class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
+
+    companion object {
+
+        fun startActivity(context: Context, rocketIds: ArrayList<String>?, selectedRocketId: String) {
+            val bundle = Bundle()
+            bundle.putString(SELECTED_ROCKET_ID, selectedRocketId)
+            bundle.putStringArrayList(ROCKET_IDS, rocketIds)
+            val intent = Intent(context, RocketsActivity::class.java)
+            intent.putExtras(bundle)
+            context.startActivity(intent)
+        }
+    }
 
     var presenter: RocketsContract.Presenter? = null
         @Inject set
@@ -26,9 +40,9 @@ class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
         viewBinding = DataBindingUtil.setContentView(this, R.layout.rockets)
     }
 
-    override fun setUpViews() {
+    override fun setUpViews(selectedRocketId: String, rocketIds: ArrayList<String>) {
         setUpToolbar()
-        setUpViewPager()
+        setUpViewPager(selectedRocketId, rocketIds)
     }
 
     private fun setUpToolbar() {
@@ -39,18 +53,10 @@ class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
         }
     }
 
-    private fun setUpViewPager() {
-        viewBinding!!.viewPager.adapter = RocketDetailsPagerAdapter(supportFragmentManager)
-    }
-
-    private fun getRocketStringId(i: Int): String {
-        return when (i) {
-            1 -> "falcon1"
-            2 -> "falcon9"
-            3 -> "falconheavy"
-            4 -> "bfr"
-            else -> ""
-        }
+    private fun setUpViewPager(selectedRocketId: String, rocketIds: ArrayList<String>) {
+        viewBinding!!.viewPager.adapter =
+                RocketDetailsPagerAdapter(supportFragmentManager, rocketIds, selectedRocketId)
+        viewBinding!!.viewPager.currentItem = rocketIds.indexOf(selectedRocketId)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -67,21 +73,17 @@ class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
         NavUtils.navigateUpFromSameTask(this)
     }
 
-    private inner class RocketDetailsPagerAdapter internal constructor(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+    private inner class RocketDetailsPagerAdapter internal constructor(
+            fragmentManager: FragmentManager,
+            val rocketIds: ArrayList<String>,
+            val selectedRocketId: String) : FragmentPagerAdapter(fragmentManager) {
 
         override fun getItem(position: Int): Fragment {
-            return RocketDetailsFragment.newInstance(getRocketStringId(position + 1))
+            return RocketDetailsFragment.newInstance(rocketIds[position])
         }
 
         override fun getCount(): Int {
-            return 4
-        }
-    }
-
-    companion object {
-
-        fun startActivity(context: Context) {
-            context.startActivity(Intent(context, RocketsActivity::class.java))
+            return rocketIds.size
         }
     }
 }
