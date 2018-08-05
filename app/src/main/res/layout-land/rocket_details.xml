@@ -175,6 +175,20 @@
       app:constraint_referenced_ids="image,rocket_name,description_icon,description"
       tools:visibility="visible"/>
 
+    <ImageView
+      android:id="@+id/launches_icon"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="@dimen/spacing_16"
+      android:layout_marginStart="@dimen/vertical_keyline_primary"
+      android:tint="@color/icon_black_inactive"
+      android:visibility="gone"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/description"
+      app:srcCompat="@drawable/ic_video_library_white_24dp"
+      tools:ignore="ContentDescription"
+      tools:visibility="visible"/>
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
