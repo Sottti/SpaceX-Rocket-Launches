@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     defaultConfig {
@@ -41,19 +42,18 @@ dependencies {
     implementation project(':domain')
     implementation project(':rockets')
 
+    kapt dagger.daggerCompiler
+    kapt dagger.daggerAndroidProcessor
+
     implementation dagger.dagger
     implementation dagger.daggerAndroid
-    annotationProcessor dagger.daggerCompiler
     implementation dagger.daggerAndroidSupport
+    annotationProcessor dagger.daggerCompiler
     annotationProcessor dagger.daggerAndroidProcessor
 
-    implementation 'com.jjoe64:graphview:4.2.2'
-
-    implementation networking.picasso
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     implementation libraries.timber
+    implementation networking.picasso
+    implementation 'com.jjoe64:graphview:4.2.2'
 
     debugImplementation leakCanary.android
     debugImplementation leakCanary.fragments
@@ -64,4 +64,6 @@ dependencies {
     implementation androidSupportLibraries.appCompat
     implementation androidSupportLibraries.recyclerView
     implementation androidSupportLibraries.constraintLayout
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
