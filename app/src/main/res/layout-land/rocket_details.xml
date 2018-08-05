@@ -47,6 +47,44 @@
       app:layout_constraintTop_toTopOf="parent"
       tools:visibility="gone"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/launches"
+      style="@style/RecyclerView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:paddingTop="0dp"
+      android:visibility="gone"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/guideline_center"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:listitem="@layout/rocket_launch_vh"
+      tools:visibility="visible"/>
+
+    <Space
+      android:id="@+id/guideline_center"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+      android:id="@+id/chart_icon"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_16"
+      android:layout_marginStart="@dimen/vertical_keyline_primary"
+      android:tint="@color/icon_black_inactive"
+      android:visibility="gone"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/image"
+      app:srcCompat="@drawable/ic_show_chart_white_24dp"
+      tools:ignore="ContentDescription"
+      tools:visibility="visible"/>
+
     <ImageView
       android:id="@+id/image"
       android:layout_width="0dp"
@@ -54,7 +92,7 @@
       android:scaleType="centerCrop"
       android:src="@{UIM.image}"
       app:layout_constraintDimensionRatio="16:9"
-      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/guideline_center"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       tools:ignore="ContentDescription"
@@ -71,23 +109,9 @@
       android:gravity="center_vertical"
       android:text="@{UIM.name}"
       app:layout_constraintBottom_toBottomOf="@+id/image"
-      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/guideline_center"
       app:layout_constraintStart_toStartOf="parent"
       tools:text="@string/rocket_name"/>
-
-    <ImageView
-      android:id="@+id/chart_icon"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/spacing_16"
-      android:layout_marginStart="@dimen/vertical_keyline_primary"
-      android:tint="@color/icon_black_inactive"
-      android:visibility="gone"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/image"
-      app:srcCompat="@drawable/ic_show_chart_white_24dp"
-      tools:ignore="ContentDescription"
-      tools:visibility="visible"/>
 
     <TextView
       android:id="@+id/chart_label"
@@ -111,10 +135,9 @@
       android:layout_marginStart="@dimen/vertical_keyline_secondary"
       android:layout_marginEnd="@dimen/spacing_16"
       android:visibility="gone"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/guideline_center"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/chart_label"
+      app:layout_constraintTop_toBottomOf="@id/chart_label"
       tools:visibility="visible"/>
 
     <ImageView
@@ -133,45 +156,16 @@
       android:id="@+id/description"
       style="@style/Body1.Black.Secondary"
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_height="0dp"
       android:layout_marginStart="@dimen/vertical_keyline_secondary"
       android:layout_marginEnd="@dimen/vertical_keyline_primary"
       android:scrollbars="vertical"
       android:text="@{UIM.description}"
-      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/guideline_center"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="@+id/description_icon"
       tools:text="@string/tools_string_rocket_description"/>
-
-    <ImageView
-      android:id="@+id/launches_icon"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/spacing_16"
-      android:layout_marginStart="@dimen/vertical_keyline_primary"
-      android:tint="@color/icon_black_inactive"
-      android:visibility="gone"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/description"
-      app:srcCompat="@drawable/ic_video_library_white_24dp"
-      tools:ignore="ContentDescription"
-      tools:visibility="visible"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/launches"
-      style="@style/RecyclerView"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:layout_marginStart="@dimen/vertical_keyline_secondary"
-      android:paddingTop="0dp"
-      android:visibility="gone"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/launches_icon"
-      tools:listitem="@layout/rocket_launch_vh"
-      tools:visibility="visible"/>
 
     <androidx.constraintlayout.widget.Group
       android:id="@+id/content"

@@ -2,6 +2,7 @@ package com.spacex.ui.rocketDetails
 
 import android.content.Context
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.spacex.ui.rocketDetails.launches.RocketLaunchVH
 import com.spacex.ui.rocketDetails.launches.RocketLaunchesAdapter
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
+
 
 class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, RocketLaunchVH.OnRocketLaunchClickListener {
 
@@ -55,6 +57,9 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
 
     override fun setUpViews() {
         viewBinding!!.launches.setHasFixedSize(true)
+        viewBinding!!.description.movementMethod = ScrollingMovementMethod()
+
+
     }
 
     override fun showRocketDetails(rocketDetails: RocketDetailsUIM) {
@@ -62,7 +67,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
         viewBinding!!.content.visibility = View.VISIBLE
         viewBinding!!.errorView.visibility = View.GONE
         viewBinding!!.emptyView.visibility = View.GONE
-        viewBinding!!.uim = RocketDetailsUIMDecorator(myContext!!, rocketDetails)
+        viewBinding!!.uim = RocketDetailsUIMDecorator(myContext, rocketDetails)
     }
 
     override fun onClick(videoKey: String) {
