@@ -18,10 +18,12 @@ import com.spacex.ui.databinding.RocketListBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
 import com.spacex.ui.isAtLeastLollipop
 import com.spacex.ui.rockets.RocketsActivity
+import com.spacex.ui.thoughts.ThoughtsActivity
 import com.spacex.ui.welcome.WelcomeActivity
 import javax.inject.Inject
 
 class RocketListActivity : DaggerAppCompatActivityBase(), RocketListContract.View, ErrorView.OnRefreshListener, RocketVH.OnRocketClickListener {
+
 
     var presenter: RocketListContract.Presenter? = null
         @Inject set
@@ -143,6 +145,10 @@ class RocketListActivity : DaggerAppCompatActivityBase(), RocketListContract.Vie
         WelcomeActivity.startActivity(this)
     }
 
+    override fun navigateToThoughtsActivity() {
+        ThoughtsActivity.startActivity(this)
+    }
+
     override fun navigateToAboutActivity() {
         AboutActivity.startActivity(this)
     }
@@ -161,6 +167,11 @@ class RocketListActivity : DaggerAppCompatActivityBase(), RocketListContract.Vie
 
             R.id.show_welcome -> {
                 presenter!!.onShowWelcomeClick()
+                return true
+            }
+
+            R.id.thoughts -> {
+                presenter!!.onThoughtsClick()
                 return true
             }
 

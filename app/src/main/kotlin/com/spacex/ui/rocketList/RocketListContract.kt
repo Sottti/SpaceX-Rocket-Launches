@@ -22,6 +22,8 @@ interface RocketListContract {
 
         fun navigateToWelcomeActivity()
 
+        fun navigateToThoughtsActivity()
+
         fun navigateToAboutActivity()
 
         fun showFilterOptions()
@@ -49,6 +51,8 @@ interface RocketListContract {
 
         fun onShowWelcomeClick()
 
+        fun onThoughtsClick()
+
         fun onAboutWelcomeClick()
 
         fun onRefresh()
@@ -58,7 +62,6 @@ interface RocketListContract {
         fun onBackNavigationPressed()
 
         fun onStop()
-
         fun onDestroy()
     }
 

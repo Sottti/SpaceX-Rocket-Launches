@@ -19,8 +19,14 @@
     app:showAsAction="never"/>
 
   <item
-    android:id="@+id/about"
+    android:id="@+id/thoughts"
     android:orderInCategory="2"
+    android:title="@string/rocket_list_menu_thoughts"
+    app:showAsAction="never"/>
+
+  <item
+    android:id="@+id/about"
+    android:orderInCategory="3"
     android:title="@string/rocket_list_menu_about"
     app:showAsAction="never"/>
 </menu>

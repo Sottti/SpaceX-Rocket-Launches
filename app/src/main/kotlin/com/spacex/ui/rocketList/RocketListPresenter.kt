@@ -10,6 +10,7 @@ import com.spacex.ui.rocketList.RocketListContract.View
 
 internal class RocketListPresenter(
         view: View, private val coordinator: RocketListContract.Coordinator) : Presenter, LifecycleObserver, OnLoadRocketListCallbacks {
+
     private var view: RocketListContract.View? = null
     private var isShowingActiveRockets = false
     private var isShowingFilterOptions = false
@@ -110,6 +111,10 @@ internal class RocketListPresenter(
 
     override fun onShowWelcomeClick() {
         view!!.navigateToWelcomeActivity()
+    }
+
+    override fun onThoughtsClick() {
+        view!!.navigateToThoughtsActivity()
     }
 
     override fun onAboutWelcomeClick() {

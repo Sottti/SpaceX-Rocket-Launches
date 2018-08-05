@@ -51,6 +51,12 @@
       android:name="com.spacex.ui.about.AboutActivity"
       android:parentActivityName="com.spacex.ui.rocketList.RocketListActivity"/>
 
+    <activity
+      android:label="@string/thoughts_toolbar_title"
+      android:launchMode="singleTask"
+      android:name="com.spacex.ui.thoughts.ThoughtsActivity"
+      android:parentActivityName="com.spacex.ui.rocketList.RocketListActivity"/>
+
   </application>
 
 </manifest>
