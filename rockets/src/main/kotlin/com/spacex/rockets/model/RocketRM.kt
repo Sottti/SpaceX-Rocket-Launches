@@ -5,7 +5,7 @@ import androidx.room.Entity
 
 
 @Entity(tableName = "Rockets")
-class RocketRM(
+internal class RocketRM(
         id: Int,
         @ColumnInfo(name = "string_id")
         val stringId: String,

@@ -2,7 +2,7 @@ package com.spacex.rockets.model
 
 import com.squareup.moshi.Json
 
-class RocketAM {
+internal class RocketAM {
 
     @field:Json(name = "rocketid")
     var rocketId: Int = 0

@@ -3,7 +3,7 @@ package com.spacex.rockets.model
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
-class RocketLaunchAM {
+internal class RocketLaunchAM {
 
     @PrimaryKey
     @field:Json(name = "mission_name")

@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-object RocketsApiServiceModule {
+internal object RocketsApiServiceModule {
 
     @JvmStatic
     @Provides

@@ -4,7 +4,7 @@ import androidx.room.*
 import com.spacex.rockets.model.RocketRM
 
 @Dao
-interface RocketsDao {
+internal interface RocketsDao {
 
     @Query("select * from Rockets where string_id = (:rocketId)")
     fun loadRocket(rocketId: String): RocketRM?

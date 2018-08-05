@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-class RocketsApiService internal constructor(context: Context) {
+internal class RocketsApiService internal constructor(context: Context) {
 
     private val rocketsService: RocketsService =
             getRocketsRetrofit(context).create(RocketsService::class.java)

@@ -10,7 +10,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module(includes = [(RocketsApiServiceModule::class), (RocketsDaoModule::class)])
-object RocketsDSModule {
+internal object RocketsDSModule {
 
     @JvmStatic
     @Provides

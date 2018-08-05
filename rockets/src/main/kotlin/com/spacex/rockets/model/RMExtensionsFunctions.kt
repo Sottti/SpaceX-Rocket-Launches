@@ -2,7 +2,7 @@ package com.spacex.rockets.model
 
 import com.spacex.rockets.getMillisSince
 
-fun List<BaseRM>.getOldestItemAgeInMillis(): Long {
+internal fun List<BaseRM>.getOldestItemAgeInMillis(): Long {
     var oldestItemAge: Long = 0
     forEach { roomModel ->
         if (roomModel.storedTimestamp > oldestItemAge) {
