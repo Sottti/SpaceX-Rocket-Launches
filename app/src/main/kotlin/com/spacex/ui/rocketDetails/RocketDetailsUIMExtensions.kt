@@ -3,8 +3,8 @@ package com.spacex.ui.rocketDetails
 import androidx.core.content.ContextCompat
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import com.spacex.domain.RocketDM
 import com.spacex.domain.LaunchDM
+import com.spacex.domain.RocketDM
 import com.spacex.ui.R
 import com.spacex.ui.RocketLaunchesApp
 import com.spacex.ui.getImageResId

@@ -2,8 +2,8 @@ package com.spacex.ui.rocketDetails
 
 import android.os.Handler
 import androidx.annotation.WorkerThread
-import com.spacex.domain.RocketDM
 import com.spacex.domain.LaunchDM
+import com.spacex.domain.RocketDM
 import com.spacex.rockets.repository.RocketsRepository
 import com.spacex.rockets.repository.RocketsRepository.OnLoadRocketCallbacks
 import com.spacex.rockets.repository.RocketsRepository.OnLoadRocketLaunchesCallbacks
