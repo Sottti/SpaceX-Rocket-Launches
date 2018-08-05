@@ -19,11 +19,13 @@ internal class ThoughtsPresenter(
     override fun onStart() {
         view.setUpViews();
         view.showThoughts(listOf(
-                ThoughtUIM("Intro", "6/8/18", "ZOxkFh7O7FQ"),
-                ThoughtUIM("Project Structure", "6/8/18", "ZOxkFh7O7FQ"),
-                ThoughtUIM("Architecture/Design Patterns", "6/8/18", "ZOxkFh7O7FQ"),
-                ThoughtUIM("Kotlin", "6/8/18", "ZOxkFh7O7FQ"),
-                ThoughtUIM("Others", "6/8/18", "ZOxkFh7O7FQ")
+                ThoughtUIM("Hello", "6/8/18", "1LQaY0OY1Zo"),
+                ThoughtUIM("Project Structure", "6/8/18", "IgPRC3hVXsI"),
+                ThoughtUIM("Architecture/Design Patterns", "6/8/18", "Bi5J_g-FLDQ"),
+                ThoughtUIM("Coordinator? What Coordinator?", "6/8/18", "jJOQ0xW9BsU"),
+                ThoughtUIM("Kotlin and Me", "6/8/18", "LSWmFUsN9X8"),
+                ThoughtUIM("DI with Dagger", "6/8/18", "IkyKsB-22E0"),
+                ThoughtUIM("Thanks and Sorry", "6/8/18", "yWH0OOHtDdo")
         ))
     }
 
