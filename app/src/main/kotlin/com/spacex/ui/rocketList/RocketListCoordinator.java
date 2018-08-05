@@ -33,7 +33,7 @@ public class RocketListCoordinator implements RocketListContract.Coordinator {
                 new OnLoadRocketsCallbacks() {
                   @Override
                   public void onSuccessLoadingRockets(@NotNull final List<RocketDM> rockets) {
-                    final List<RocketUIM> rocketsUIM = RocketsUIM_ExtenstionsKt.mapToUIM(rockets);
+                    final List<RocketUIM> rocketsUIM = RocketsUIMExtenstionsKt.mapToUIM(rockets);
                     mainThreadHandler.post(() -> callbacks.onSuccessLoadingRocketList(rocketsUIM));
                   }
 
@@ -53,7 +53,7 @@ public class RocketListCoordinator implements RocketListContract.Coordinator {
                   @Override
                   public void onSuccessLoadingRockets(@NotNull final List<RocketDM> rockets) {
                     final List<RocketUIM> rocketsUIM =
-                        RocketsUIM_ExtenstionsKt.mapToUIM(
+                        RocketsUIMExtenstionsKt.mapToUIM(
                             RocketDMExtensionsKt.getActiveRockets(rockets));
                     mainThreadHandler.post(() -> callbacks.onSuccessLoadingRocketList(rocketsUIM));
                   }
