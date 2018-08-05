@@ -1,6 +1,6 @@
 package com.spacex.ui.rocketList
 
-internal interface RocketListContract {
+interface RocketListContract {
 
     interface View {
 

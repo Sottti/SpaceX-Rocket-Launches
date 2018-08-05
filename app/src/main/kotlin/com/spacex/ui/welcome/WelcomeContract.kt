@@ -1,6 +1,6 @@
 package com.spacex.ui.welcome
 
-internal interface WelcomeContract {
+interface WelcomeContract {
 
     interface View {
         fun setUpViews()

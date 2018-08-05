@@ -1,6 +1,6 @@
 package com.spacex.ui.rocketDetails
 
-internal object RocketDetailsContract {
+object RocketDetailsContract {
 
     const val NO_ARGUMENT = ""
     const val ARGUMENT_ROCKET_ID = "rocketId"

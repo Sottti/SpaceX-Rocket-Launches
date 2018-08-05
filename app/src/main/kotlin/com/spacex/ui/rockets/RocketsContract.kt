@@ -1,6 +1,6 @@
 package com.spacex.ui.rockets
 
-internal class RocketsContract {
+class RocketsContract {
 
     interface View {
 
