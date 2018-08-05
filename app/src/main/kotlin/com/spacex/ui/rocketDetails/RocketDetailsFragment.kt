@@ -21,8 +21,8 @@ import javax.inject.Inject
 
 class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, RocketLaunchVH.OnRocketLaunchClickListener {
 
-    var presenter: RocketDetailsContract.Presenter? = null
-        @Inject set
+    @Inject
+    lateinit var presenter: RocketDetailsContract.Presenter
     private var viewBinding: RocketDetailsBinding? = null
     private var adapter: RocketLaunchesAdapter? = null
     private lateinit var myContext: Context
@@ -48,9 +48,9 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
             savedInstanceState: Bundle?): View? {
         if (viewBinding == null) {
             viewBinding = DataBindingUtil.inflate(inflater, R.layout.rocket_details, container, false)
-            presenter!!.onCreateViewForFirstTime()
+            presenter.onCreateViewForFirstTime()
         } else {
-            presenter!!.onViewRecreated(this)
+            presenter.onViewRecreated(this)
         }
         return viewBinding!!.root
     }
@@ -71,7 +71,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
     }
 
     override fun onClick(videoKey: String) {
-        presenter!!.onLaunchClick(videoKey)
+        presenter.onLaunchClick(videoKey)
     }
 
     override fun showChart(chartSeries: LineGraphSeries<DataPoint?>) {
@@ -89,7 +89,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
 
     override fun showLaunches(launches: List<RocketLaunchItemUIM>) {
         viewBinding!!.launches.visibility = View.VISIBLE
-        viewBinding!!.launchesIcon!!.visibility = View.VISIBLE
+        viewBinding!!.launchesIcon.visibility = View.VISIBLE
         if (viewBinding!!.launches.adapter == null) {
             adapter = RocketLaunchesAdapter(launches, this)
             viewBinding!!.launches.adapter = adapter
@@ -100,7 +100,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
 
     override fun hideLaunches() {
         viewBinding!!.launches.visibility = View.GONE
-        viewBinding!!.launchesIcon!!.visibility = View.GONE
+        viewBinding!!.launchesIcon.visibility = View.GONE
     }
 
     override fun showAsEmpty() {

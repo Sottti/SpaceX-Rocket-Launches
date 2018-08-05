@@ -13,12 +13,12 @@ import com.spacex.ui.databinding.ThoughtsBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
 import javax.inject.Inject
 
-class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View, ThoughtsVH.OnThoughtClickListener {
+class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View {
 
     private var adapter: ThoughtsAdapter? = null
-    private var viewBinding: ThoughtsBinding? = null
-    var presenter: ThoughtsContract.Presenter? = null
-        @Inject set
+    private lateinit var viewBinding: ThoughtsBinding
+    @Inject
+    lateinit var presenter: ThoughtsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,29 +30,28 @@ class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View, T
     }
 
     private fun setUpToolbar() {
-        setSupportActionBar(viewBinding!!.includeToolbar.toolbar)
-        if (supportActionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
+        setSupportActionBar(viewBinding.includeToolbar.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun showThoughts(thoughts: List<ThoughtUIM>) {
-        if (viewBinding!!.thoughts.adapter == null) {
-            adapter = ThoughtsAdapter(thoughts, this)
-            viewBinding!!.thoughts.adapter = adapter
-        } else {
-            adapter!!.refreshData(thoughts)
-        }
-    }
+        if (viewBinding.thoughts.adapter == null) {
+            adapter = ThoughtsAdapter(thoughts, object : ThoughtsVH.OnThoughtClickListener {
+                override fun onClick(videoKey: String) {
+                    presenter.onVideoClick(videoKey)
+                }
 
-    override fun onClick(videoKey: String) {
-        presenter!!.onVideoClick(videoKey)
+            })
+            viewBinding.thoughts.adapter = adapter
+        } else {
+            adapter?.refreshData(thoughts)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                presenter!!.onUpNavigation()
+                presenter.onUpNavigation()
                 return true
             }
         }

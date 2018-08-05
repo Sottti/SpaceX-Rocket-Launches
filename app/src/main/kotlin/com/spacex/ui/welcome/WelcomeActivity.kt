@@ -12,9 +12,9 @@ import javax.inject.Inject
 
 class WelcomeActivity : DaggerAppCompatActivityBase(), WelcomeContract.View {
 
-    var presenter: WelcomeContract.Presenter? = null
-        @Inject set
-    private var viewBinding: WelcomeBinding? = null
+    private lateinit var viewBinding: WelcomeBinding
+    @Inject
+    lateinit var presenter: WelcomeContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +22,7 @@ class WelcomeActivity : DaggerAppCompatActivityBase(), WelcomeContract.View {
     }
 
     override fun setUpViews() {
-        viewBinding!!.button.setOnClickListener { presenter!!.onButtonClick() }
+        viewBinding.button.setOnClickListener { presenter.onButtonClick() }
     }
 
     override fun navigateToRocketList() {

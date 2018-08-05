@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.annotation.NonNull
 import androidx.core.app.NavUtils
 import androidx.databinding.DataBindingUtil
 import com.spacex.ui.IntentUtils
@@ -17,9 +16,9 @@ import javax.inject.Inject
 
 class AboutActivity : DaggerAppCompatActivityBase(), AboutContract.View {
 
-    private var viewBinding: AboutBinding? = null
-    var presenter: AboutContract.Presenter? = null
-        @Inject set
+    private lateinit var viewBinding: AboutBinding
+    @Inject
+    lateinit var presenter: AboutContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,24 +27,23 @@ class AboutActivity : DaggerAppCompatActivityBase(), AboutContract.View {
 
     override fun setUpViews() {
         setUpToolbar()
-        viewBinding!!.clickHandler = AboutActivityClickHandler()
+        viewBinding.clickHandler = AboutActivityClickHandler()
         if (isAtLeastLollipop()) {
-            viewBinding!!.header.elevation = resources.getDimension(R.dimen.appbar_elevation)
-            viewBinding!!.image.elevation = resources.getDimension(R.dimen.appbar_elevation)
+            val elevation = resources.getDimension(R.dimen.appbar_elevation)
+            viewBinding.header.elevation = elevation
+            viewBinding.image.elevation = elevation
         }
     }
 
     private fun setUpToolbar() {
-        setSupportActionBar(viewBinding!!.includeToolbar.toolbar)
-        if (supportActionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
+        setSupportActionBar(viewBinding.includeToolbar.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                presenter!!.onUpNavigation()
+                presenter.onUpNavigation()
                 return true
             }
         }
@@ -56,36 +54,37 @@ class AboutActivity : DaggerAppCompatActivityBase(), AboutContract.View {
         NavUtils.navigateUpFromSameTask(this)
     }
 
-    override fun navigateTo(@NonNull url: String) {
+    override fun navigateTo(url: String) {
         IntentUtils.loadChromeCustomTab(this, url)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     inner class AboutActivityClickHandler {
 
-        fun onGithubClick(@NonNull view: View) {
-            presenter!!.onGithubClick()
+        fun onGithubClick(view: View) {
+            presenter.onGithubClick()
         }
 
-        fun onStackOverflowClick(@NonNull view: View) {
-            presenter!!.onStackOverflowClick()
+        fun onStackOverflowClick(view: View) {
+            presenter.onStackOverflowClick()
         }
 
-        fun onMediumClick(@NonNull view: View) {
-            presenter!!.onMediumClick()
+        fun onMediumClick(view: View) {
+            presenter.onMediumClick()
         }
 
-        fun onTwitterClick(@NonNull view: View) {
-            presenter!!.onTwitterClick()
+        fun onTwitterClick(view: View) {
+            presenter.onTwitterClick()
         }
 
-        fun onLinkedInClick(@NonNull view: View) {
-            presenter!!.onLinkedInClick()
+        fun onLinkedInClick(view: View) {
+            presenter.onLinkedInClick()
         }
     }
 
     companion object {
 
-        fun startActivity(@NonNull context: Context) {
+        fun startActivity(context: Context) {
             context.startActivity(Intent(context, AboutActivity::class.java))
         }
     }

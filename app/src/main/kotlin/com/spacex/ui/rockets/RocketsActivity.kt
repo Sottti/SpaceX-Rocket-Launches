@@ -31,9 +31,9 @@ class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
         }
     }
 
-    var presenter: RocketsContract.Presenter? = null
-        @Inject set
-    private var viewBinding: RocketsBinding? = null
+    private lateinit var viewBinding: RocketsBinding
+    @Inject
+    lateinit var presenter: RocketsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,23 +46,21 @@ class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
     }
 
     private fun setUpToolbar() {
-        setSupportActionBar(viewBinding!!.includeToolbar.toolbar)
-        if (supportActionBar != null) {
-            supportActionBar!!.setDisplayShowTitleEnabled(false)
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
+        setSupportActionBar(viewBinding.includeToolbar.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setUpViewPager(selectedRocketId: String, rocketIds: ArrayList<String>) {
-        viewBinding!!.viewPager.adapter =
-                RocketDetailsPagerAdapter(supportFragmentManager, rocketIds, selectedRocketId)
-        viewBinding!!.viewPager.currentItem = rocketIds.indexOf(selectedRocketId)
+        viewBinding.viewPager.adapter =
+                RocketDetailsPagerAdapter(supportFragmentManager, rocketIds)
+        viewBinding.viewPager.currentItem = rocketIds.indexOf(selectedRocketId)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                presenter!!.onUpNavigation()
+                presenter.onUpNavigation()
                 return true
             }
         }
@@ -75,8 +73,7 @@ class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
 
     private inner class RocketDetailsPagerAdapter internal constructor(
             fragmentManager: FragmentManager,
-            val rocketIds: ArrayList<String>,
-            val selectedRocketId: String) : FragmentPagerAdapter(fragmentManager) {
+            val rocketIds: ArrayList<String>) : FragmentPagerAdapter(fragmentManager) {
 
         override fun getItem(position: Int): Fragment {
             return RocketDetailsFragment.newInstance(rocketIds[position])
