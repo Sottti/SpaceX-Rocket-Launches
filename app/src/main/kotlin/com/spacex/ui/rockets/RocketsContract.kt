@@ -1,15 +1,15 @@
 package com.spacex.ui.rockets
 
-internal class RocketsContract {
+class RocketsContract {
 
-    internal interface View {
+    interface View {
 
         fun setUpViews()
 
         fun navigateUp()
     }
 
-    internal interface Presenter {
+    interface Presenter {
 
         fun onCreate()
 
