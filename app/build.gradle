@@ -48,8 +48,6 @@ dependencies {
     implementation dagger.dagger
     implementation dagger.daggerAndroid
     implementation dagger.daggerAndroidSupport
-    annotationProcessor dagger.daggerCompiler
-    annotationProcessor dagger.daggerAndroidProcessor
 
     implementation libraries.timber
     implementation networking.picasso
