@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-abstract class WelcomeModule {
+internal abstract class WelcomeModule {
 
     @Binds
     abstract fun bindView(welcomeActivity: WelcomeActivity): WelcomeContract.View

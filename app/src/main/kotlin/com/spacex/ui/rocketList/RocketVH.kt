@@ -5,7 +5,7 @@ import android.view.View.OnClickListener
 import androidx.recyclerview.widget.RecyclerView
 import com.spacex.ui.databinding.RocketVhBinding
 
-class RocketVH(
+internal class RocketVH(
         private val viewBinding: RocketVhBinding,
         private val onRocketClickListener: OnRocketClickListener
 ) : RecyclerView.ViewHolder(viewBinding.root), OnClickListener {

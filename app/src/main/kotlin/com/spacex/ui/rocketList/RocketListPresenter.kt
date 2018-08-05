@@ -8,7 +8,7 @@ import com.spacex.ui.rocketList.RocketListContract.Coordinator.OnLoadRocketListC
 import com.spacex.ui.rocketList.RocketListContract.Presenter
 import com.spacex.ui.rocketList.RocketListContract.View
 
-class RocketListPresenter internal constructor(
+internal class RocketListPresenter internal constructor(
         view: View, private val coordinator: RocketListContract.Coordinator) : Presenter, LifecycleObserver, OnLoadRocketListCallbacks {
     private var view: RocketListContract.View? = null
     private var isShowingActiveRockets = false

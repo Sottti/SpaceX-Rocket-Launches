@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-abstract class RocketsModule {
+internal abstract class RocketsModule {
 
     @Binds
     abstract fun bindView(rocketsActivity: RocketsActivity): RocketsContract.View

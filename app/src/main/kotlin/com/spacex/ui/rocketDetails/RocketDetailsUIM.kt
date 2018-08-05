@@ -5,7 +5,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
 
-data class RocketDetailsUIM(
+internal data class RocketDetailsUIM(
         @param:DrawableRes @get:DrawableRes
         internal val imageResId: Int,
         val name: String,

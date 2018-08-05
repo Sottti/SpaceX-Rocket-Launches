@@ -2,7 +2,7 @@ package com.spacex.ui.rocketList
 
 import androidx.annotation.DrawableRes
 
-data class RocketUIM(
+internal data class RocketUIM(
         val id: Int,
         val name: String,
         val country: String,

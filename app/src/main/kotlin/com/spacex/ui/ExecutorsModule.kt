@@ -8,7 +8,7 @@ import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 @Module
-object ExecutorsModule {
+internal object ExecutorsModule {
 
     @JvmStatic
     @Provides

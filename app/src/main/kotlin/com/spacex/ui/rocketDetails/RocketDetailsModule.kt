@@ -10,7 +10,7 @@ import dagger.Provides
 import java.util.concurrent.Executor
 
 @Module(includes = [RocketsRepositoryModule::class, ExecutorsModule::class])
-abstract class RocketDetailsModule {
+internal abstract class RocketDetailsModule {
 
     @Binds
     abstract fun bindView(rocketDetailsFragment: RocketDetailsFragment): RocketDetailsContract.View

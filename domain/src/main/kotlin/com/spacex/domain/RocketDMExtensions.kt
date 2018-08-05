@@ -1,5 +1,5 @@
 package com.spacex.domain
 
-fun List<RocketDM>.getActiveRockets(): List<RocketDM> {
+internal fun List<RocketDM>.getActiveRockets(): List<RocketDM> {
     return filter { rocket -> rocket.isActive }
 }

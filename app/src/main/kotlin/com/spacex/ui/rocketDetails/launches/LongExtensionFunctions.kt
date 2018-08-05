@@ -4,17 +4,17 @@ import android.text.format.DateUtils
 import android.text.format.DateUtils.*
 import java.util.*
 
-fun Long.getYear(): Int {
+internal fun Long.getYear(): Int {
     val calendar = Calendar.getInstance()
     calendar.timeInMillis = this
     return calendar.get(Calendar.YEAR)
 }
 
-fun Long.isCurrentYear(): Boolean {
+internal fun Long.isCurrentYear(): Boolean {
     return Calendar.getInstance().get(Calendar.YEAR) == this.getYear()
 }
 
-fun Long.getEitherDayAndMonthWithOptionallyWeekdayAndYearOrRelativeTimeSpan(): String {
+internal fun Long.getEitherDayAndMonthWithOptionallyWeekdayAndYearOrRelativeTimeSpan(): String {
     val isCurrentYear = isCurrentYear()
     var flags = (FORMAT_SHOW_DATE
             or (if (isCurrentYear) FORMAT_NO_YEAR else FORMAT_SHOW_YEAR)

@@ -12,7 +12,7 @@ import com.spacex.ui.rocketDetails.launches.RocketLaunchHeaderUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchUIM
 
-fun RocketDM.mapToUIM(launches: List<RocketLaunchDM>): RocketDetailsUIM {
+internal fun RocketDM.mapToUIM(launches: List<RocketLaunchDM>): RocketDetailsUIM {
     val launchesList = launches.toUIM().sortedWith(compareBy { it.date })
     return RocketDetailsUIM(
             getImageResId(stringId),
@@ -23,11 +23,11 @@ fun RocketDM.mapToUIM(launches: List<RocketLaunchDM>): RocketDetailsUIM {
     )
 }
 
-fun List<RocketLaunchDM>.toUIM(): List<RocketLaunchUIM> {
+internal fun List<RocketLaunchDM>.toUIM(): List<RocketLaunchUIM> {
     return List(size) { i -> this[i].toUIM() }
 }
 
-fun List<RocketLaunchUIM>.addYearHeaders(): List<RocketLaunchItemUIM> {
+internal fun List<RocketLaunchUIM>.addYearHeaders(): List<RocketLaunchItemUIM> {
     val items = ArrayList<RocketLaunchItemUIM>()
     var currentYear: Int
     var previousYear = -1
@@ -44,15 +44,15 @@ fun List<RocketLaunchUIM>.addYearHeaders(): List<RocketLaunchItemUIM> {
     return items
 }
 
-fun RocketLaunchDM.toUIM(): RocketLaunchUIM {
+internal fun RocketLaunchDM.toUIM(): RocketLaunchUIM {
     return RocketLaunchUIM(missionName, year, date, wasSuccessful, videoLink, wikipediaLink, missionPatchLink)
 }
 
-fun getNumberOfLaunches(year: Int, launchesPerYear: MutableMap<Int, Int>): Int {
+internal fun getNumberOfLaunches(year: Int, launchesPerYear: MutableMap<Int, Int>): Int {
     return if (launchesPerYear.containsKey(year)) launchesPerYear.getValue(year) + 1 else 1
 }
 
-fun List<RocketLaunchUIM>.generateChartData(): LineGraphSeries<DataPoint?> {
+internal fun List<RocketLaunchUIM>.generateChartData(): LineGraphSeries<DataPoint?> {
     val launchesPerYear: MutableMap<Int, Int> = mutableMapOf()
     forEach { launch -> launchesPerYear[launch.year] = getNumberOfLaunches(launch.year, launchesPerYear) }
 

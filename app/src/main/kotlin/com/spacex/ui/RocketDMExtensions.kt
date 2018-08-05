@@ -2,7 +2,7 @@ package com.spacex.ui
 
 import com.spacex.domain.RocketDM
 
-fun RocketDM.getImageResId(stringId: String): Int {
+internal fun RocketDM.getImageResId(stringId: String): Int {
     return when (stringId) {
         "falcon1" -> R.drawable.rocket_falcon_1;
         "falcon9" -> R.drawable.rocket_falcon_9;

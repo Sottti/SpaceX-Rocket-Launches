@@ -6,7 +6,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class AppModule {
+internal abstract class AppModule {
 
     @Binds
     internal abstract fun provideContext(application: Application): Context

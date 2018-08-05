@@ -7,7 +7,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.spacex.ui.rockets.RocketsContract.Presenter
 import com.spacex.ui.rockets.RocketsContract.View
 
-class RocketsPresenter internal constructor(private val view: View) : Presenter, LifecycleObserver {
+internal class RocketsPresenter internal constructor(private val view: View) : Presenter, LifecycleObserver {
 
     init {
         if (view is LifecycleOwner) {

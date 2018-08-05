@@ -2,7 +2,7 @@ package com.spacex.ui.rocketDetails.launches
 
 import com.spacex.ui.R
 
-data class RocketLaunchUIM(
+internal data class RocketLaunchUIM(
         val missionName: String,
         val year: Int,
         val date: Long,

@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.spacex.ui.R
 import com.spacex.ui.databinding.ErrorViewBinding
 
-class ErrorView @JvmOverloads constructor(
+internal class ErrorView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr) {

@@ -8,7 +8,7 @@ import com.spacex.ui.rocketDetails.RocketDetailsContract.Coordinator.OnLoadRocke
 import com.spacex.ui.rocketDetails.RocketDetailsContract.Presenter
 import com.spacex.ui.rocketDetails.RocketDetailsContract.View
 
-class RocketDetailsPresenter(
+internal class RocketDetailsPresenter(
         private var view: View?,
         private val rocketId: String,
         private val coordinator: RocketDetailsContract.Coordinator
