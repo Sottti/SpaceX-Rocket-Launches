@@ -3,7 +3,7 @@ package com.spacex.ui.rocketDetails
 import android.os.Handler
 import androidx.annotation.WorkerThread
 import com.spacex.domain.RocketDM
-import com.spacex.domain.RocketLaunchDM
+import com.spacex.domain.LaunchDM
 import com.spacex.rockets.repository.RocketsRepository
 import com.spacex.rockets.repository.RocketsRepository.OnLoadRocketCallbacks
 import com.spacex.rockets.repository.RocketsRepository.OnLoadRocketLaunchesCallbacks
@@ -35,8 +35,8 @@ class RocketDetailsCoordinator internal constructor(
             rocket: RocketDM,
             callbacks: RocketDetailsContract.Coordinator.OnLoadRocketDetailsCallbacks) {
         rocketsRepository.loadRocketLaunches(rocket.stringId, object : OnLoadRocketLaunchesCallbacks {
-            override fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>) {
-                val rocketDetailsUIM = rocket.mapToUIM(rocketLaunches)
+            override fun onSuccessLoadingRocketLaunches(launches: List<LaunchDM>) {
+                val rocketDetailsUIM = rocket.mapToUIM(launches)
                 mainThreadHandler.post { callbacks.onSuccessLoadingRocketDetails(rocketDetailsUIM) }
             }
 

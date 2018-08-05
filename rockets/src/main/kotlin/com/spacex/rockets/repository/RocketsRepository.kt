@@ -1,8 +1,8 @@
 package com.spacex.rockets.repository
 
 import androidx.annotation.WorkerThread
+import com.spacex.domain.LaunchDM
 import com.spacex.domain.RocketDM
-import com.spacex.domain.RocketLaunchDM
 
 interface RocketsRepository {
 
@@ -31,7 +31,7 @@ interface RocketsRepository {
 
     interface OnLoadRocketLaunchesCallbacks {
 
-        fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>)
+        fun onSuccessLoadingRocketLaunches(launches: List<LaunchDM>)
 
         fun onErrorLoadingRocketLaunches()
     }

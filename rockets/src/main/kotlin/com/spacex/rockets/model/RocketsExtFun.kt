@@ -8,6 +8,7 @@ internal fun List<RocketAM>.toDM(): List<RocketDM> {
     return List(size) { i -> this[i].toDM() }
 }
 
+@JvmName("mapDMToDR")
 internal fun List<RocketDM>.toRM(): List<RocketRM> {
     return List(size) { i -> this[i].toRM() }
 }

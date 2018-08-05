@@ -1,8 +1,8 @@
 package com.spacex.rockets.repository
 
 import androidx.annotation.WorkerThread
+import com.spacex.domain.LaunchDM
 import com.spacex.domain.RocketDM
-import com.spacex.domain.RocketLaunchDM
 import com.spacex.domain.getComplementary
 import com.spacex.rockets.datasources.RocketsDS
 import com.spacex.rockets.datasources.RocketsDS.Local.Companion.ROCKETS_EXPIRATION_TIME_IN_MILLIS
@@ -87,14 +87,14 @@ internal class RocketsRepositoryImpl(
 
     override fun loadRocketLaunches(rocketId: String, callbacks: RocketsRepository.OnLoadRocketLaunchesCallbacks) {
         localDS.loadRocketLaunches(rocketId, object : RocketsDS.Local.OnLoadRocketLaunchesCallbacks {
-            override fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>, oldestLaunchAgeInMillis: Long) {
-                callbacks.onSuccessLoadingRocketLaunches(rocketLaunches)
+            override fun onSuccessLoadingLaunches(launches: List<LaunchDM>, oldestLaunchAgeInMillis: Long) {
+                callbacks.onSuccessLoadingRocketLaunches(launches)
                 if (oldestLaunchAgeInMillis > ROCKET_LAUNCHES_EXPIRATION_TIME_IN_MILLIS) {
-                    loadRocketLaunchesFromRemoteDS(rocketId, callbacks, false, rocketLaunches)
+                    loadRocketLaunchesFromRemoteDS(rocketId, callbacks, false, launches)
                 }
             }
 
-            override fun onRocketLaunchesNotFound() {
+            override fun onLaunchesNotFound() {
                 loadRocketLaunchesFromRemoteDS(rocketId, callbacks)
             }
 
@@ -106,12 +106,12 @@ internal class RocketsRepositoryImpl(
             rocketId: String,
             callbacks: RocketsRepository.OnLoadRocketLaunchesCallbacks,
             propagateError: Boolean = true,
-            rocketsFoundLocally: List<RocketLaunchDM> = emptyList()) {
+            rocketsFoundLocally: List<LaunchDM> = emptyList()) {
         remoteDS.loadRocketLaunches(rocketId, object : RocketsDS.Remote.OnLoadRocketLaunchesCallbacks {
-            override fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>) {
-                localDS.insertOrReplaceRocketLaunches(rocketLaunches)
-                deleteComplementaryRocketLaunchesFromLocalDS(rocketLaunches, rocketsFoundLocally)
-                callbacks.onSuccessLoadingRocketLaunches(rocketLaunches)
+            override fun onSuccessLoadingRocketLaunches(launches: List<LaunchDM>) {
+                localDS.insertOrReplaceRocketLaunches(launches)
+                deleteComplementaryRocketLaunchesFromLocalDS(launches, rocketsFoundLocally)
+                callbacks.onSuccessLoadingRocketLaunches(launches)
             }
 
             override fun onErrorLoadingRocketLaunches() {
@@ -133,8 +133,8 @@ internal class RocketsRepositoryImpl(
 
     @WorkerThread
     private fun deleteComplementaryRocketLaunchesFromLocalDS(
-            rocketsFromRemote: List<RocketLaunchDM>,
-            rocketsFromLocal: List<RocketLaunchDM>) {
+            rocketsFromRemote: List<LaunchDM>,
+            rocketsFromLocal: List<LaunchDM>) {
         if (rocketsFromLocal.isNotEmpty()) {
             localDS.deleteRocketsLaunches(rocketsFromRemote.getComplementary(rocketsFromLocal))
         }

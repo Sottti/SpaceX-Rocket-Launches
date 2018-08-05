@@ -1,8 +1,8 @@
 package com.spacex.rockets.datasources
 
 import androidx.annotation.WorkerThread
+import com.spacex.domain.LaunchDM
 import com.spacex.domain.RocketDM
-import com.spacex.domain.RocketLaunchDM
 
 interface RocketsDS {
 
@@ -29,13 +29,13 @@ interface RocketsDS {
         fun insertOrReplaceRockets(rockets: List<RocketDM>)
 
         @WorkerThread
-        fun insertOrReplaceRocketLaunches(rocketLaunches: List<RocketLaunchDM>)
+        fun insertOrReplaceRocketLaunches(launches: List<LaunchDM>)
 
         @WorkerThread
         fun deleteRockets(rockets: List<RocketDM>)
 
         @WorkerThread
-        fun deleteRocketsLaunches(rockets: List<RocketLaunchDM>)
+        fun deleteRocketsLaunches(launches: List<LaunchDM>)
 
         interface OnLoadRocketsCallbacks {
 
@@ -53,9 +53,9 @@ interface RocketsDS {
 
         interface OnLoadRocketLaunchesCallbacks {
 
-            fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>, oldestLaunchAgeInMillis: Long)
+            fun onSuccessLoadingLaunches(launches: List<LaunchDM>, oldestLaunchAgeInMillis: Long)
 
-            fun onRocketLaunchesNotFound()
+            fun onLaunchesNotFound()
         }
     }
 
@@ -88,7 +88,7 @@ interface RocketsDS {
 
         interface OnLoadRocketLaunchesCallbacks {
 
-            fun onSuccessLoadingRocketLaunches(rocketLaunches: List<RocketLaunchDM>)
+            fun onSuccessLoadingRocketLaunches(launches: List<LaunchDM>)
 
             fun onErrorLoadingRocketLaunches()
         }

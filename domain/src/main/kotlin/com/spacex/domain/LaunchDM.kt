@@ -1,7 +1,8 @@
 package com.spacex.domain
 
-data class RocketLaunchDM(
+data class LaunchDM(
         val missionName: String,
+        val rocketId : String,
         val date: Long,
         val year: Int,
         val wasSuccessful: Boolean,

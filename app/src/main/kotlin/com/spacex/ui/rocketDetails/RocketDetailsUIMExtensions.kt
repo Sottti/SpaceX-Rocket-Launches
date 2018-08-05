@@ -4,7 +4,7 @@ import androidx.core.content.ContextCompat
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.spacex.domain.RocketDM
-import com.spacex.domain.RocketLaunchDM
+import com.spacex.domain.LaunchDM
 import com.spacex.ui.R
 import com.spacex.ui.RocketLaunchesApp
 import com.spacex.ui.getImageResId
@@ -12,7 +12,7 @@ import com.spacex.ui.rocketDetails.launches.RocketLaunchHeaderUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchUIM
 
-internal fun RocketDM.mapToUIM(launches: List<RocketLaunchDM>): RocketDetailsUIM {
+internal fun RocketDM.mapToUIM(launches: List<LaunchDM>): RocketDetailsUIM {
     val launchesList = launches.toUIM().sortedWith(compareBy { it.date })
     return RocketDetailsUIM(
             getImageResId(stringId),
@@ -23,7 +23,7 @@ internal fun RocketDM.mapToUIM(launches: List<RocketLaunchDM>): RocketDetailsUIM
     )
 }
 
-internal fun List<RocketLaunchDM>.toUIM(): List<RocketLaunchUIM> {
+internal fun List<LaunchDM>.toUIM(): List<RocketLaunchUIM> {
     return List(size) { i -> this[i].toUIM() }
 }
 
@@ -44,7 +44,7 @@ internal fun List<RocketLaunchUIM>.addYearHeaders(): List<RocketLaunchItemUIM> {
     return items
 }
 
-internal fun RocketLaunchDM.toUIM(): RocketLaunchUIM {
+internal fun LaunchDM.toUIM(): RocketLaunchUIM {
     return RocketLaunchUIM(missionName, year, date, wasSuccessful, videoLink, wikipediaLink, missionPatchLink)
 }
 

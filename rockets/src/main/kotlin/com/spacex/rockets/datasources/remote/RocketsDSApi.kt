@@ -2,8 +2,8 @@ package com.spacex.rockets.datasources.remote
 
 import androidx.annotation.WorkerThread
 import com.spacex.rockets.datasources.RocketsDS
+import com.spacex.rockets.model.LaunchAM
 import com.spacex.rockets.model.RocketAM
-import com.spacex.rockets.model.RocketLaunchAM
 import com.spacex.rockets.model.toDM
 import retrofit2.Call
 import retrofit2.Callback
@@ -13,7 +13,7 @@ import timber.log.Timber
 internal class RocketsDSApi(private val service: RocketsApiService) : RocketsDS.Remote {
 
     private var loadRocket: Call<RocketAM>? = null
-    private var loadRocketLaunches: Call<List<RocketLaunchAM>>? = null
+    private var mLoadLaunches: Call<List<LaunchAM>>? = null
     private var loadAllRockets: Call<List<RocketAM>>? = null
 
     @WorkerThread
@@ -64,9 +64,9 @@ internal class RocketsDSApi(private val service: RocketsApiService) : RocketsDS.
     }
 
     override fun loadRocketLaunches(rocketId: String, callbacks: RocketsDS.Remote.OnLoadRocketLaunchesCallbacks) {
-        loadRocketLaunches = service.loadRocketLaunches(rocketId)
-        loadRocketLaunches!!.enqueue(object : Callback<List<RocketLaunchAM>> {
-            override fun onResponse(call: Call<List<RocketLaunchAM>>, response: Response<List<RocketLaunchAM>>) {
+        mLoadLaunches = service.loadRocketLaunches(rocketId)
+        mLoadLaunches!!.enqueue(object : Callback<List<LaunchAM>> {
+            override fun onResponse(call: Call<List<LaunchAM>>, response: Response<List<LaunchAM>>) {
                 val launches = response.body()
                 if (response.isSuccessful && launches != null) {
                     Timber.d("Received ${launches.size} rocket launches from the API")
@@ -77,7 +77,7 @@ internal class RocketsDSApi(private val service: RocketsApiService) : RocketsDS.
                 }
             }
 
-            override fun onFailure(call: Call<List<RocketLaunchAM>>, t: Throwable) {
+            override fun onFailure(call: Call<List<LaunchAM>>, t: Throwable) {
                 if (!call.isCanceled) {
                     callbacks.onErrorLoadingRocketLaunches()
                     Timber.d("Loading rockets launches from the API cancelled")
@@ -89,6 +89,6 @@ internal class RocketsDSApi(private val service: RocketsApiService) : RocketsDS.
     override fun cancel() {
         loadRocket?.cancel()
         loadAllRockets?.cancel()
-        loadRocketLaunches?.cancel()
+        mLoadLaunches?.cancel()
     }
 }

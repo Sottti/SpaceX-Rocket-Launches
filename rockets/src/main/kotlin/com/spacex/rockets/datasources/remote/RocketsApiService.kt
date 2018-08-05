@@ -1,8 +1,8 @@
 package com.spacex.rockets.datasources.remote
 
 import android.content.Context
+import com.spacex.rockets.model.LaunchAM
 import com.spacex.rockets.model.RocketAM
-import com.spacex.rockets.model.RocketLaunchAM
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,7 +21,7 @@ internal class RocketsApiService internal constructor(context: Context) {
         return rocketsService.loadRocket(rocketId)
     }
 
-    fun loadRocketLaunches(rocketId: String): Call<List<RocketLaunchAM>> {
+    fun loadRocketLaunches(rocketId: String): Call<List<LaunchAM>> {
         return rocketsService.loadRocketLaunches(rocketId)
     }
 
@@ -33,6 +33,6 @@ internal class RocketsApiService internal constructor(context: Context) {
         fun loadRocket(@Path("rocketId") rocketId: String): Call<RocketAM>
 
         @GET("/v2/launches")
-        fun loadRocketLaunches(@Query("rocket_id") rocketId: String): Call<List<RocketLaunchAM>>
+        fun loadRocketLaunches(@Query("rocket_id") rocketId: String): Call<List<LaunchAM>>
     }
 }
