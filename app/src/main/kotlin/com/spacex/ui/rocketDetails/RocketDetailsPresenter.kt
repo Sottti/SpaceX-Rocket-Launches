@@ -38,6 +38,18 @@ internal class RocketDetailsPresenter(
         if (view != null) {
             view!!.showRocketDetails(rocketDetails)
         }
+
+        if (rocketDetails.chartSeries.isEmpty) {
+            view!!.hideChart()
+        } else {
+            view!!.showChart(rocketDetails.chartSeries)
+        }
+
+        if (rocketDetails.launches.isEmpty()) {
+            view!!.hideLaunches()
+        } else {
+            view!!.showLaunches(rocketDetails.launches)
+        }
     }
 
     override fun onErrorLoadingRocketDetails() {

@@ -1,5 +1,9 @@
 package com.spacex.ui.rocketDetails
 
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
+import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
+
 object RocketDetailsContract {
 
     const val NO_ARGUMENT = ""
@@ -13,10 +17,19 @@ object RocketDetailsContract {
 
         fun openVideoInYoutubeApp(videoKey: String)
 
-        fun showAsEmpty()
+        fun showAsLoading()
 
         fun showAsErrorLoading()
-        fun showAsLoading()
+
+        fun showAsEmpty()
+
+        fun showChart(chartSeries: LineGraphSeries<DataPoint?>)
+
+        fun hideChart()
+
+        fun showLaunches(launches: List<RocketLaunchItemUIM>)
+
+        fun hideLaunches()
     }
 
     interface Presenter {

@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
 import com.spacex.ui.R
 import com.spacex.ui.databinding.RocketDetailsBinding
+import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchVH
 import com.spacex.ui.rocketDetails.launches.RocketLaunchesAdapter
 import dagger.android.support.DaggerFragment
@@ -52,7 +55,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
     }
 
     override fun setUpViews() {
-        viewBinding!!.recyclerView.setHasFixedSize(true)
+        viewBinding!!.launches.setHasFixedSize(true)
     }
 
     override fun showRocketDetails(rocketDetails: RocketDetailsUIM) {
@@ -61,17 +64,39 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
         viewBinding!!.errorView.visibility = View.GONE
         viewBinding!!.emptyView.visibility = View.GONE
         viewBinding!!.uim = RocketDetailsUIMDecorator(myContext!!, rocketDetails)
-        if (viewBinding!!.recyclerView.adapter == null) {
-            adapter = RocketLaunchesAdapter(rocketDetails.launches, this)
-            viewBinding!!.recyclerView.adapter = adapter
-        } else {
-            adapter!!.refreshData(rocketDetails.launches)
-        }
-        viewBinding!!.chart.addSeries(rocketDetails.chartSeries)
     }
 
     override fun onClick(videoKey: String) {
         presenter!!.onLaunchClick(videoKey)
+    }
+
+    override fun showChart(chartSeries: LineGraphSeries<DataPoint?>) {
+        viewBinding!!.chartIcon.visibility = View.VISIBLE
+        viewBinding!!.chartLabel.visibility = View.VISIBLE
+        viewBinding!!.chart.visibility = View.VISIBLE
+        viewBinding!!.chart.addSeries(chartSeries)
+    }
+
+    override fun hideChart() {
+        viewBinding!!.chartIcon.visibility = View.GONE
+        viewBinding!!.chartLabel.visibility = View.GONE
+        viewBinding!!.chart.visibility = View.GONE
+    }
+
+    override fun showLaunches(launches: List<RocketLaunchItemUIM>) {
+        viewBinding!!.launches.visibility = View.VISIBLE
+        viewBinding!!.launchesIcon.visibility = View.VISIBLE
+        if (viewBinding!!.launches.adapter == null) {
+            adapter = RocketLaunchesAdapter(launches, this)
+            viewBinding!!.launches.adapter = adapter
+        } else {
+            adapter!!.refreshData(launches)
+        }
+    }
+
+    override fun hideLaunches() {
+        viewBinding!!.launches.visibility = View.GONE
+        viewBinding!!.launchesIcon.visibility = View.GONE
     }
 
     override fun showAsEmpty() {

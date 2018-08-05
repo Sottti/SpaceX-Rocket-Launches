@@ -149,7 +149,7 @@
       tools:ignore="ContentDescription"/>
 
     <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recycler_view"
+      android:id="@+id/launches"
       style="@style/RecyclerView"
       android:layout_width="0dp"
       android:layout_height="0dp"
@@ -166,7 +166,8 @@
       android:id="@+id/content"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:constraint_referenced_ids="image,rocket_name,chart_icon,chart_label,chart,description_icon,description,launches_icon,recycler_view"/>
+      android:visibility="gone"
+      app:constraint_referenced_ids="image,rocket_name,description_icon,description"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
