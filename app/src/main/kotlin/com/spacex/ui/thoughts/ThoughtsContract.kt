@@ -9,11 +9,15 @@ class ThoughtsContract {
         fun navigateUp()
 
         fun showThoughts(thoughts: List<ThoughtUIM>)
+
+        fun navigateToVideo(videoKey: String)
     }
 
     interface Presenter {
 
         fun onStart()
+
+        fun onVideoClick(videoKey: String)
 
         fun onUpNavigation()
     }

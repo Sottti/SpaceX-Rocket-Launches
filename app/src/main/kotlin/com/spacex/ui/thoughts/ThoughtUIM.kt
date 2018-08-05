@@ -1,6 +1,6 @@
 package com.spacex.ui.thoughts
 
 data class ThoughtUIM(
-        val name: String,
+        val title: String,
         val date: String,
         val videoKey: String)

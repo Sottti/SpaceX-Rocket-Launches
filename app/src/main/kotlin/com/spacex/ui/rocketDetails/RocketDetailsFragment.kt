@@ -1,8 +1,6 @@
 package com.spacex.ui.rocketDetails
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import com.spacex.ui.IntentUtils
 import com.spacex.ui.R
 import com.spacex.ui.databinding.RocketDetailsBinding
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
@@ -24,7 +23,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
         @Inject set
     private var viewBinding: RocketDetailsBinding? = null
     private var adapter: RocketLaunchesAdapter? = null
-    private var myContext: Context? = null
+    private lateinit var myContext: Context
 
     companion object {
         fun newInstance(rocketId: String): RocketDetailsFragment {
@@ -36,7 +35,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         this.myContext = context
     }
@@ -120,8 +119,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
         viewBinding!!.content.visibility = View.GONE
     }
 
-    override fun openVideoInYoutubeApp(videoKey: String) {
-        val uri = "http://www.youtube.com/watch?v=$videoKey"
-        myContext!!.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uri)))
+    override fun navigateToVideo(videoKey: String) {
+        IntentUtils.openVideoInYoutubeApp(myContext, videoKey)
     }
 }

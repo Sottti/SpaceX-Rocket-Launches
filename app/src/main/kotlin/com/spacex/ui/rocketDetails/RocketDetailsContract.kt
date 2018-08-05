@@ -15,7 +15,7 @@ object RocketDetailsContract {
 
         fun showRocketDetails(rocketDetails: RocketDetailsUIM)
 
-        fun openVideoInYoutubeApp(videoKey: String)
+        fun navigateToVideo(videoKey: String)
 
         fun showAsLoading()
 

@@ -59,7 +59,7 @@ internal class RocketDetailsPresenter(
     }
 
     override fun onLaunchClick(videoKey: String) {
-        view!!.openVideoInYoutubeApp(videoKey)
+        view!!.navigateToVideo(videoKey)
     }
 
     @OnLifecycleEvent(Event.ON_STOP)

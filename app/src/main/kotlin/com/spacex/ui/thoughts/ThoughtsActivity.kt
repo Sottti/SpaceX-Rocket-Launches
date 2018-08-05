@@ -7,10 +7,10 @@ import android.view.MenuItem
 import androidx.annotation.NonNull
 import androidx.core.app.NavUtils
 import androidx.databinding.DataBindingUtil
+import com.spacex.ui.IntentUtils
 import com.spacex.ui.R
 import com.spacex.ui.databinding.ThoughtsBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
-import com.spacex.ui.rocketList.RocketListAdapter
 import javax.inject.Inject
 
 class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View, ThoughtsVH.OnThoughtClickListener {
@@ -37,16 +37,16 @@ class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View, T
     }
 
     override fun showThoughts(thoughts: List<ThoughtUIM>) {
-        if (viewBinding!!.toughts.adapter == null) {
+        if (viewBinding!!.thoughts.adapter == null) {
             adapter = ThoughtsAdapter(thoughts, this)
-            viewBinding!!.toughts.adapter = adapter
+            viewBinding!!.thoughts.adapter = adapter
         } else {
             adapter!!.refreshData(thoughts)
         }
     }
 
     override fun onClick(videoKey: String) {
-
+        presenter!!.onVideoClick(videoKey)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -61,6 +61,10 @@ class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View, T
 
     override fun navigateUp() {
         NavUtils.navigateUpFromSameTask(this)
+    }
+
+    override fun navigateToVideo(videoKey: String) {
+        IntentUtils.openVideoInYoutubeApp(this, videoKey)
     }
 
     companion object {
