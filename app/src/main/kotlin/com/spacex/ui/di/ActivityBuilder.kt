@@ -1,5 +1,7 @@
 package com.spacex.ui.di
 
+import com.spacex.ui.about.AboutActivity
+import com.spacex.ui.about.AboutModule
 import com.spacex.ui.rocketDetails.RocketDetailsFragment
 import com.spacex.ui.rocketDetails.RocketDetailsModule
 import com.spacex.ui.rocketList.RocketListActivity
@@ -25,4 +27,7 @@ internal abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [WelcomeModule::class])
     internal abstract fun bindWelcomeActivity(): WelcomeActivity
+
+    @ContributesAndroidInjector(modules = [AboutModule::class])
+    internal abstract fun bindAboutActivity(): AboutActivity
 }
