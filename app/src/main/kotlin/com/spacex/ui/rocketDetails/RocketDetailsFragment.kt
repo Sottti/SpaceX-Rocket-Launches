@@ -89,7 +89,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
 
     override fun showLaunches(launches: List<RocketLaunchItemUIM>) {
         viewBinding!!.launches.visibility = View.VISIBLE
-        viewBinding!!.launchesIcon.visibility = View.VISIBLE
+        viewBinding!!.launchesIcon!!.visibility = View.VISIBLE
         if (viewBinding!!.launches.adapter == null) {
             adapter = RocketLaunchesAdapter(launches, this)
             viewBinding!!.launches.adapter = adapter
@@ -100,7 +100,7 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
 
     override fun hideLaunches() {
         viewBinding!!.launches.visibility = View.GONE
-        viewBinding!!.launchesIcon.visibility = View.GONE
+        viewBinding!!.launchesIcon!!.visibility = View.GONE
     }
 
     override fun showAsEmpty() {
