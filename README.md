@@ -3,6 +3,7 @@
 This is a toy showcase app. Uses the SpaceX API.
 
 ![alt text](https://image.ibb.co/iPC9ve/ic_launcher_web.png "Logo")
+![alt text](https://image.ibb.co/bzVOMK/Screenshot_1533521684.png "Welcome")
 
 What's next:
 - Singletons can be used in a few different places.
