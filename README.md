@@ -6,10 +6,11 @@ This is a toy showcase app. Uses the SpaceX API.
 
 What's next:
 - Singletons can be used in a few different places.
-- Kotlin Coroutines
-- Replace Dagger by another Kotlin friendly DI tool
+- On The Rocket Details Fragment, add Coordinator with scrolling for collapsing the image.
 - Improve some layouts, all of them can be better, but specially some of them in landscape. As well graph is kind of simple and it clips text sometimes.
 - Add more videos with better explanations (sleep better next time...)
+- Replace Dagger by another Kotlin friendly DI tool
+- Kotlin Coroutines
 - Image transitions
 
 # License
