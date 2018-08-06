@@ -39,6 +39,8 @@ android {
 }
 
 dependencies {
+    implementation kt.stdlib
+
     implementation project(':domain')
     implementation project(':rockets')
 
@@ -54,8 +56,6 @@ dependencies {
     implementation libraries.lineChart
     implementation libraries.circleImageView
 
-    implementation androidSupportLibraries.customTabs
-
     debugImplementation leakCanary.android
     debugImplementation leakCanary.fragments
     releaseImplementation leakCanary.androidNoOp
@@ -63,8 +63,7 @@ dependencies {
     implementation androidSupportLibraries.design
     implementation androidSupportLibraries.cardView
     implementation androidSupportLibraries.appCompat
+    implementation androidSupportLibraries.customTabs
     implementation androidSupportLibraries.recyclerView
     implementation androidSupportLibraries.constraintLayout
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

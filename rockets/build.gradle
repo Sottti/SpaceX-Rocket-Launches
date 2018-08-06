@@ -32,25 +32,24 @@ android {
 
 dependencies {
     implementation kt.stdlib
-
     implementation project(':domain')
+
+    kapt dagger.daggerCompiler
+    implementation dagger.dagger
 
     implementation networking.moshi
     implementation networking.okhttp
     implementation networking.retrofit
     implementation networking.moshiConverter
     implementation networking.loggingInterceptor
+
     implementation androidSupportLibraries.annotations
 
     kapt archComponents.roomCompiler
     implementation archComponents.roomRuntime
-    testImplementation archComponents.roomTesting
 
     testImplementation testing.junit
     androidTestImplementation testing.junit
-
-    implementation dagger.dagger
-    kapt dagger.daggerCompiler
 
     implementation libraries.timber
 }
