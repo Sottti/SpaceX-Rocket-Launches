@@ -1,6 +1,6 @@
 # SpaceX Rocket Launches
 
-This is a toy showcase app. Uses the SpaceX API.
+This is a showcase app. Uses the SpaceX API. It's a work in progress.
 
 <img src="https://image.ibb.co/iPC9ve/ic_launcher_web.png" width="200" height="200"/><img src="https://image.ibb.co/nOWBrK/ic_launcher_round.png" width="200" height="200" />
 
