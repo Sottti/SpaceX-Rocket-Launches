@@ -1,6 +1,7 @@
 # SpaceX Rocket Launches
 
-This is a showcase app. Uses the SpaceX API. It's a work in progress.
+This is a showcase app. Uses the SpaceX API.
+It's a work in progress.
 
 <img src="https://image.ibb.co/iPC9ve/ic_launcher_web.png" width="200" height="200"/><img src="https://image.ibb.co/nOWBrK/ic_launcher_round.png" width="185" height="185" />
 
@@ -16,6 +17,8 @@ What's next:
 - Replace Dagger by another Kotlin friendly DI tool
 - Kotlin Coroutines
 - Image transitions
+
+Min API level is 19
 
 # License
 
