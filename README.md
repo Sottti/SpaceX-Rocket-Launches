@@ -2,7 +2,7 @@
 
 This is a showcase app. Uses the SpaceX API. It's a work in progress.
 
-<img src="https://image.ibb.co/iPC9ve/ic_launcher_web.png" width="200" height="200"/><img src="https://image.ibb.co/nOWBrK/ic_launcher_round.png" width="200" height="200" />
+<img src="https://image.ibb.co/iPC9ve/ic_launcher_web.png" width="200" height="200"/><img src="https://image.ibb.co/nOWBrK/ic_launcher_round.png" width="185" height="185" />
 
 <img src="https://image.ibb.co/hikMrK/Screenshot_1533521668.png" width="480" height="270" />
 
