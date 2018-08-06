@@ -16,7 +16,7 @@
     android:layout_margin="@dimen/spacing_8"
     android:clickable="true"
     android:focusable="true"
-    app:cardCornerRadius="@dimen/spacing_16">
+    app:cardCornerRadius="@dimen/rocket_list_card_view_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
@@ -29,6 +29,7 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="@dimen/rocket_list_image_margin"
         android:contentDescription="@string/image_showing_a_rocket"
         android:scaleType="centerCrop"
         android:src="@{UIM.image}"

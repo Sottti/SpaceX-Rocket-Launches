@@ -8,4 +8,8 @@
   <dimen name="cardview_picked_up_elevation">@dimen/elevation_8</dimen>
 
   <dimen name="cardview_resting_elevation">@dimen/elevation_2</dimen>
+
+  <dimen name="rocket_list_image_margin">0dp</dimen>
+
+  <dimen name="rocket_list_card_view_corner_radius">16dp</dimen>
 </resources>

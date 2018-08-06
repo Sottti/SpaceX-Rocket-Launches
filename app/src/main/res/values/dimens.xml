@@ -40,9 +40,8 @@
   <!--Others-->
   <dimen name="max_width_phone_in_portrait">540dp</dimen>
   <dimen name="touch_target_row_height">@dimen/spacing_48</dimen>
-
-  <!-- Subheader -->
   <dimen name="subheader_list_tile_height">@dimen/spacing_48</dimen>
-
   <dimen name="thoughts_videos_thumbnail_width">110dp</dimen>
+  <dimen name="rocket_list_image_margin">4dp</dimen>
+  <dimen name="rocket_list_card_view_corner_radius">2dp</dimen>
 </resources>
