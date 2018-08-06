@@ -2,7 +2,8 @@
 
 This is a toy showcase app. Uses the SpaceX API.
 
-<img src="https://image.ibb.co/iPC9ve/ic_launcher_web.png" width="200" height="200" />
+<img src="https://image.ibb.co/iPC9ve/ic_launcher_web.png" width="200" height="200"/><img src="https://image.ibb.co/nOWBrK/ic_launcher_round.png" width="200" height="200" />
+
 <img src="https://image.ibb.co/hikMrK/Screenshot_1533521668.png" width="480" height="270" />
 
 <img src="https://image.ibb.co/bzVOMK/Screenshot_1533521684.png" width="270" height="480"/><img src="https://image.ibb.co/hkgY5e/Screenshot_1533521650.png" width="270" height="480"/>
