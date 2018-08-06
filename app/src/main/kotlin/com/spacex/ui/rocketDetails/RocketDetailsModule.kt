@@ -4,6 +4,8 @@ import android.os.Handler
 import com.spacex.rockets.repository.RocketsRepository
 import com.spacex.rockets.repository.RocketsRepositoryModule
 import com.spacex.ui.ExecutorsModule
+import com.spacex.ui.rocketDetails.RocketDetailsFragment.Companion.ARGUMENT_ROCKET_ID
+import com.spacex.ui.rocketDetails.RocketDetailsFragment.Companion.NO_ARGUMENT
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -26,8 +28,8 @@ internal abstract class RocketDetailsModule {
         ): RocketDetailsContract.Presenter = RocketDetailsPresenter(
                 view,
                 (view as RocketDetailsFragment).arguments!!.getString(
-                        RocketDetailsContract.ARGUMENT_ROCKET_ID,
-                        RocketDetailsContract.NO_ARGUMENT),
+                        ARGUMENT_ROCKET_ID,
+                        NO_ARGUMENT),
                 coordinator)
 
         @JvmStatic

@@ -9,16 +9,15 @@ import com.spacex.ui.rocketList.RocketListContract.Presenter
 import com.spacex.ui.rocketList.RocketListContract.View
 
 internal class RocketListPresenter(
-        view: View, private val coordinator: RocketListContract.Coordinator) : Presenter, LifecycleObserver, OnLoadRocketListCallbacks {
+        private var view: View?, private val coordinator: RocketListContract.Coordinator
+) : Presenter, LifecycleObserver, OnLoadRocketListCallbacks {
 
-    private var view: RocketListContract.View? = null
     private var isShowingActiveRockets = false
     private var isShowingFilterOptions = false
     private var viewDoesNotHaveAnyData = true
     private var rocketIds: ArrayList<String>? = null
 
     init {
-        this.view = view
         if (view is LifecycleOwner) {
             (view as LifecycleOwner).lifecycle.addObserver(this)
         }
@@ -26,7 +25,7 @@ internal class RocketListPresenter(
 
     @OnLifecycleEvent(Event.ON_CREATE)
     override fun onCreate() {
-        view!!.setUpViews()
+        view?.setUpViews()
     }
 
     @OnLifecycleEvent(Event.ON_START)
@@ -51,13 +50,11 @@ internal class RocketListPresenter(
     }
 
     override fun onSuccessLoadingRocketList(rockets: List<RocketUIM>) {
-        if (view != null) {
-            viewDoesNotHaveAnyData = false
-            if (rockets.isEmpty()) {
-                view!!.showAsEmpty()
-            } else {
-                view!!.showRockets(rockets)
-            }
+        viewDoesNotHaveAnyData = false
+        if (rockets.isEmpty()) {
+            view?.showAsEmpty()
+        } else {
+            view?.showRockets(rockets)
         }
         rocketIds = rockets.getIds()
     }
@@ -72,23 +69,23 @@ internal class RocketListPresenter(
 
     override fun onErrorLoadingRocketList() {
         if (viewDoesNotHaveAnyData) {
-            view!!.showAsErrorLoading()
+            view?.showAsErrorLoading()
         }
     }
 
     override fun onRocketClicked(rocketId: String) {
-        view!!.navigateToRocketDetails(rocketId, rocketIds)
+        view?.navigateToRocketDetails(rocketId, rocketIds)
     }
 
     override fun onFilterRocketsClick() {
-        view!!.showFilterOptions()
+        view?.showFilterOptions()
         isShowingFilterOptions = true
     }
 
     override fun onShowAllRocketsFilterOptionClick() {
-        view!!.hideFilterOptions()
+        view?.hideFilterOptions()
         isShowingActiveRockets = false
-        view!!.showAllRocketsFilterAsSelected()
+        view?.showAllRocketsFilterAsSelected()
         loadAllRockets()
         isShowingFilterOptions = true
     }
@@ -96,7 +93,7 @@ internal class RocketListPresenter(
     override fun onShowActiveRocketsFilterOptionClick() {
         hideFilterOptions()
         isShowingActiveRockets = true
-        view!!.showActiveRocketsFilterAsSelected()
+        view?.showActiveRocketsFilterAsSelected()
         loadActiveRockets()
     }
 
@@ -105,27 +102,27 @@ internal class RocketListPresenter(
     }
 
     private fun hideFilterOptions() {
-        view!!.hideFilterOptions()
+        view?.hideFilterOptions()
         isShowingFilterOptions = false
     }
 
     override fun onShowWelcomeClick() {
-        view!!.navigateToWelcomeActivity()
+        view?.navigateToWelcomeActivity()
     }
 
     override fun onThoughtsClick() {
-        view!!.navigateToThoughtsActivity()
+        view?.navigateToThoughtsActivity()
     }
 
     override fun onAboutWelcomeClick() {
-        view!!.navigateToAboutActivity()
+        view?.navigateToAboutActivity()
     }
 
     override fun onBackNavigationPressed() {
         if (isShowingFilterOptions) {
             hideFilterOptions()
         } else {
-            view!!.navigateBack()
+            view?.navigateBack()
         }
     }
 

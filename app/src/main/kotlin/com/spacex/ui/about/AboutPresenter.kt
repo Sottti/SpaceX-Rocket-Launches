@@ -7,6 +7,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.spacex.ui.about.AboutContract.View
 
 internal class AboutPresenter(private val view: View) : AboutContract.Presenter, LifecycleObserver {
+
     init {
         if (view is LifecycleOwner) {
             (view as LifecycleOwner).lifecycle.addObserver(this)

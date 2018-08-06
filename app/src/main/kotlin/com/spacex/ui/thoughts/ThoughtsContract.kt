@@ -1,8 +1,8 @@
 package com.spacex.ui.thoughts
 
-class ThoughtsContract {
+interface ThoughtsContract {
 
-    internal interface View {
+    interface View {
 
         fun setUpViews()
 

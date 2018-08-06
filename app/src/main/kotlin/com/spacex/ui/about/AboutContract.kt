@@ -1,14 +1,12 @@
 package com.spacex.ui.about
 
-import androidx.annotation.NonNull
+interface AboutContract {
 
-class AboutContract {
-
-    internal interface View {
+    interface View {
 
         fun setUpViews()
 
-        fun navigateTo(@NonNull url: String)
+        fun navigateTo(url: String)
 
         fun navigateUp()
 

@@ -13,13 +13,14 @@ import com.spacex.ui.R
 import com.spacex.ui.databinding.RocketsBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
 import com.spacex.ui.rocketDetails.RocketDetailsFragment
-import com.spacex.ui.rockets.RocketsContract.ROCKET_IDS
-import com.spacex.ui.rockets.RocketsContract.SELECTED_ROCKET_ID
 import javax.inject.Inject
 
 class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
 
     companion object {
+
+        const val ROCKET_IDS = "rocketIds"
+        const val SELECTED_ROCKET_ID = "selectedRocketId"
 
         fun startActivity(context: Context, rocketIds: ArrayList<String>?, selectedRocketId: String) {
             val bundle = Bundle()

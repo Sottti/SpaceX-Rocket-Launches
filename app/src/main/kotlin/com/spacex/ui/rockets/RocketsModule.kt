@@ -1,7 +1,7 @@
 package com.spacex.ui.rockets
 
-import com.spacex.ui.rockets.RocketsContract.ROCKET_IDS
-import com.spacex.ui.rockets.RocketsContract.SELECTED_ROCKET_ID
+import com.spacex.ui.rockets.RocketsActivity.Companion.ROCKET_IDS
+import com.spacex.ui.rockets.RocketsActivity.Companion.SELECTED_ROCKET_ID
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

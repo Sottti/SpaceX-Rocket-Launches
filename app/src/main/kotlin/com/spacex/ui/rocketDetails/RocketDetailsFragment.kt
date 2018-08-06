@@ -1,6 +1,5 @@
 package com.spacex.ui.rocketDetails
 
-import android.content.Context
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.spacex.ui.IntentUtils
 import com.spacex.ui.R
+import com.spacex.ui.customViews.ErrorView
 import com.spacex.ui.databinding.RocketDetailsBinding
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchVH
@@ -25,21 +25,18 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
     lateinit var presenter: RocketDetailsContract.Presenter
     private lateinit var viewBinding: RocketDetailsBinding
     private var adapter: RocketLaunchesAdapter? = null
-    private lateinit var myContext: Context
 
     companion object {
+        const val NO_ARGUMENT = ""
+        const val ARGUMENT_ROCKET_ID = "rocketId"
+
         fun newInstance(rocketId: String): RocketDetailsFragment {
             val bundle = Bundle()
-            bundle.putString(RocketDetailsContract.ARGUMENT_ROCKET_ID, rocketId)
+            bundle.putString(ARGUMENT_ROCKET_ID, rocketId)
             val rocketDetailsFragment = RocketDetailsFragment()
             rocketDetailsFragment.arguments = bundle
             return rocketDetailsFragment
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        this.myContext = context
     }
 
     override fun onCreateView(
@@ -58,8 +55,12 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
     override fun setUpViews() {
         viewBinding.launches.setHasFixedSize(true)
         viewBinding.description.movementMethod = ScrollingMovementMethod()
+        viewBinding.errorView.setOnRetryListener(object : ErrorView.OnRefreshListener {
+            override fun onRefresh() {
+                presenter.onRetry()
+            }
 
-
+        })
     }
 
     override fun showRocketDetails(rocketDetails: RocketDetailsUIM) {
@@ -67,7 +68,8 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
         viewBinding.content.visibility = View.VISIBLE
         viewBinding.errorView.visibility = View.GONE
         viewBinding.emptyView.visibility = View.GONE
-        viewBinding.uim = RocketDetailsUIMDecorator(myContext, rocketDetails)
+        val c = context
+        c?.let { viewBinding.uim = RocketDetailsUIMDecorator(c, rocketDetails) }
     }
 
     override fun onClick(videoKey: String) {
@@ -125,6 +127,11 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
     }
 
     override fun navigateToVideo(videoKey: String) {
-        IntentUtils.openVideoInYoutubeApp(myContext, videoKey)
+        IntentUtils.openVideoInYoutubeApp(context, videoKey)
+    }
+
+    override fun onDestroyView() {
+        presenter.onDestroyView()
+        super.onDestroyView()
     }
 }

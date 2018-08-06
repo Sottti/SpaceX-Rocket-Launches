@@ -21,7 +21,7 @@ internal class RocketDetailsPresenter(
     }
 
     override fun onCreateViewForFirstTime() {
-        view!!.setUpViews()
+        view?.setUpViews()
     }
 
     override fun onViewRecreated(view: View) {
@@ -30,36 +30,36 @@ internal class RocketDetailsPresenter(
 
     @OnLifecycleEvent(Event.ON_START)
     override fun onStart() {
-        view!!.showAsLoading()
+        view?.showAsLoading()
+        coordinator.getRocketDetailsUIM(rocketId, this)
+    }
+
+    override fun onRetry() {
         coordinator.getRocketDetailsUIM(rocketId, this)
     }
 
     override fun onSuccessLoadingRocketDetails(rocketDetails: RocketDetailsUIM) {
-        if (view != null) {
-            view!!.showRocketDetails(rocketDetails)
-        }
+        view?.showRocketDetails(rocketDetails)
 
         if (rocketDetails.chartSeries.isEmpty) {
-            view!!.hideChart()
+            view?.hideChart()
         } else {
-            view!!.showChart(rocketDetails.chartSeries)
+            view?.showChart(rocketDetails.chartSeries)
         }
 
         if (rocketDetails.launches.isEmpty()) {
-            view!!.hideLaunches()
+            view?.hideLaunches()
         } else {
-            view!!.showLaunches(rocketDetails.launches)
+            view?.showLaunches(rocketDetails.launches)
         }
     }
 
     override fun onErrorLoadingRocketDetails() {
-        if (view != null) {
-            view!!.showAsErrorLoading()
-        }
+        view?.showAsErrorLoading()
     }
 
     override fun onLaunchClick(videoKey: String) {
-        view!!.navigateToVideo(videoKey)
+        view?.navigateToVideo(videoKey)
     }
 
     @OnLifecycleEvent(Event.ON_STOP)
@@ -68,11 +68,6 @@ internal class RocketDetailsPresenter(
     }
 
     override fun onDestroyView() {
-        view = null
-    }
-
-    @OnLifecycleEvent(Event.ON_DESTROY)
-    override fun onDestroy() {
         view = null
     }
 }

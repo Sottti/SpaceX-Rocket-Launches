@@ -4,10 +4,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
 
-object RocketDetailsContract {
-
-    const val NO_ARGUMENT = ""
-    const val ARGUMENT_ROCKET_ID = "rocketId"
+interface RocketDetailsContract {
 
     interface View {
 
@@ -40,16 +37,17 @@ object RocketDetailsContract {
 
         fun onStart()
 
+        fun onRetry()
+
         fun onLaunchClick(videoKey: String)
 
         fun onStop()
 
         fun onDestroyView()
-
-        fun onDestroy()
     }
 
     interface Coordinator {
+
         fun getRocketDetailsUIM(rocketId: String, callbacks: OnLoadRocketDetailsCallbacks)
 
         fun cancel()

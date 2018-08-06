@@ -1,9 +1,6 @@
 package com.spacex.ui.rockets
 
-object RocketsContract {
-
-    const val ROCKET_IDS = "rocketIds"
-    const val SELECTED_ROCKET_ID = "selectedRocketId"
+interface RocketsContract {
 
     interface View {
 

@@ -21,9 +21,9 @@ object IntentUtils {
         customTabsIntent.launchUrl(context, Uri.parse(url))
     }
 
-    fun openVideoInYoutubeApp(context: Context, videoKey: String) {
+    fun openVideoInYoutubeApp(context: Context?, videoKey: String) {
         val uri = "http://www.youtube.com/watch?v=$videoKey"
-        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uri)))
+        context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(uri)))
     }
 
 }
