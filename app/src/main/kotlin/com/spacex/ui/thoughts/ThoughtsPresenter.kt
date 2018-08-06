@@ -17,7 +17,7 @@ internal class ThoughtsPresenter(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     override fun onStart() {
-        view.setUpViews();
+        view.setUpViews()
         view.showThoughts(listOf(
                 ThoughtUIM("Hello", "6/8/18", "1LQaY0OY1Zo"),
                 ThoughtUIM("Project Structure", "6/8/18", "IgPRC3hVXsI"),

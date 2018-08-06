@@ -7,11 +7,11 @@ import android.view.MenuItem
 import android.view.View
 import androidx.core.app.NavUtils
 import androidx.databinding.DataBindingUtil
-import com.spacex.ui.IntentUtils
 import com.spacex.ui.R
+import com.spacex.ui.common.IntentUtils
+import com.spacex.ui.common.isAtLeastLollipop
 import com.spacex.ui.databinding.AboutBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
-import com.spacex.ui.isAtLeastLollipop
 import javax.inject.Inject
 
 class AboutActivity : DaggerAppCompatActivityBase(), AboutContract.View {

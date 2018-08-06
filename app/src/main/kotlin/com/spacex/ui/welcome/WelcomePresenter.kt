@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle.Event
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
-import com.spacex.ui.InteractionsHistory
+import com.spacex.ui.common.InteractionsHistory
 import com.spacex.ui.welcome.WelcomeContract.Presenter
 import com.spacex.ui.welcome.WelcomeContract.View
 

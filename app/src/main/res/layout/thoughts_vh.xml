@@ -22,7 +22,7 @@
     android:clickable="true"
     android:focusable="true">
 
-    <com.spacex.ui.rocketDetails.launches.YoutubeThumbnailView
+    <com.spacex.ui.common.YoutubeThumbnailView
       android:id="@+id/thumbnailView"
       android:layout_width="@dimen/thoughts_videos_thumbnail_width"
       android:layout_height="0dp"

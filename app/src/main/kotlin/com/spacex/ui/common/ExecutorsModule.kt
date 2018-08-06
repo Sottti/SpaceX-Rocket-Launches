@@ -1,4 +1,4 @@
-package com.spacex.ui
+package com.spacex.ui.common
 
 import android.os.Handler
 import android.os.Looper

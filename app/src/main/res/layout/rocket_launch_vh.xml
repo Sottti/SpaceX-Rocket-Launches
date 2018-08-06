@@ -16,7 +16,7 @@
     android:clickable="true"
     android:focusable="true">
 
-    <com.spacex.ui.rocketDetails.launches.YoutubeThumbnailView
+    <com.spacex.ui.common.YoutubeThumbnailView
       android:id="@+id/thumbnail_view"
       android:layout_width="0dp"
       android:layout_height="0dp"

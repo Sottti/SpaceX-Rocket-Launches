@@ -1,6 +1,7 @@
-package com.spacex.ui
+package com.spacex.ui.common
 
 import com.spacex.domain.RocketDM
+import com.spacex.ui.R
 
 internal fun RocketDM.getImageResId(stringId: String): Int {
     return when (stringId) {

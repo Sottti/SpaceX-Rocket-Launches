@@ -10,6 +10,11 @@ import com.spacex.ui.R
 internal class RocketLaunchUIMDecorator(private val context: Context) {
     private var rocketLaunchUIM: RocketLaunchUIM? = null
 
+    fun onBind(rocketLaunchUIM: RocketLaunchUIM): RocketLaunchUIMDecorator {
+        this.rocketLaunchUIM = rocketLaunchUIM
+        return this
+    }
+
     val videoKey: String
         get() {
             val videoUrl = rocketLaunchUIM!!.videoUrl
@@ -37,11 +42,6 @@ internal class RocketLaunchUIMDecorator(private val context: Context) {
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             return missionDetailsSpan
         }
-
-    fun onBind(rocketLaunchUIM: RocketLaunchUIM): RocketLaunchUIMDecorator {
-        this.rocketLaunchUIM = rocketLaunchUIM
-        return this
-    }
 
     private fun getSuccessOrFailure(wasSuccessful: Boolean): String {
         return context.getString(if (wasSuccessful) R.string.successful else R.string.failure)

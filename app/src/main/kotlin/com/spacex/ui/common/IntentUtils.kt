@@ -1,4 +1,4 @@
-package com.spacex.ui
+package com.spacex.ui.common
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.annotation.NonNull
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
+import com.spacex.ui.R
 
 object IntentUtils {
 

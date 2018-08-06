@@ -6,7 +6,8 @@ import com.spacex.ui.databinding.RocketLaunchVhBinding
 
 internal class RocketLaunchVH(
         private val viewBinding: RocketLaunchVhBinding,
-        private val clickListener: OnRocketLaunchClickListener) : RocketLaunchesItemVH(viewBinding.root), OnClickListener {
+        private val clickListener: OnRocketLaunchClickListener
+) : RocketLaunchesItemVH(viewBinding.root), OnClickListener {
     private val decorator: RocketLaunchUIMDecorator = RocketLaunchUIMDecorator(itemView.context)
 
     init {

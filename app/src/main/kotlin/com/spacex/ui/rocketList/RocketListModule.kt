@@ -3,7 +3,7 @@ package com.spacex.ui.rocketList
 import android.os.Handler
 import com.spacex.rockets.repository.RocketsRepository
 import com.spacex.rockets.repository.RocketsRepositoryModule
-import com.spacex.ui.ExecutorsModule
+import com.spacex.ui.common.ExecutorsModule
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

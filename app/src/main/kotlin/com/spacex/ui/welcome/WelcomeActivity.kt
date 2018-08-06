@@ -16,6 +16,12 @@ class WelcomeActivity : DaggerAppCompatActivityBase(), WelcomeContract.View {
     @Inject
     lateinit var presenter: WelcomeContract.Presenter
 
+    companion object {
+        fun startActivity(context: Context) {
+            context.startActivity(Intent(context, WelcomeActivity::class.java))
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, R.layout.welcome)
@@ -27,12 +33,5 @@ class WelcomeActivity : DaggerAppCompatActivityBase(), WelcomeContract.View {
 
     override fun navigateToRocketList() {
         RocketListActivity.startActivity(this)
-    }
-
-    companion object {
-
-        fun startActivity(context: Context) {
-            context.startActivity(Intent(context, WelcomeActivity::class.java))
-        }
     }
 }

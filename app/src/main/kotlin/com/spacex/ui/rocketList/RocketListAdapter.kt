@@ -8,11 +8,11 @@ import com.spacex.ui.databinding.RocketVhBinding
 import com.spacex.ui.rocketList.RocketVH.OnRocketClickListener
 
 internal class RocketListAdapter(
-        private var rockets: List<RocketUIM>?,
+        private var rockets: List<RocketUIM>,
         private val onRocketClickListener: OnRocketClickListener) : RecyclerView.Adapter<RocketVH>() {
 
     fun refreshData(rockets: List<RocketUIM>) {
-        DiffUtil.calculateDiff(RocketsDiffCallback(this.rockets!!, rockets)).dispatchUpdatesTo(this)
+        DiffUtil.calculateDiff(RocketsDiffCallback(this.rockets, rockets)).dispatchUpdatesTo(this)
         this.rockets = rockets
     }
 
@@ -23,10 +23,10 @@ internal class RocketListAdapter(
     }
 
     override fun onBindViewHolder(holder: RocketVH, position: Int) {
-        holder.onBind(rockets!![position])
+        holder.onBind(rockets[position])
     }
 
     override fun getItemCount(): Int {
-        return rockets!!.size
+        return rockets.size
     }
 }

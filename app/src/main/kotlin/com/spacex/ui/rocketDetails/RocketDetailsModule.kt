@@ -3,7 +3,7 @@ package com.spacex.ui.rocketDetails
 import android.os.Handler
 import com.spacex.rockets.repository.RocketsRepository
 import com.spacex.rockets.repository.RocketsRepositoryModule
-import com.spacex.ui.ExecutorsModule
+import com.spacex.ui.common.ExecutorsModule
 import com.spacex.ui.rocketDetails.RocketDetailsFragment.Companion.ARGUMENT_ROCKET_ID
 import com.spacex.ui.rocketDetails.RocketDetailsFragment.Companion.NO_ARGUMENT
 import dagger.Binds

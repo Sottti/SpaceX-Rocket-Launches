@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import com.spacex.ui.IntentUtils
 import com.spacex.ui.R
+import com.spacex.ui.common.IntentUtils
 import com.spacex.ui.customViews.ErrorView
 import com.spacex.ui.databinding.RocketDetailsBinding
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM

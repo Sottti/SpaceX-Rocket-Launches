@@ -6,8 +6,8 @@ import com.jjoe64.graphview.series.LineGraphSeries
 import com.spacex.domain.LaunchDM
 import com.spacex.domain.RocketDM
 import com.spacex.ui.R
-import com.spacex.ui.RocketLaunchesApp
-import com.spacex.ui.getImageResId
+import com.spacex.ui.base.RocketLaunchesApp
+import com.spacex.ui.common.getImageResId
 import com.spacex.ui.rocketDetails.launches.RocketLaunchHeaderUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
 import com.spacex.ui.rocketDetails.launches.RocketLaunchUIM

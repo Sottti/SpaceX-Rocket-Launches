@@ -1,7 +1,7 @@
 package com.spacex.ui.rocketList
 
 import com.spacex.domain.RocketDM
-import com.spacex.ui.getImageResId
+import com.spacex.ui.common.getImageResId
 
 internal fun List<RocketDM>.mapToUIM(): List<RocketUIM> {
     return List(size) { i -> mapToUIM(get(i)) }

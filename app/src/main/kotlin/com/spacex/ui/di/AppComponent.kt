@@ -1,7 +1,7 @@
 package com.spacex.ui.di
 
 import android.app.Application
-import com.spacex.ui.RocketLaunchesApp
+import com.spacex.ui.base.RocketLaunchesApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

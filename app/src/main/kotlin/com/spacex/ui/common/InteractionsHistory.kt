@@ -1,6 +1,7 @@
-package com.spacex.ui
+package com.spacex.ui.common
 
 import android.preference.PreferenceManager
+import com.spacex.ui.base.RocketLaunchesApp
 
 internal object InteractionsHistory {
 

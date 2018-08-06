@@ -8,6 +8,11 @@ import com.spacex.ui.R
 internal class RocketUIMDecorator(private val context: Context) {
     private var rocketUIM: RocketUIM? = null
 
+    fun bind(rocketUIM: RocketUIM): RocketUIMDecorator {
+        this.rocketUIM = rocketUIM
+        return this
+    }
+
     val image: Drawable?
         get() = ContextCompat.getDrawable(context, rocketUIM!!.imageResId)
 
@@ -17,9 +22,4 @@ internal class RocketUIMDecorator(private val context: Context) {
     val details: String
         get() = context.getString(
                 R.string.rocket_list_details_format, rocketUIM!!.enginesCount, rocketUIM!!.country)
-
-    fun bind(rocketUIM: RocketUIM): RocketUIMDecorator {
-        this.rocketUIM = rocketUIM
-        return this
-    }
 }

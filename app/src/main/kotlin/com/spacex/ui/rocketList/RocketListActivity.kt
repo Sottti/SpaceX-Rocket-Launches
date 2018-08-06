@@ -13,10 +13,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.spacex.ui.R
 import com.spacex.ui.about.AboutActivity
+import com.spacex.ui.common.isAtLeastLollipop
 import com.spacex.ui.customViews.ErrorView
 import com.spacex.ui.databinding.RocketListBinding
 import com.spacex.ui.di.DaggerAppCompatActivityBase
-import com.spacex.ui.isAtLeastLollipop
 import com.spacex.ui.rockets.RocketsActivity
 import com.spacex.ui.thoughts.ThoughtsActivity
 import com.spacex.ui.welcome.WelcomeActivity
