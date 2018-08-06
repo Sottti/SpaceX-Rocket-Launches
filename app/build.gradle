@@ -51,19 +51,19 @@ dependencies {
     implementation dagger.daggerAndroid
     implementation dagger.daggerAndroidSupport
 
-    implementation libraries.timber
+    implementation other.timber
     implementation networking.picasso
-    implementation libraries.lineChart
-    implementation libraries.circleImageView
+    implementation other.lineChart
+    implementation other.circleImageView
 
     debugImplementation leakCanary.android
     debugImplementation leakCanary.fragments
     releaseImplementation leakCanary.androidNoOp
 
-    implementation androidSupportLibraries.design
-    implementation androidSupportLibraries.cardView
-    implementation androidSupportLibraries.appCompat
-    implementation androidSupportLibraries.customTabs
-    implementation androidSupportLibraries.recyclerView
-    implementation androidSupportLibraries.constraintLayout
+    implementation androidx.design
+    implementation androidx.cardView
+    implementation androidx.appCompat
+    implementation androidx.customTabs
+    implementation androidx.recyclerView
+    implementation androidx.constraintLayout
 }

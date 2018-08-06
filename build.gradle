@@ -63,7 +63,7 @@ ext.versions = [
         lineChart        : '4.2.2'
 ]
 
-ext.androidSupportLibraries = [
+ext.androidx = [
         design          : "com.google.android.material:material:$rootProject.ext.versions.supportLibrary",
         customTabs      : "androidx.browser:browser:$rootProject.ext.versions.supportLibrary",
         cardView        : "androidx.cardview:cardview:$rootProject.ext.versions.supportLibrary",
@@ -91,7 +91,7 @@ ext.dagger = [
         daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$rootProject.ext.versions.dagger2"
 ]
 
-ext.libraries = [
+ext.other = [
         timber         : "com.jakewharton.timber:timber:$rootProject.ext.versions.timber",
         circleImageView: "de.hdodenhof:circleimageview:$rootProject.ext.versions.circleImageView",
         lineChart      : "com.jjoe64:graphview:$rootProject.ext.versions.lineChart"
