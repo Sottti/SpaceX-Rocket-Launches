@@ -23,11 +23,12 @@ class RocketsActivity : DaggerAppCompatActivityBase(), RocketsContract.View {
         const val SELECTED_ROCKET_ID = "selectedRocketId"
 
         fun startActivity(context: Context, rocketIds: ArrayList<String>?, selectedRocketId: String) {
-            val bundle = Bundle()
-            bundle.putString(SELECTED_ROCKET_ID, selectedRocketId)
-            bundle.putStringArrayList(ROCKET_IDS, rocketIds)
-            val intent = Intent(context, RocketsActivity::class.java)
-            intent.putExtras(bundle)
+            val intent = Intent(context, RocketsActivity::class.java).apply {
+                putExtras(Bundle().apply {
+                    putString(SELECTED_ROCKET_ID, selectedRocketId)
+                    putStringArrayList(ROCKET_IDS, rocketIds)
+                })
+            }
             context.startActivity(intent)
         }
     }

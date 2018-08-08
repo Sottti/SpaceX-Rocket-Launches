@@ -20,6 +20,12 @@ class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View {
     @Inject
     lateinit var presenter: ThoughtsContract.Presenter
 
+    companion object {
+        fun startActivity(@NonNull context: Context) {
+            context.startActivity(Intent(context, ThoughtsActivity::class.java))
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, R.layout.thoughts)
@@ -65,13 +71,4 @@ class ThoughtsActivity : DaggerAppCompatActivityBase(), ThoughtsContract.View {
     override fun navigateToVideo(videoKey: String) {
         IntentUtils.openVideoInYoutubeApp(this, videoKey)
     }
-
-    companion object {
-
-        fun startActivity(@NonNull context: Context) {
-            context.startActivity(Intent(context, ThoughtsActivity::class.java))
-        }
-    }
-
-
 }

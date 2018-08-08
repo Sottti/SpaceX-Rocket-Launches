@@ -20,6 +20,13 @@ class AboutActivity : DaggerAppCompatActivityBase(), AboutContract.View {
     @Inject
     lateinit var presenter: AboutContract.Presenter
 
+    companion object {
+
+        fun startActivity(context: Context) {
+            context.startActivity(Intent(context, AboutActivity::class.java))
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, R.layout.about)
@@ -79,13 +86,6 @@ class AboutActivity : DaggerAppCompatActivityBase(), AboutContract.View {
 
         fun onLinkedInClick(view: View) {
             presenter.onLinkedInClick()
-        }
-    }
-
-    companion object {
-
-        fun startActivity(context: Context) {
-            context.startActivity(Intent(context, AboutActivity::class.java))
         }
     }
 }

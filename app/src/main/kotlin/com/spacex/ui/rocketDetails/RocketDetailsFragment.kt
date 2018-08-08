@@ -10,6 +10,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.spacex.ui.R
 import com.spacex.ui.common.IntentUtils
+import com.spacex.ui.common.withArgs
 import com.spacex.ui.customViews.ErrorView
 import com.spacex.ui.databinding.RocketDetailsBinding
 import com.spacex.ui.rocketDetails.launches.RocketLaunchItemUIM
@@ -30,12 +31,8 @@ class RocketDetailsFragment : DaggerFragment(), RocketDetailsContract.View, Rock
         const val NO_ARGUMENT = ""
         const val ARGUMENT_ROCKET_ID = "rocketId"
 
-        fun newInstance(rocketId: String): RocketDetailsFragment {
-            val bundle = Bundle()
-            bundle.putString(ARGUMENT_ROCKET_ID, rocketId)
-            val rocketDetailsFragment = RocketDetailsFragment()
-            rocketDetailsFragment.arguments = bundle
-            return rocketDetailsFragment
+        fun newInstance(rocketId: String) = RocketDetailsFragment().withArgs {
+            putString(ARGUMENT_ROCKET_ID, rocketId)
         }
     }
 
