@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @Component(modules = [AndroidSupportInjectionModule::class, ActivityBuilder::class, AppModule::class])
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
-    fun inject(crowdScoresApplication: RocketLaunchesApp)
+    fun inject(rocketLaunchesApp: RocketLaunchesApp)
 
     override fun inject(instance: DaggerApplication)
 
