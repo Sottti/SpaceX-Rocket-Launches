@@ -38,12 +38,11 @@ ext.versions = [
         //Tools
         buildTools       : '28.0.2',
 
-        dagger2          : '2.16',
+        dagger2          : '2.17',
         archComponents   : '1.1.1',
         room             : '2.0.0-rc01',
-        supportLibrary   : '1.0.0-rc01',
-        constraintLayout : '2.0.0-alpha1',
-        appCompat        : '1.0.0-beta01',
+        androidX         : '1.0.0-rc01',
+        constraintLayout : '2.0.0-alpha2',
 
         // Testing
         junit            : '4.12',
@@ -66,13 +65,13 @@ ext.versions = [
 ]
 
 ext.androidx = [
-        design          : "com.google.android.material:material:$rootProject.ext.versions.supportLibrary",
-        customTabs      : "androidx.browser:browser:$rootProject.ext.versions.supportLibrary",
-        cardView        : "androidx.cardview:cardview:$rootProject.ext.versions.supportLibrary",
-        recyclerView    : "androidx.recyclerview:recyclerview:$rootProject.ext.versions.supportLibrary",
-        annotations     : "androidx.annotation:annotation:$rootProject.ext.versions.supportLibrary",
+        customTabs      : "androidx.browser:browser:$rootProject.ext.versions.androidX",
+        cardView        : "androidx.cardview:cardview:$rootProject.ext.versions.androidX",
+        appCompat       : "androidx.appcompat:appcompat:$rootProject.ext.versions.androidX",
+        annotations     : "androidx.annotation:annotation:$rootProject.ext.versions.androidX",
+        recyclerView    : "androidx.recyclerview:recyclerview:$rootProject.ext.versions.androidX",
+        design          : "com.google.android.material:material:$rootProject.ext.versions.androidX",
         constraintLayout: "androidx.constraintlayout:constraintlayout:$rootProject.ext.versions.constraintLayout",
-        appCompat       : "androidx.appcompat:appcompat:$rootProject.ext.versions.appCompat"
 ]
 
 ext.archComponents = [
@@ -94,9 +93,9 @@ ext.dagger = [
 ]
 
 ext.other = [
+        lineChart      : "com.jjoe64:graphview:$rootProject.ext.versions.lineChart",
         timber         : "com.jakewharton.timber:timber:$rootProject.ext.versions.timber",
         circleImageView: "de.hdodenhof:circleimageview:$rootProject.ext.versions.circleImageView",
-        lineChart      : "com.jjoe64:graphview:$rootProject.ext.versions.lineChart"
 ]
 
 ext.kt = [
