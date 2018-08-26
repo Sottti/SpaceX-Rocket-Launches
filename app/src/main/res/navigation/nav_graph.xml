@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/rocketListActivity">
+
+    <activity
+        android:id="@+id/rocketListActivity"
+        android:name="com.spacex.ui.rocketList.RocketListActivity"
+        android:label="Rocket List Activity"
+        tools:layout="@layout/rocket_list">
+        <action
+            android:id="@+id/action_rocketListActivity_to_aboutActivity"
+            app:destination="@id/aboutActivity" />
+        <action
+            android:id="@+id/action_rocketListActivity_to_rocketsActivity"
+            app:destination="@id/rocketsActivity" />
+        <action
+            android:id="@+id/action_rocketListActivity_to_thoughtsActivity"
+            app:destination="@id/thoughtsActivity" />
+    </activity>
+
+    <activity
+        android:id="@+id/aboutActivity"
+        android:name="com.spacex.ui.about.AboutActivity"
+        android:label="About Activity"
+        tools:layout="@layout/about" />
+
+    <activity
+        android:id="@+id/rocketsActivity"
+        android:name="com.spacex.ui.rockets.RocketsActivity"
+        android:label="RocketsActivity"
+        tools:layout="@layout/rockets" />
+
+    <activity
+        android:id="@+id/thoughtsActivity"
+        android:name="com.spacex.ui.thoughts.ThoughtsActivity"
+        android:label="ThoughtsActivity"
+        tools:layout="@layout/thoughts" />
+
+
+</navigation>

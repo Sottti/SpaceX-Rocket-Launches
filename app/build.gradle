@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -60,10 +59,12 @@ dependencies {
     debugImplementation leakCanary.fragments
     releaseImplementation leakCanary.androidNoOp
 
-    implementation androidx.design
-    implementation androidx.cardView
-    implementation androidx.appCompat
-    implementation androidx.customTabs
-    implementation androidx.recyclerView
-    implementation androidx.constraintLayout
+    implementation androidxUI.design
+    implementation androidxUI.cardView
+    implementation androidxUI.customTabs
+    implementation androidxUI.recyclerView
+    implementation androidxUI.constraintLayout
+    implementation androidxFoundation.appCompat
+    implementation androidxArchitecture.navigationUI
+    implementation androidxArchitecture.navigationFragment
 }

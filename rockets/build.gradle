@@ -43,10 +43,10 @@ dependencies {
     implementation networking.moshiConverter
     implementation networking.loggingInterceptor
 
-    implementation androidx.annotations
+    implementation androidxFoundation.annotations
 
-    kapt archComponents.roomCompiler
-    implementation archComponents.roomRuntime
+    kapt androidxArchitecture.roomCompiler
+    implementation androidxArchitecture.roomRuntime
 
     testImplementation testing.junit
     androidTestImplementation testing.junit

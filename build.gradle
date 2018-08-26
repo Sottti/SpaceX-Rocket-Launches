@@ -31,17 +31,18 @@ task clean(type: Delete) {
 
 ext.versions = [
         // SDK
-        minSdk           : 19,
+        minSdk           : 21,
         targetSdk        : 28,
         compileSdk       : 28,
 
         //Tools
         buildTools       : '28.0.2',
 
-        dagger2          : '2.17',
+        dagger2          : '2.16',
         archComponents   : '1.1.1',
         room             : '2.0.0-rc01',
         androidX         : '1.0.0-rc01',
+        navigation       : '1.0.0-alpha05',
         constraintLayout : '2.0.0-alpha2',
 
         // Testing
@@ -64,19 +65,26 @@ ext.versions = [
         lineChart        : '4.2.2'
 ]
 
-ext.androidx = [
+ext.androidxUI = [
         customTabs      : "androidx.browser:browser:$rootProject.ext.versions.androidX",
         cardView        : "androidx.cardview:cardview:$rootProject.ext.versions.androidX",
-        appCompat       : "androidx.appcompat:appcompat:$rootProject.ext.versions.androidX",
-        annotations     : "androidx.annotation:annotation:$rootProject.ext.versions.androidX",
         recyclerView    : "androidx.recyclerview:recyclerview:$rootProject.ext.versions.androidX",
         design          : "com.google.android.material:material:$rootProject.ext.versions.androidX",
-        constraintLayout: "androidx.constraintlayout:constraintlayout:$rootProject.ext.versions.constraintLayout",
+        constraintLayout: "androidx.constraintlayout:constraintlayout:$rootProject.ext.versions.constraintLayout"
 ]
 
-ext.archComponents = [
-        roomRuntime : "androidx.room:room-runtime:$rootProject.ext.versions.room",
-        roomCompiler: "androidx.room:room-compiler:$rootProject.ext.versions.room"
+ext.androidxFoundation = [
+        appCompat  : "androidx.appcompat:appcompat:$rootProject.ext.versions.androidX",
+        annotations: "androidx.annotation:annotation:$rootProject.ext.versions.androidX"
+]
+
+ext.androidxArchitecture = [
+        roomRuntime       : "androidx.room:room-runtime:$rootProject.ext.versions.room",
+        roomCompiler      : "androidx.room:room-compiler:$rootProject.ext.versions.room",
+        navigationUI      : "android.arch.navigation:navigation-ui-ktx:$rootProject.ext.versions.navigation",
+        extensions        : "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.versions.archComponents",
+        commonJava8       : "androidx.lifecycle:lifecycle-common-java8:$rootProject.ext.versions.archComponents",
+        navigationFragment: "android.arch.navigation:navigation-fragment-ktx:$rootProject.ext.versions.navigation"
 ]
 
 ext.testing = [
