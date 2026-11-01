@@ -1,9 +1,13 @@
 # SpaceX Rocket Launches
 
+> **Historical interview project — 2018**
+> Preserved as a record of an Android interview exercise and the tools and
+> architecture used at the time. This project is no longer actively maintained.
+
 ![Kotlin](https://img.shields.io/badge/Kotlin-1.2.61-7F52FF?logo=kotlin&logoColor=white)
 ![AndroidX](https://img.shields.io/badge/AndroidX-1.0%20RC-3DDC84?logo=android&logoColor=white)
 ![Architecture](https://img.shields.io/badge/architecture-modular%20MVP-4285F4)
-![Status](https://img.shields.io/badge/status-historical%20sample-FFB000)
+![Status](https://img.shields.io/badge/status-historical%20interview%20project-FFB000)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 SpaceX Rocket Launches is a Kotlin Android showcase app for browsing SpaceX
